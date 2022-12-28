@@ -8,5 +8,5 @@ Dokumentation
 <br>
 15.12.22 Projekt geplant und Pflichtenheft erstellt
 <br>
-28.12.22 
+28.12.22 Erstelung der datenbank 
 <br>
