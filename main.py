@@ -13,4 +13,3 @@ insert = f"INSERT INTO anmeldung VALUES('{Benutzer}', '{Passwort}');"
 cursor.execute(insert)
 connection.commit()
 connection.close()
-print("Hey")
