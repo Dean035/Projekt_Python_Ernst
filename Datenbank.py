@@ -1,4 +1,4 @@
-import sqlite3
+import sqlite3, os
 connection = sqlite3.connect("Datenbank.db")
 cursor = connection.cursor()
 
