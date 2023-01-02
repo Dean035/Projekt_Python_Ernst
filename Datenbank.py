@@ -1,5 +1,5 @@
-import sqlite3, os
-
+import sqlite3
+import os
 def createdb():
     connection = sqlite3.connect("Datenbank.db")
     cursor = connection.cursor()
