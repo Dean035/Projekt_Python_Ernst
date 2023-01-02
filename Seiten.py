@@ -12,10 +12,17 @@ def Main():
     Mainwindow. title("Mainwindow")
     Anmeldung.destroy()
 
+def inpAnmeldung():
+    current_input = Benutzernameeingabe.get()
+    current_input2 = Passworteingabe.get()
+    print(current_input, current_input2)
+
 def register():
     Register = Tk()
     Register.title("Registration")
     Anmeldung.destroy()
+
+
 
     RgstBenutzername = Label(Register, text="Benutzername")
     RgstBenutzereingabe = Entry(Register, bd=5, width=40)
@@ -36,7 +43,7 @@ def register():
 Rgstlabel = Label(Anmeldung, text="Wenn Sie noch keinen Account besitzen Drücken sie bitte hier:")
 Rgstbutton = Button(Anmeldung, text="Registration", command=register)
 Benutzernamelabel = Label(Anmeldung, text="Benutzername")
-Anmeldungsbutton = Button(Anmeldung, text="Anmelden", command=Main)
+Anmeldungsbutton = Button(Anmeldung, text="Anmelden", command=inpAnmeldung, Main)
 Benutzernameeingabe = Entry(Anmeldung, bd=5, width= 40)
 Passwortlabel = Label(Anmeldung, text="Passwort")
 Passworteingabe = Entry(Anmeldung, bd=5, width= 40)
