@@ -1,6 +1,4 @@
 from tkinter import *
-from Datenbank import NewAcc
-
 
 Anmeldung = Tk()
 Anmeldung.title("Anmeldung")
