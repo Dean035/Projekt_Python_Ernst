@@ -1,5 +1,10 @@
 import sqlite3
 import os
+from Seiten import register
+
+
+
+
 def createdb():
     connection = sqlite3.connect("Datenbank.db")
     cursor = connection.cursor()
@@ -14,7 +19,17 @@ def createdb():
     cursor.execute(insert)
     connection.commit()
     connection.close()
-    print("test")
+
+def NewAcc():
+    connection = sqlite3.connect("Datenbank.db")
+    cursor = connection.cursor()
+    register()
+    NewBenutzername = register.RgstinpBenutzername
+    NewPasswort = register.RgstinpPasswort
+    update = f"UPDATE INTO anmeldung VALUES('{NewBenutzername}', '{NewPasswort}');"
+    cursor.execute(update)
+    connection.commit()
+    connection.close()
 
 
 if os.path.exists("Datenbank.db"):
