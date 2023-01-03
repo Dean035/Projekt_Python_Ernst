@@ -15,15 +15,65 @@ def inpAnmeldung():
     Mainwindow = Tk()
     Mainwindow. title("Mainwindow")
     Anmeldung.destroy()
-
+    Mainwindow.geometry("650x450")
+    Mainwindow.resizable(width=0, height=0)
     Funktionen = StringVar(Mainwindow)
-    Funktionen.set("Auswahl")
+    Funktionen.set("Funktionen")
 
-    drop = OptionMenu(Mainwindow, Funktionen, "Auswahl" , "Lineale-Funktion" , "Quadratische-Funktion" ,
-                      "Ganzrationale-Funktionen" ,"Trigonometrische-Funktionen" , "Exponential-funktionen" ,
-                      "Einstieg-Differenzialrechnung" , "Kurvendiskussion", "Integralrechnung")
+    def show(selection):
+        Auswahl = selection
+        if Auswahl == "Lineare-Funktion":
+            Linear = Tk()
+            Linear.title("Lineare-Funktion")
+            Linear.geometry("400x400")
+            Linear.resizable(width=0, height=0)
+        elif Auswahl == "Quadratische-Funktion":
+            Quadratisch = Tk()
+            Quadratisch.title("Quadratische-Funktion")
+            Quadratisch.geometry("400x400")
+            Quadratisch.resizable(width=0, height=0)
+        elif Auswahl == "Ganzrationale-Funktionen":
+            Ganzrational = Tk()
+            Ganzrational.title("Ganzrationale-Funktionen")
+            Ganzrational.geometry("400x400")
+            Ganzrational.resizable(width=0, height=0)
+        elif Auswahl == "Trigonometrische-Funktionen":
+            Trigonomisch = Tk()
+            Trigonomisch.title("Trigonometrische-Funktionen")
+            Trigonomisch.geometry("400x400")
+            Trigonomisch.resizable(width=0, height=0)
+        elif Auswahl == "Exponential-Funktionen":
+            Exponential = Tk()
+            Exponential.title("Exponential-Funktionen")
+            Exponential.geometry("400x400")
+            Exponential.resizable(width=0, height=0)
+        elif Auswahl == "Einstieg-Differenzialrechnung":
+            Differenzial = Tk()
+            Differenzial.title("Einstieg-Differenzialrechnung")
+            Differenzial.geometry("400x400")
+            Differenzial.resizable(width=0, height=0)
+        elif Auswahl == "Kurvendiskussion":
+            Kurven = Tk()
+            Kurven.title("Kurvendiskussion")
+            Kurven.geometry("400x400")
+            Kurven.resizable(width=0, height=0)
+        elif Auswahl == "Integralrechnung":
+            Integral = Tk()
+            Integral.title("Integralrechnung")
+            Integral.geometry("400x400")
+            Integral.resizable(width=0, height=0)
+
+
+    drop = OptionMenu(Mainwindow, Funktionen,  "Lineare-Funktion" , "Quadratische-Funktion" ,
+                      "Ganzrationale-Funktionen" ,"Trigonometrische-Funktionen" , "Exponential-Funktionen" ,
+                      "Einstieg-Differenzialrechnung" , "Kurvendiskussion", "Integralrechnung", command=show)
+
+
+
+
 
     drop.pack()
+    drop.place(relx=0.0, rely=0.0)
 
 def register():
     Register = Tk()
