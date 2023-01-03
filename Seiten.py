@@ -16,8 +16,14 @@ def inpAnmeldung():
     Mainwindow. title("Mainwindow")
     Anmeldung.destroy()
 
+    Funktionen = StringVar(Mainwindow)
+    Funktionen.set("Auswahl")
 
+    drop = OptionMenu(Mainwindow, Funktionen, "Auswahl" , "Lineale-Funktion" , "Quadratische-Funktion" ,
+                      "Ganzrationale-Funktionen" ,"Trigonometrische-Funktionen" , "Exponential-funktionen" ,
+                      "Einstieg-Differenzialrechnung" , "Kurvendiskussion", "Integralrechnung")
 
+    drop.pack()
 
 def register():
     Register = Tk()
