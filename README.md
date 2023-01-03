@@ -10,4 +10,6 @@ Dokumentation
 <br>
 28.12.22 Erstelung der datenbank 
 <br>
-02.02.2023 Erstellung der Seiten mit TKinter
+02.01.2023 Erstellung der Seiten mit TKinter
+<br>
+03.01.2023 Fertigstellung des Grundgerüstes der Seiten 
