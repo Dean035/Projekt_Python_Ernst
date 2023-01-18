@@ -1,12 +1,10 @@
 from tkinter import *
-from Datenbank import NewAcc, Ausgabe
 
 Anmeldung = Tk()
 Anmeldung.title("Anmeldung")
 
 Anmeldung.geometry("400x400")
 Anmeldung.resizable(width=0, height=0)
-
 
 
 
@@ -27,8 +25,25 @@ def inpAnmeldung():
         if Auswahl == "Lineare-Funktion":
             Linear = Tk()
             Linear.title("Lineare-Funktion")
-            Linear.geometry("400x400")
+            Linear.geometry("600x600")
             Linear.resizable(width=0, height=0)
+            butoon1 = Button(Linear,text= "Ausführen",)
+            butoon2 = Button(Linear, text="Beispiele",)
+            butoon3 = Button(Linear, text="Zoom-in",)
+            butoon4 = Button(Linear, text="Zoom-out",)
+            ytext = Entry(Linear, bd=5, width= 7)
+            xtext = Entry(Linear, bd=5, width= 7)
+            btext = Entry(Linear, bd=5, width= 7)
+            mtext = Entry(Linear, bd=5, width= 7)
+            xbeschriftung = Entry(Linear, bd=5, width= 7)
+            ybeschriftung = Entry(Linear, bd=5, width= 7)
+
+            ytext.pack(), xtext.pack(), btext.pack(), mtext.pack(), xbeschriftung.pack(), ybeschriftung.pack(),
+            butoon4.pack(), butoon3.pack(), butoon2.pack(), butoon1.pack()
+
+            ytext.place(relx= 2.1, rely=7.8), xtext.place(relx= 4.1, rely=6.8)
+
+
         elif Auswahl == "Quadratische-Funktion":
             Quadratisch = Tk()
             Quadratisch.title("Quadratische-Funktion")
@@ -80,10 +95,7 @@ def inpAnmeldung():
 def register():
     Register = Tk()
     Register.title("Registration")
-    #Anmeldung.destroy()
-
-
-
+    Anmeldung.destroy()
 
     def Rgstinp():
         RgstinpBenutzername = RgstBenutzereingabe.get()
@@ -94,9 +106,6 @@ def register():
             print(RgstinpBenutzername, RgstinpPasswort, RgstinpPasswortConfirm)
         else:
             print("Das Passwort und die Bestätigung des Passworts stimmen nicht überein")
-
-        NewAcc(RgstBenutzereingabe.get(), RgstPassworteingabe.get())
-        Ausgabe()
 
     RgstBenutzername = Label(Register, text="Benutzername")
     RgstBenutzereingabe = Entry(Register, bd=5, width=40)
