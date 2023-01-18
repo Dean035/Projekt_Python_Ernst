@@ -1,4 +1,5 @@
 from tkinter import *
+from Datenbank import NewAcc, Ausgabe
 
 Anmeldung = Tk()
 Anmeldung.title("Anmeldung")
@@ -95,7 +96,7 @@ def inpAnmeldung():
 def register():
     Register = Tk()
     Register.title("Registration")
-    Anmeldung.destroy()
+    #Anmeldung.destroy()
 
     def Rgstinp():
         RgstinpBenutzername = RgstBenutzereingabe.get()
@@ -106,7 +107,10 @@ def register():
             print(RgstinpBenutzername, RgstinpPasswort, RgstinpPasswortConfirm)
         else:
             print("Das Passwort und die Bestätigung des Passworts stimmen nicht überein")
-
+        
+        NewAcc(RgstBenutzereingabe.get(), RgstPassworteingabe.get())
+        Ausgabe()
+        
     RgstBenutzername = Label(Register, text="Benutzername")
     RgstBenutzereingabe = Entry(Register, bd=5, width=40)
     RgstPasswort = Label(Register, text="Passwort")
