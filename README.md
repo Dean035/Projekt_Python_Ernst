@@ -13,3 +13,5 @@ Dokumentation
 02.01.2023 Erstellung der Seiten mit TKinter
 <br>
 03.01.2023 Fertigstellung des Grundgerüstes der Seiten 
+<br>
+18.01.2023 Registration ist funktionstüchtig und Grundgerüst für Lineare-Funktionen gemacht
