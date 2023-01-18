@@ -1,7 +1,6 @@
 import sqlite3
 import os
-from Seiten import register
-
+#from Seiten import register
 
 
 
@@ -20,17 +19,23 @@ def createdb():
     connection.commit()
     connection.close()
 
-def NewAcc():
+def NewAcc(name, passwort):
     connection = sqlite3.connect("Datenbank.db")
     cursor = connection.cursor()
-    register()
-    NewBenutzername = register.RgstinpBenutzername
-    NewPasswort = register.RgstinpPasswort
-    update = f"UPDATE INTO anmeldung VALUES('{NewBenutzername}', '{NewPasswort}');"
-    cursor.execute(update)
+    InsertNewAcc = f"INSERT INTO anmeldung VALUES('{name}', '{passwort}');"
+    cursor.execute(InsertNewAcc)
     connection.commit()
     connection.close()
 
+
+def Ausgabe():
+    connection = sqlite3.connect("Datenbank.db")
+    cursor = connection.cursor()
+
+    sql = "SELECT * FROM anmeldung"
+    ausgabe = cursor.execute(sql).fetchall()
+    print(ausgabe)
+    connection.close()
 
 if os.path.exists("Datenbank.db"):
     print("Datenbank existiert bereits")
