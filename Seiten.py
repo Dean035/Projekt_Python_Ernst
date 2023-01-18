@@ -105,11 +105,26 @@ def register():
 
         if RgstinpPasswort == RgstinpPasswortConfirm:
             print(RgstinpBenutzername, RgstinpPasswort, RgstinpPasswortConfirm)
+            NewAcc(RgstBenutzereingabe.get(), RgstPassworteingabe.get())
+            Ausgabe()
+            Register.destroy()
         else:
             print("Das Passwort und die Bestätigung des Passworts stimmen nicht überein")
-        
-        NewAcc(RgstBenutzereingabe.get(), RgstPassworteingabe.get())
-        Ausgabe()
+            RegisterFail = Tk()
+            RegisterFail.title("Error")
+            RegisterFail.geometry("500x50")
+            RegisterFail.resizable(width=0, height=0)
+
+            def OkButtonClick():
+                RegisterFail.destroy()
+
+            OkButton = Button(RegisterFail, text="Ok", command=OkButtonClick)
+            LabelFail = Label(RegisterFail, text="Das Passwort und die Bestätigung des Passwortes stimmen nicht überein!")
+
+            LabelFail.pack()
+            OkButton.pack()
+
+
         
     RgstBenutzername = Label(Register, text="Benutzername")
     RgstBenutzereingabe = Entry(Register, bd=5, width=40)

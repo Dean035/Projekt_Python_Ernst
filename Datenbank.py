@@ -28,6 +28,8 @@ def NewAcc(name, passwort):
     connection.close()
 
 
+
+
 def Ausgabe():
     connection = sqlite3.connect("Datenbank.db")
     cursor = connection.cursor()
@@ -35,11 +37,14 @@ def Ausgabe():
     sql = "SELECT * FROM anmeldung"
     ausgabe = cursor.execute(sql).fetchall()
     print(ausgabe)
+    connection.commit()
     connection.close()
 
 if os.path.exists("Datenbank.db"):
     print("Datenbank existiert bereits")
 else:
     createdb()
+
+
 
 
