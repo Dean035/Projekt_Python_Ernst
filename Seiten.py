@@ -1,4 +1,5 @@
 from tkinter import *
+from Datenbank import NewAcc, Ausgabe
 
 Anmeldung = Tk()
 Anmeldung.title("Anmeldung")
@@ -20,71 +21,66 @@ def inpAnmeldung():
     Funktionen = StringVar(Mainwindow)
     Funktionen.set("Funktionen")
 
+
+
     def show(selection):
         Auswahl = selection
-        if Auswahl == "Lineare-Funktion":
-            Linear = Tk()
-            Linear.title("Lineare-Funktion")
-            Linear.geometry("600x600")
-            Linear.resizable(width=0, height=0)
-            butoon1 = Button(Linear,text= "Ausführen",)
-            butoon2 = Button(Linear, text="Beispiele",)
-            butoon3 = Button(Linear, text="Zoom-in",)
-            butoon4 = Button(Linear, text="Zoom-out",)
-            ytext = Entry(Linear, bd=5, width= 7)
-            xtext = Entry(Linear, bd=5, width= 7)
-            btext = Entry(Linear, bd=5, width= 7)
-            mtext = Entry(Linear, bd=5, width= 7)
-            xbeschriftung = Entry(Linear, bd=5, width= 7)
-            ybeschriftung = Entry(Linear, bd=5, width= 7)
+        fenster = Tk()
+        fenster.geometry("600x600")
+        fenster.resizable(width=0, height=0)
+        fenster.title(Auswahl)
+
+        if Auswahl ==  "Lineare-Funktion":
+            butoon1 = Button(fenster, text="Ausführen", )
+            butoon2 = Button(fenster, text="Beispiele", )
+            butoon3 = Button(fenster, text="Zoom-in", )
+            butoon4 = Button(fenster, text="Zoom-out", )
+            ytext = Entry(fenster, bd=5, width=7)
+            xtext = Entry(fenster, bd=5, width=7)
+            btext = Entry(fenster, bd=5, width=7)
+            mtext = Entry(fenster, bd=5, width=7)
+            xbeschriftung = Entry(fenster, bd=5, width=7)
+            ybeschriftung = Entry(fenster, bd=5, width=7)
 
             ytext.pack(), xtext.pack(), btext.pack(), mtext.pack(), xbeschriftung.pack(), ybeschriftung.pack(),
             butoon4.pack(), butoon3.pack(), butoon2.pack(), butoon1.pack()
 
-            ytext.place(relx= 2.1, rely=7.8), xtext.place(relx= 4.1, rely=6.8)
+            ytext.place(x=7, y=235)
+
+        elif Auswahl ==  "Quadratische-Funktion":
+            pass
+        
+        
+        elif Auswahl ==  "Ganzrationale-Funktionen":
 
 
-        elif Auswahl == "Quadratische-Funktion":
-            Quadratisch = Tk()
-            Quadratisch.title("Quadratische-Funktion")
-            Quadratisch.geometry("400x400")
-            Quadratisch.resizable(width=0, height=0)
-        elif Auswahl == "Ganzrationale-Funktionen":
-            Ganzrational = Tk()
-            Ganzrational.title("Ganzrationale-Funktionen")
-            Ganzrational.geometry("400x400")
-            Ganzrational.resizable(width=0, height=0)
+
         elif Auswahl == "Trigonometrische-Funktionen":
-            Trigonomisch = Tk()
-            Trigonomisch.title("Trigonometrische-Funktionen")
-            Trigonomisch.geometry("400x400")
-            Trigonomisch.resizable(width=0, height=0)
+
+
+
         elif Auswahl == "Exponential-Funktionen":
-            Exponential = Tk()
-            Exponential.title("Exponential-Funktionen")
-            Exponential.geometry("400x400")
-            Exponential.resizable(width=0, height=0)
+
+
+
         elif Auswahl == "Einstieg-Differenzialrechnung":
-            Differenzial = Tk()
-            Differenzial.title("Einstieg-Differenzialrechnung")
-            Differenzial.geometry("400x400")
-            Differenzial.resizable(width=0, height=0)
+
+
+
         elif Auswahl == "Kurvendiskussion":
-            Kurven = Tk()
-            Kurven.title("Kurvendiskussion")
-            Kurven.geometry("400x400")
-            Kurven.resizable(width=0, height=0)
+          
+       
+                       
         elif Auswahl == "Integralrechnung":
-            Integral = Tk()
-            Integral.title("Integralrechnung")
-            Integral.geometry("400x400")
-            Integral.resizable(width=0, height=0)
+
+            
+
+
 
 
     drop = OptionMenu(Mainwindow, Funktionen,  "Lineare-Funktion" , "Quadratische-Funktion" ,
                       "Ganzrationale-Funktionen" ,"Trigonometrische-Funktionen" , "Exponential-Funktionen" ,
                       "Einstieg-Differenzialrechnung" , "Kurvendiskussion", "Integralrechnung", command=show)
-
 
 
 
@@ -95,7 +91,7 @@ def inpAnmeldung():
 def register():
     Register = Tk()
     Register.title("Registration")
-    Anmeldung.destroy()
+    #Anmeldung.destroy()
 
     def Rgstinp():
         RgstinpBenutzername = RgstBenutzereingabe.get()
@@ -104,9 +100,27 @@ def register():
 
         if RgstinpPasswort == RgstinpPasswortConfirm:
             print(RgstinpBenutzername, RgstinpPasswort, RgstinpPasswortConfirm)
+            NewAcc(RgstBenutzereingabe.get(), RgstPassworteingabe.get())
+            Ausgabe()
+            Register.destroy()
         else:
             print("Das Passwort und die Bestätigung des Passworts stimmen nicht überein")
+            RegisterFail = Tk()
+            RegisterFail.title("Error")
+            RegisterFail.geometry("500x50")
+            RegisterFail.resizable(width=0, height=0)
 
+            def OkButtonClick():
+                RegisterFail.destroy()
+
+            OkButton = Button(RegisterFail, text="Ok", command=OkButtonClick)
+            LabelFail = Label(RegisterFail, text="Das Passwort und die Bestätigung des Passwortes stimmen nicht überein!")
+
+            LabelFail.pack()
+            OkButton.pack()
+
+
+        
     RgstBenutzername = Label(Register, text="Benutzername")
     RgstBenutzereingabe = Entry(Register, bd=5, width=40)
     RgstPasswort = Label(Register, text="Passwort")
@@ -145,4 +159,5 @@ Rgstlabel.pack()
 Rgstlabel.place(relx= 0.1, rely=0.8)
 Rgstbutton.place(relx=0.4, rely=0.9)
 Anmeldung.mainloop()
+
 
