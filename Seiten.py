@@ -49,31 +49,31 @@ def inpAnmeldung():
 
         elif Auswahl ==  "Quadratische-Funktion":
             pass
-        
-        
-        elif Auswahl ==  "Ganzrationale-Funktionen":
 
+
+        elif Auswahl ==  "Ganzrationale-Funktionen":
+            pass
 
 
         elif Auswahl == "Trigonometrische-Funktionen":
-
+            pass
 
 
         elif Auswahl == "Exponential-Funktionen":
-
+            pass
 
 
         elif Auswahl == "Einstieg-Differenzialrechnung":
-
+            pass
 
 
         elif Auswahl == "Kurvendiskussion":
-          
-       
-                       
-        elif Auswahl == "Integralrechnung":
+            pass
 
-            
+
+        elif Auswahl == "Integralrechnung":
+            pass
+
 
 
 
