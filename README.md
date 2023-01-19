@@ -15,3 +15,5 @@ Dokumentation
 03.01.2023 Fertigstellung des Grundgerüstes der Seiten (Burak 6h, Dean 4h) 
 <br>
 18.01.2023 Registration ist funktionstüchtig und Grundgerüst für Lineare-Funktionen gemacht (Burak 1:30h, Dean 2h)
+<br>
+19.01.2023 Weiterbearbeitung der Linearen-Funktion und das fertigstellen der Registration 
