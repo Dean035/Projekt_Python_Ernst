@@ -8,7 +8,7 @@ def createdb():
     connection = sqlite3.connect("Datenbank.db")
     cursor = connection.cursor()
 
-    Tabelle = """CREATE TABLE anmeldung("benutzername TEXT","passwort TEXT");"""
+    Tabelle = """CREATE TABLE anmeldung("benutzername" TEXT,"passwort" TEXT);"""
     cursor.execute(Tabelle)
     connection.commit()
 
@@ -27,6 +27,7 @@ def NewAcc(name, passwort):
     connection.commit()
     connection.close()
 
+
 def PrüfungRgst(Benutzer):
     connection = sqlite3.connect("Datenbank.db")
     cursor = connection.cursor()
@@ -40,7 +41,6 @@ def PrüfungRgst(Benutzer):
         return False
     else:
         return True
-
 
 def Ausgabe():
     connection = sqlite3.connect("Datenbank.db")
@@ -56,7 +56,3 @@ if os.path.exists("Datenbank.db"):
     print("Datenbank existiert bereits")
 else:
     createdb()
-
-
-
-
