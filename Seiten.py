@@ -1,5 +1,6 @@
 from tkinter import *
 from Datenbank import *
+import matplotlib.pyplot as ppt
 
 Anmeldung = Tk()
 Anmeldung.title("Anmeldung")
@@ -20,23 +21,40 @@ def inpAnmeldung():
     Funktionen = StringVar(Mainwindow)
     Funktionen.set("Funktionen")
 
+    def lingraf():
+        ppt.ylabel('numbers')
+        ppt.plot([1, 2, 3, 4])
+        #dd_x = [1, 6, 9, 7, 90]
+
+        #dd_y = [3, 5, 7, 89, 90]
+
+        #ppt.plot([dd_x], [dd_y])
+        ppt.show()
+
     def show(selection):
+
         Auswahl = selection
         if Auswahl == "Lineare-Funktion":
-            Linear = Tk()
-            Linear.title("Lineare-Funktion")
-            Linear.geometry("600x600")
-            Linear.resizable(width=0, height=0)
-            butoon1 = Button(Linear, text="Ausführen", )
-            butoon2 = Button(Linear, text="Beispiele", )
-            butoon3 = Button(Linear, text="Zoom-in", )
-            butoon4 = Button(Linear, text="Zoom-out", )
-            ytext = Entry(Linear, bd=5, width=7)
-            xtext = Entry(Linear, bd=5, width=7)
-            btext = Entry(Linear, bd=5, width=7)
-            mtext = Entry(Linear, bd=5, width=7)
-            xbeschriftung = Entry(Linear, bd=5, width=7)
-            ybeschriftung = Entry(Linear, bd=5, width=7)
+            fenster = Tk()
+            fenster.geometry("800x600")
+            fenster.resizable(width=0, height=0)
+            butoon1 = Button(fenster, text="Ausführen", command=lingraf())
+            butoon2 = Button(fenster, text="Beispiele", )
+            butoon3 = Button(fenster, text="Zoom-in", )
+            butoon4 = Button(fenster, text="Zoom-out", )
+            ytext = Entry(fenster, bd=5, width=12)
+            xtext = Entry(fenster, bd=5, width=12)
+            btext = Entry(fenster, bd=5, width=12)
+            mtext = Entry(fenster, bd=5, width=12)
+            xbeschriftung = Entry(fenster, bd=5, width=12)
+            ybeschriftung = Entry(fenster, bd=5, width=12)
+
+            ytext.pack(), xtext.pack(), btext.pack(), mtext.pack(), xbeschriftung.pack(), ybeschriftung.pack(),
+            butoon4.pack(), butoon3.pack(), butoon2.pack(), butoon1.pack(),
+
+            ytext.place(x=7, y=340), xtext.place(x=7, y=300), btext.place(x=7, y=260), mtext.place(x=7, y=220),
+            xbeschriftung.place(x=7, y=180), ybeschriftung.place(x=7, y=140), butoon1.place(x=7, y=40),
+            butoon2.place(x=7, y=555), butoon3.place(x=100, y=555), butoon4.place(x=180, y=555)
 
             ytext.pack(), xtext.pack(), btext.pack(), mtext.pack(), xbeschriftung.pack(), ybeschriftung.pack(),
             butoon4.pack(), butoon3.pack(), butoon2.pack(), butoon1.pack()
