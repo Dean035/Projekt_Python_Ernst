@@ -8,7 +8,10 @@ def createdb():
     connection = sqlite3.connect("Datenbank.db")
     cursor = connection.cursor()
 
-    Tabelle = """CREATE TABLE anmeldung("benutzername" TEXT,"passwort" TEXT);"""
+    Tabelle = """CREATE TABLE anmeldung(
+                benutzername TEXT,
+                passwort TEXT
+            );"""
     cursor.execute(Tabelle)
     connection.commit()
 
@@ -27,12 +30,23 @@ def NewAcc(name, passwort):
     connection.commit()
     connection.close()
 
-
+def Prüfanm(name, passwort):
+    connection = sqlite3.connect("Datenbank.db")
+    cursor = connection.cursor()
+    statement = f"""SELECT benutzer
+                    FROM anmeldung
+                    WHERE benutzer='{name} AND passwort= '{passwort}''"""
+    cursor.execute(statement)
+    k = cursor.fetchone()
+    if not k:
+        print("Login Failed")
+    else:
+        print("Login Successful")
 def PrüfungRgst(Benutzer):
     connection = sqlite3.connect("Datenbank.db")
     cursor = connection.cursor()
 
-    sql = f"""SELECT benutzername 
+    sql = f"""SELECT benutzername
           FROM anmeldung 
           WHERE benutzername = '{Benutzer}';"""
 

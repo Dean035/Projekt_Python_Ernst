@@ -13,6 +13,7 @@ def inpAnmeldung():
     current_input = Benutzernameeingabe.get()
     current_input2 = Passworteingabe.get()
     print(current_input, current_input2)
+    #Prüfanm(current_input, current_input2)
     Mainwindow = Tk()
     Mainwindow.title("Mainwindow")
     Anmeldung.destroy()
@@ -123,6 +124,8 @@ def register():
                 NewAcc(RgstBenutzereingabe.get(), RgstPassworteingabe.get())
                 Ausgabe()
                 Register.destroy()
+            else:
+                Error123 = Tk()
         else:
             print("Das Passwort und die Bestätigung des Passworts stimmen nicht überein")
             RegisterFail = Tk()
