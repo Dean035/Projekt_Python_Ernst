@@ -27,7 +27,19 @@ def NewAcc(name, passwort):
     connection.commit()
     connection.close()
 
+def PrüfungRgst(Benutzer):
+    connection = sqlite3.connect("Datenbank.db")
+    cursor = connection.cursor()
 
+    sql = f"""SELECT benutzername 
+          FROM anmeldung 
+          WHERE benutzername = '{Benutzer}';"""
+
+    PrüfRgst = cursor.execute(sql).fetchall()
+    if PrüfRgst == "NULL":
+        return False
+    else:
+        return True
 
 
 def Ausgabe():
