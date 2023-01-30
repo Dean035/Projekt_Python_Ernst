@@ -1,5 +1,8 @@
 from tkinter import *
-from Datenbank import NewAcc, Ausgabe
+from Datenbank import *
+import matplotlib.pyplot as ppt
+import numpy as np
+
 
 Anmeldung = Tk()
 Anmeldung.title("Anmeldung")
@@ -8,13 +11,12 @@ Anmeldung.geometry("400x400")
 Anmeldung.resizable(width=0, height=0)
 
 
-
 def inpAnmeldung():
     current_input = Benutzernameeingabe.get()
     current_input2 = Passworteingabe.get()
     print(current_input, current_input2)
     Mainwindow = Tk()
-    Mainwindow. title("Mainwindow")
+    Mainwindow.title("Mainwindow")
     Anmeldung.destroy()
     Mainwindow.geometry("650x450")
     Mainwindow.resizable(width=0, height=0)
@@ -22,87 +24,145 @@ def inpAnmeldung():
     Funktionen.set("Funktionen")
 
 
-
     def show(selection):
+
+
         Auswahl = selection
-        fenster = Tk()
-        fenster.geometry("600x600")
-        fenster.resizable(width=0, height=0)
-        fenster.title(Auswahl)
+        if Auswahl == "Lineare-Funktion":
+            fenster = Tk()
+            fenster.title("Lineare-Funktion")
+            fenster.geometry("800x600")
+            fenster.resizable(width=0, height=0)
 
-        if Auswahl ==  "Lineare-Funktion":
-            butoon1 = Button(fenster, text="Ausführen", )
+           # butoon3 = Button(fenster, text="Zoom-in", )
+           # butoon4 = Button(fenster, text="Zoom-out", )
+            ytexte = Entry(fenster, bd=5, width=12)  # wie weit y geht (bis) start = 0
+            lab1=Label(fenster,text="Y-bis" )
+            lab1.pack()
+            lab1.place(x=7, y=435)
+
+            xtexte = Entry(fenster, bd=5, width=12)  # wie weit x geht
+            lab2 = Label(fenster, text="X-bis")
+            lab2.pack()
+            lab2.place(x=7, y=375)
+
+            btexte = Entry(fenster, bd=5, width=12)  # yachsenabschnitt
+            lab3 = Label(fenster, text="Y-Achsenabschnit")
+            lab3.pack()
+            lab3.place(x=7, y=315)
+
+            mtexte = Entry(fenster, bd=5, width=12)  # steigung
+            lab4 = Label(fenster, text="Steigung")
+            lab4.pack()
+            lab4.place(x=7, y=255)
+
+            xbeschriftung = Entry(fenster, bd=5, width=12)  # name für xseite
+            lab5 = Label(fenster, text="Name-X")
+            lab5.pack()
+            lab5.place(x=7, y=205)
+
+            ybeschriftung = Entry(fenster, bd=5, width=12)  # name für yseite
+            lab6 = Label(fenster, text="Name-Y")
+            lab6.pack()
+            lab6.place(x=7, y=145)
+
+            def Rechnen():
+                ppt.title("Lineare-Funktion")
+                ppt.ylabel = ybeschriftung.get()
+                ppt.xlabel = xbeschriftung.get()
+                ytext = ytexte.get()
+                xtext = xtexte.get()
+                btext = btexte.get()
+                mtext = mtexte.get()
+                float(xtext)
+                float(btext)
+                float(btext)
+                float(mtext)
+                float(ytext)
+
+
+
+                """X= 
+                Y = mtext * xtext + btext
+                ppt.plot(X, Y)"""
+                ppt.show()
+
+            butoon1 = Button(fenster, text="Ausführen", command=Rechnen)
             butoon2 = Button(fenster, text="Beispiele", )
-            butoon3 = Button(fenster, text="Zoom-in", )
-            butoon4 = Button(fenster, text="Zoom-out", )
-            ytext = Entry(fenster, bd=5, width=7)
-            xtext = Entry(fenster, bd=5, width=7)
-            btext = Entry(fenster, bd=5, width=7)
-            mtext = Entry(fenster, bd=5, width=7)
-            xbeschriftung = Entry(fenster, bd=5, width=7)
-            ybeschriftung = Entry(fenster, bd=5, width=7)
-
-            ytext.pack(), xtext.pack(), btext.pack(), mtext.pack(), xbeschriftung.pack(), ybeschriftung.pack(),
-            butoon4.pack(), butoon3.pack(), butoon2.pack(), butoon1.pack()
-
-            ytext.place(x=7, y=235)
-
-        elif Auswahl ==  "Quadratische-Funktion":
-            pass
 
 
-        elif Auswahl ==  "Ganzrationale-Funktionen":
-            pass
+            ytexte.pack(), xtexte.pack(), btexte.pack(), mtexte.pack(), xbeschriftung.pack(), ybeschriftung.pack(),
+            butoon2.pack(), butoon1.pack(),
+
+            #butoon1.pack(),butoon2.pack(),## butoon3.place(x=100, y=555), butoon4.place(x=180, y=555)
+
+            ytexte.place(x=7, y=460), xtexte.place(x=7, y=400), btexte.place(x=7, y=340), mtexte.place(x=7, y=280),
+            xbeschriftung.place(x=7, y=230), ybeschriftung.place(x=7, y=170), butoon1.place(x=7, y=40),
+            butoon2.place(x=7, y=555)
 
 
+        elif Auswahl == "Quadratische-Funktion":
+            Quadratisch = Tk()
+            Quadratisch.title("Quadratische-Funktion")
+            Quadratisch.geometry("400x400")
+            Quadratisch.resizable(width=0, height=0)
+        elif Auswahl == "Ganzrationale-Funktionen":
+            Ganzrational = Tk()
+            Ganzrational.title("Ganzrationale-Funktionen")
+            Ganzrational.geometry("400x400")
+            Ganzrational.resizable(width=0, height=0)
         elif Auswahl == "Trigonometrische-Funktionen":
-            pass
-
-
+            Trigonomisch = Tk()
+            Trigonomisch.title("Trigonometrische-Funktionen")
+            Trigonomisch.geometry("400x400")
+            Trigonomisch.resizable(width=0, height=0)
         elif Auswahl == "Exponential-Funktionen":
-            pass
-
-
+            Exponential = Tk()
+            Exponential.title("Exponential-Funktionen")
+            Exponential.geometry("400x400")
+            Exponential.resizable(width=0, height=0)
         elif Auswahl == "Einstieg-Differenzialrechnung":
-            pass
-
-
+            Differenzial = Tk()
+            Differenzial.title("Einstieg-Differenzialrechnung")
+            Differenzial.geometry("400x400")
+            Differenzial.resizable(width=0, height=0)
         elif Auswahl == "Kurvendiskussion":
-            pass
-
-
+            Kurven = Tk()
+            Kurven.title("Kurvendiskussion")
+            Kurven.geometry("400x400")
+            Kurven.resizable(width=0, height=0)
         elif Auswahl == "Integralrechnung":
-            pass
+            Integral = Tk()
+            Integral.title("Integralrechnung")
+            Integral.geometry("400x400")
+            Integral.resizable(width=0, height=0)
 
-
-
-
-
-    drop = OptionMenu(Mainwindow, Funktionen,  "Lineare-Funktion" , "Quadratische-Funktion" ,
-                      "Ganzrationale-Funktionen" ,"Trigonometrische-Funktionen" , "Exponential-Funktionen" ,
-                      "Einstieg-Differenzialrechnung" , "Kurvendiskussion", "Integralrechnung", command=show)
-
-
-
+    drop = OptionMenu(Mainwindow, Funktionen, "Lineare-Funktion", "Quadratische-Funktion",
+                      "Ganzrationale-Funktionen", "Trigonometrische-Funktionen", "Exponential-Funktionen",
+                      "Einstieg-Differenzialrechnung", "Kurvendiskussion", "Integralrechnung", command=show)
 
     drop.pack()
     drop.place(relx=0.0, rely=0.0)
 
+
 def register():
     Register = Tk()
     Register.title("Registration")
-    #Anmeldung.destroy()
+
+    # Anmeldung.destroy()
 
     def Rgstinp():
         RgstinpBenutzername = RgstBenutzereingabe.get()
         RgstinpPasswort = RgstPassworteingabe.get()
         RgstinpPasswortConfirm = RgstConfirmeingabe.get()
 
-        if RgstinpPasswort == RgstinpPasswortConfirm:
-            print(RgstinpBenutzername, RgstinpPasswort, RgstinpPasswortConfirm)
-            NewAcc(RgstBenutzereingabe.get(), RgstPassworteingabe.get())
-            Ausgabe()
-            Register.destroy()
+        if RgstinpPasswort == RgstinpPasswortConfirm and RgstinpBenutzername != "":
+            if PrüfungRgst(RgstinpBenutzername):
+                print(RgstinpBenutzername, RgstinpPasswort, RgstinpPasswortConfirm)
+                NewAcc(RgstBenutzereingabe.get(), RgstPassworteingabe.get())
+                Ausgabe()
+                Register.destroy()
+
         else:
             print("Das Passwort und die Bestätigung des Passworts stimmen nicht überein")
             RegisterFail = Tk()
@@ -114,13 +174,12 @@ def register():
                 RegisterFail.destroy()
 
             OkButton = Button(RegisterFail, text="Ok", command=OkButtonClick)
-            LabelFail = Label(RegisterFail, text="Das Passwort und die Bestätigung des Passwortes stimmen nicht überein!")
+            LabelFail = Label(RegisterFail,
+                              text="Das Passwort und die Bestätigung des Passwortes stimmen nicht überein!")
 
             LabelFail.pack()
             OkButton.pack()
 
-
-        
     RgstBenutzername = Label(Register, text="Benutzername")
     RgstBenutzereingabe = Entry(Register, bd=5, width=40)
     RgstPasswort = Label(Register, text="Passwort")
@@ -139,16 +198,13 @@ def register():
     RgstButton.pack()
 
 
-
 Rgstlabel = Label(Anmeldung, text="Wenn Sie noch keinen Account besitzen Drücken sie bitte hier:")
 Rgstbutton = Button(Anmeldung, text="Registration", command=register)
 Benutzernamelabel = Label(Anmeldung, text="Benutzername")
 Anmeldungsbutton = Button(Anmeldung, text="Anmelden", command=inpAnmeldung)
-Benutzernameeingabe = Entry(Anmeldung, bd=5, width= 40)
+Benutzernameeingabe = Entry(Anmeldung, bd=5, width=40)
 Passwortlabel = Label(Anmeldung, text="Passwort")
-Passworteingabe = Entry(Anmeldung, bd=5, width= 40)
-
-
+Passworteingabe = Entry(Anmeldung, bd=5, width=40)
 
 Benutzernamelabel.pack()
 Benutzernameeingabe.pack()
@@ -156,8 +212,7 @@ Passwortlabel.pack()
 Passworteingabe.pack()
 Anmeldungsbutton.pack()
 Rgstlabel.pack()
-Rgstlabel.place(relx= 0.1, rely=0.8)
+Rgstlabel.place(relx=0.1, rely=0.8)
 Rgstbutton.place(relx=0.4, rely=0.9)
 Anmeldung.mainloop()
-
 
