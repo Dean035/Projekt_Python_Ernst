@@ -13,14 +13,30 @@ def inpAnmeldung():
     current_input = Benutzernameeingabe.get()
     current_input2 = Passworteingabe.get()
     print(current_input, current_input2)
-    #Prüfanm(current_input, current_input2)
-    Mainwindow = Tk()
-    Mainwindow.title("Mainwindow")
-    Anmeldung.destroy()
-    Mainwindow.geometry("650x450")
-    Mainwindow.resizable(width=0, height=0)
-    Funktionen = StringVar(Mainwindow)
-    Funktionen.set("Funktionen")
+
+    def OkButtonClick():
+        Erroranm.destroy()
+
+    if Prüfanm(current_input, current_input2):
+        Mainwindow = Tk()
+        Mainwindow.title("Mainwindow")
+        Anmeldung.destroy()
+        Mainwindow.geometry("650x450")
+        Mainwindow.resizable(width=0, height=0)
+        Funktionen = StringVar(Mainwindow)
+        Funktionen.set("Funktionen")
+    else:
+        Erroranm = Tk()
+        Erroranm.title("Error")
+        Erroranm.geometry("500x50")
+        Erroranm.resizable(width=0, height=0)
+        OkButton = Button(Erroranm, text="Ok", command=OkButtonClick)
+        LabelFail = Label(Erroranm,
+                          text="Dieser Account existiert nicht! Bitte versuchen sie es erneut")
+
+        LabelFail.pack()
+        OkButton.pack()
+
 
     def lingraf():
         ppt.ylabel('numbers')
@@ -103,6 +119,13 @@ def inpAnmeldung():
                       "Ganzrationale-Funktionen", "Trigonometrische-Funktionen", "Exponential-Funktionen",
                       "Einstieg-Differenzialrechnung", "Kurvendiskussion", "Integralrechnung", command=show)
 
+    def logout():
+        Mainwindow.destroy()
+
+
+    logout = Button(Mainwindow, text="Abmelden", command=logout)
+    logout.pack()
+    logout.place(relx=0.9, rely=0.0)
     drop.pack()
     drop.place(relx=0.0, rely=0.0)
 
@@ -125,7 +148,18 @@ def register():
                 Ausgabe()
                 Register.destroy()
             else:
-                Error123 = Tk()
+                def OkButtonClick():
+                    ErrorRgst.destroy()
+                ErrorRgst = Tk()
+                ErrorRgst.title("Error")
+                ErrorRgst.geometry("500x50")
+                ErrorRgst.resizable(width=0, height=0)
+                OkButton = Button(ErrorRgst, text="Ok", command=OkButtonClick)
+                LabelFail = Label(ErrorRgst,
+                                  text="Dieser Benutzername existiert bereits! Bitte wählen Sie einen anderen!")
+
+                LabelFail.pack()
+                OkButton.pack()
         else:
             print("Das Passwort und die Bestätigung des Passworts stimmen nicht überein")
             RegisterFail = Tk()
@@ -159,6 +193,7 @@ def register():
     RgstConfirm.pack()
     RgstConfirmeingabe.pack()
     RgstButton.pack()
+
 
 
 Rgstlabel = Label(Anmeldung, text="Wenn Sie noch keinen Account besitzen Drücken sie bitte hier:")
