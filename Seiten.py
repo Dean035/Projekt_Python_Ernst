@@ -26,7 +26,6 @@ def inpAnmeldung():
 
     def show(selection):
 
-
         Auswahl = selection
         if Auswahl == "Lineare-Funktion": #erstellt die seite usw
             fenster = Tk()
@@ -36,13 +35,13 @@ def inpAnmeldung():
 
            # butoon3 = Button(fenster, text="Zoom-in", )
            # butoon4 = Button(fenster, text="Zoom-out", )
-            ytexte = Entry(fenster, bd=5, width=12)  # wie weit y geht (bis) start = 0 (textboxen)
-            lab1=Label(fenster,text="Y-bis" )
+            bisle = Entry(fenster, bd=5, width=12)  # wie weit y geht (bis) start = 0 (textboxen)
+            lab1=Label(fenster,text="bis" )
             lab1.pack()
             lab1.place(x=7, y=435)
 
-            xtexte = Entry(fenster, bd=5, width=12)  # wie weit x geht (textboxen)
-            lab2 = Label(fenster, text="X-bis")
+            vonle = Entry(fenster, bd=5, width=12)  # wie weit x geht (textboxen)
+            lab2 = Label(fenster, text="von")
             lab2.pack()
             lab2.place(x=7, y=375)
 
@@ -68,35 +67,51 @@ def inpAnmeldung():
 
             def Rechnen():          #Formel für Lineare-Funktion
                 ppt.title("Lineare-Funktion")
-                ppt.ylabel = ybeschriftung.get()
-                ppt.xlabel = xbeschriftung.get()
-                ytext = ytexte.get()
-                xtext = xtexte.get()
+                ppt.ylabel(ybeschriftung.get())
+                ppt.xlabel(xbeschriftung.get())
+                vonl = vonle.get()
+                bisl = bisle.get()
                 btext = btexte.get()
                 mtext = mtexte.get()
-                float(xtext)
-                float(btext)
-                float(btext)
-                float(mtext)
-                float(ytext)
+                vonl = float(vonl)
+                btext = float(btext)
+                mtext = float(mtext)
+                bisl = float(bisl)
 
+                aaa = ppt.gca()
+                ppt.gca().set_aspect('equal')
+                aaa.set_xticks(range(-10, 10, 1))
+                aaa.set_yticks(range(-10, 10, 1))
+                aaa.set_xlim([vonl, bisl])
+                aaa.set_ylim([vonl, bisl])
 
+                X =np.linspace(-10,10,100)
+                Y = mtext * X + btext
 
-                """X= 
-                Y = mtext * xtext + btext
-                ppt.plot(X, Y)"""
+                ppt.grid()
+                ppt.plot(X, Y)
+                ppt.show()
+
+            def Beispill():
+                x = np.linspace(-5, 5, 100)
+                y = 4 * x + 2
+                ppt.plot(x, y, '-r', label='y=4x+2')
+                ppt.title('Der Graph von y=4x+2')
+                ppt.xlabel('x')
+                ppt.ylabel('y')
+                ppt.grid()
                 ppt.show()
 
             butoon1 = Button(fenster, text="Ausführen", command=Rechnen)#buttons
-            butoon2 = Button(fenster, text="Beispiele", )
+            butoon2 = Button(fenster, text="Beispiele", command=Beispill)
 
 
-            ytexte.pack(), xtexte.pack(), btexte.pack(), mtexte.pack(), xbeschriftung.pack(), ybeschriftung.pack(),
+            vonle.pack(), bisle.pack(), btexte.pack(), mtexte.pack(), xbeschriftung.pack(), ybeschriftung.pack(),
             butoon2.pack(), butoon1.pack() #zeigt die scheiße an
 
             ## butoon3.place(x=100, y=555), butoon4.place(x=180, y=555)
 
-            ytexte.place(x=7, y=460), xtexte.place(x=7, y=400), btexte.place(x=7, y=340), mtexte.place(x=7, y=280),
+            bisle.place(x=7, y=460), vonle.place(x=7, y=400), btexte.place(x=7, y=340), mtexte.place(x=7, y=280),
             xbeschriftung.place(x=7, y=230), ybeschriftung.place(x=7, y=170), butoon1.place(x=7, y=40),
             butoon2.place(x=7, y=555) #wo stehen die einzelen buttons usw
 
