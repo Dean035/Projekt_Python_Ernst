@@ -53,31 +53,91 @@ def inpAnmeldung():
         Auswahl = selection
         if Auswahl == "Lineare-Funktion":
             fenster = Tk()
+            fenster.title("Lineare-Funktion")
             fenster.geometry("800x600")
-            fenster.resizable(width=0, height=0)
-            butoon1 = Button(fenster, text="Ausführen", command=lingraf())
-            butoon2 = Button(fenster, text="Beispiele", )
-            butoon3 = Button(fenster, text="Zoom-in", )
-            butoon4 = Button(fenster, text="Zoom-out", )
-            ytext = Entry(fenster, bd=5, width=12)
-            xtext = Entry(fenster, bd=5, width=12)
-            btext = Entry(fenster, bd=5, width=12)
-            mtext = Entry(fenster, bd=5, width=12)
-            xbeschriftung = Entry(fenster, bd=5, width=12)
-            ybeschriftung = Entry(fenster, bd=5, width=12)
+            fenster.resizable(width=0, height=0) #macht das die seite nicht vergrößert werden kann
 
-            ytext.pack(), xtext.pack(), btext.pack(), mtext.pack(), xbeschriftung.pack(), ybeschriftung.pack(),
-            butoon4.pack(), butoon3.pack(), butoon2.pack(), butoon1.pack(),
+           # butoon3 = Button(fenster, text="Zoom-in", )
+           # butoon4 = Button(fenster, text="Zoom-out", )
+            bisle = Entry(fenster, bd=5, width=12)  # wie weit y geht (bis) start = 0 (textboxen)
+            lab1=Label(fenster,text="bis" )
+            lab1.pack()
+            lab1.place(x=7, y=435)
 
-            ytext.place(x=7, y=340), xtext.place(x=7, y=300), btext.place(x=7, y=260), mtext.place(x=7, y=220),
-            xbeschriftung.place(x=7, y=180), ybeschriftung.place(x=7, y=140), butoon1.place(x=7, y=40),
-            butoon2.place(x=7, y=555), butoon3.place(x=100, y=555), butoon4.place(x=180, y=555)
+            vonle = Entry(fenster, bd=5, width=12)  # wie weit x geht (textboxen)
+            lab2 = Label(fenster, text="von")
+            lab2.pack()
+            lab2.place(x=7, y=375)
 
-            ytext.pack(), xtext.pack(), btext.pack(), mtext.pack(), xbeschriftung.pack(), ybeschriftung.pack(),
-            butoon4.pack(), butoon3.pack(), butoon2.pack(), butoon1.pack()
+            btexte = Entry(fenster, bd=5, width=12)  # yachsenabschnitt (textboxen)
+            lab3 = Label(fenster, text="Y-Achsenabschnit")
+            lab3.pack()
+            lab3.place(x=7, y=315)
 
-            ytext.place(relx=2.1, rely=7.8), xtext.place(relx=4.1, rely=6.8)
+            mtexte = Entry(fenster, bd=5, width=12)  # steigung (textboxen)
+            lab4 = Label(fenster, text="Steigung")
+            lab4.pack()
+            lab4.place(x=7, y=255)
 
+            xbeschriftung = Entry(fenster, bd=5, width=12)  # name für xseite (textboxen)
+            lab5 = Label(fenster, text="Name-X")
+            lab5.pack()
+            lab5.place(x=7, y=205)
+
+            ybeschriftung = Entry(fenster, bd=5, width=12)  # name für yseite (textboxen)
+            lab6 = Label(fenster, text="Name-Y")
+            lab6.pack()
+            lab6.place(x=7, y=145)
+
+            def Rechnen():          #Formel für Lineare-Funktion
+                ppt.title("Lineare-Funktion")
+                ppt.ylabel(ybeschriftung.get())
+                ppt.xlabel(xbeschriftung.get())
+                vonl = vonle.get()
+                bisl = bisle.get()
+                btext = btexte.get()
+                mtext = mtexte.get()
+                vonl = float(vonl)
+                btext = float(btext)
+                mtext = float(mtext)
+                bisl = float(bisl)
+
+                aaa = ppt.gca()
+                ppt.gca().set_aspect('equal')
+                aaa.set_xticks(range(-10, 10, 1))
+                aaa.set_yticks(range(-10, 10, 1))
+                aaa.set_xlim([vonl, bisl])
+                aaa.set_ylim([vonl, bisl])
+
+                X =np.linspace(-10,10,100)
+                Y = mtext * X + btext
+
+                ppt.grid()
+                ppt.plot(X, Y)
+                ppt.show()
+
+            def Beispill():
+                x = np.linspace(-5, 5, 100)
+                y = 4 * x + 2
+                ppt.plot(x, y, '-r', label='y=4x+2')
+                ppt.title('Der Graph von y=4x+2')
+                ppt.xlabel('x')
+                ppt.ylabel('y')
+                ppt.grid()
+                ppt.show()
+
+            butoon1 = Button(fenster, text="Ausführen", command=Rechnen)#buttons
+            butoon2 = Button(fenster, text="Beispiele", command=Beispill)
+
+
+            vonle.pack(), bisle.pack(), btexte.pack(), mtexte.pack(), xbeschriftung.pack(), ybeschriftung.pack(),
+            butoon2.pack(), butoon1.pack() #zeigt die scheiße an
+
+            ## butoon3.place(x=100, y=555), butoon4.place(x=180, y=555)
+
+            bisle.place(x=7, y=460), vonle.place(x=7, y=400), btexte.place(x=7, y=340), mtexte.place(x=7, y=280),
+            xbeschriftung.place(x=7, y=230), ybeschriftung.place(x=7, y=170), butoon1.place(x=7, y=40),
+            butoon2.place(x=7, y=555) #wo stehen die einzelen buttons usw
 
         elif Auswahl == "Quadratische-Funktion":
             Quadratisch = Tk()
