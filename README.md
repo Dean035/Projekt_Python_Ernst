@@ -22,4 +22,6 @@ Dokumentation
 <br>
 29.01.23 Versucht Registrationsfehler zu beheben (Dean 1h)
 <br>
-30.01.32 Seite Lineare-Funktion ist sortiert und Grafik wird mit einem Button aufgerufen (Burak 2:30h)
+30.01.23 Seite Lineare-Funktion ist sortiert und Grafik wird mit einem Button aufgerufen (Burak 2:30h)
+<br>
+31.01.23 Anmeldung Funktioniert, Registration Funktioniert, Abmeldebutton angefangen (Dean 2:30h)
