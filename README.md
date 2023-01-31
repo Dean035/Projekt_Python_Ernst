@@ -21,3 +21,5 @@ Dokumentation
 26.1.2023 Anmeldungsabfrage erstellt und versucht Fehler zu beheben(benutzername exisitiertn nicht), (matplot Fenster öffnen sich ohne, dass es aufgerufen wird) (Burak=5h, Dean=3h)
 <br>
 29.01.23 Versucht Registrationsfehler zu beheben (Dean 1h)
+<br>
+30.01.32 Seite Lineare-Funktion ist sortiert und Grafik wird mit einem Button aufgerufen (Burak 2:30h)
