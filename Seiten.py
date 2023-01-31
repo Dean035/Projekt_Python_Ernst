@@ -20,7 +20,7 @@ def inpAnmeldung():
     if Prüfanm(current_input, current_input2):
         Mainwindow = Tk()
         Mainwindow.title("Mainwindow")
-        Anmeldung.destroy()
+        Anmeldung.withdraw()
         Mainwindow.geometry("650x450")
         Mainwindow.resizable(width=0, height=0)
         Funktionen = StringVar(Mainwindow)
@@ -121,6 +121,7 @@ def inpAnmeldung():
 
     def logout():
         Mainwindow.destroy()
+        Anmeldung.deiconify()
 
 
     logout = Button(Mainwindow, text="Abmelden", command=logout)
