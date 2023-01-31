@@ -20,6 +20,7 @@ def inpAnmeldung():
     if Prüfanm(current_input, current_input2):
         Mainwindow = Tk()
         Mainwindow.title("Mainwindow")
+        #anmeldung wird versteckt und nicht zerstört
         Anmeldung.withdraw()
         Mainwindow.geometry("650x450")
         Mainwindow.resizable(width=0, height=0)
@@ -121,6 +122,7 @@ def inpAnmeldung():
 
     def logout():
         Mainwindow.destroy()
+        #Anmeldung kommt von seinem Versteck zurück
         Anmeldung.deiconify()
 
 
