@@ -18,7 +18,7 @@ Dokumentation
 <br>
 19.01.2023 Weiterbearbeitung der Linearen-Funktion und Registration (1:30h)
 <br>
-26.1.2023 Anmeldungsabfrage erstellt und versucht Fehler zu beheben(benutzername exisitiertn nicht), (matplot Fenster öffnen sich ohne, dass es aufgerufen wird) (Burak=5h, Dean=3h)
+26.1.2023 Anmeldungsabfrage erstellt und versucht Fehler zu beheben(benutzername exisitiertn nicht), (matplot Fenster öffnen sich ohne, dass es aufgerufen wird)                   (Burak=5h, Dean=3h)
 <br>
 29.01.23 Versucht Registrationsfehler zu beheben (Dean 1h)
 <br>
