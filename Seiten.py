@@ -28,45 +28,45 @@ def inpAnmeldung():
 
 
         Auswahl = selection
-        if Auswahl == "Lineare-Funktion":
+        if Auswahl == "Lineare-Funktion": #erstellt die seite usw
             fenster = Tk()
             fenster.title("Lineare-Funktion")
             fenster.geometry("800x600")
-            fenster.resizable(width=0, height=0)
+            fenster.resizable(width=0, height=0) #macht das die seite nicht vergrößert werden kann
 
            # butoon3 = Button(fenster, text="Zoom-in", )
            # butoon4 = Button(fenster, text="Zoom-out", )
-            ytexte = Entry(fenster, bd=5, width=12)  # wie weit y geht (bis) start = 0
+            ytexte = Entry(fenster, bd=5, width=12)  # wie weit y geht (bis) start = 0 (textboxen)
             lab1=Label(fenster,text="Y-bis" )
             lab1.pack()
             lab1.place(x=7, y=435)
 
-            xtexte = Entry(fenster, bd=5, width=12)  # wie weit x geht
+            xtexte = Entry(fenster, bd=5, width=12)  # wie weit x geht (textboxen)
             lab2 = Label(fenster, text="X-bis")
             lab2.pack()
             lab2.place(x=7, y=375)
 
-            btexte = Entry(fenster, bd=5, width=12)  # yachsenabschnitt
+            btexte = Entry(fenster, bd=5, width=12)  # yachsenabschnitt (textboxen)
             lab3 = Label(fenster, text="Y-Achsenabschnit")
             lab3.pack()
             lab3.place(x=7, y=315)
 
-            mtexte = Entry(fenster, bd=5, width=12)  # steigung
+            mtexte = Entry(fenster, bd=5, width=12)  # steigung (textboxen)
             lab4 = Label(fenster, text="Steigung")
             lab4.pack()
             lab4.place(x=7, y=255)
 
-            xbeschriftung = Entry(fenster, bd=5, width=12)  # name für xseite
+            xbeschriftung = Entry(fenster, bd=5, width=12)  # name für xseite (textboxen)
             lab5 = Label(fenster, text="Name-X")
             lab5.pack()
             lab5.place(x=7, y=205)
 
-            ybeschriftung = Entry(fenster, bd=5, width=12)  # name für yseite
+            ybeschriftung = Entry(fenster, bd=5, width=12)  # name für yseite (textboxen)
             lab6 = Label(fenster, text="Name-Y")
             lab6.pack()
             lab6.place(x=7, y=145)
 
-            def Rechnen():
+            def Rechnen():          #Formel für Lineare-Funktion
                 ppt.title("Lineare-Funktion")
                 ppt.ylabel = ybeschriftung.get()
                 ppt.xlabel = xbeschriftung.get()
@@ -87,18 +87,18 @@ def inpAnmeldung():
                 ppt.plot(X, Y)"""
                 ppt.show()
 
-            butoon1 = Button(fenster, text="Ausführen", command=Rechnen)
+            butoon1 = Button(fenster, text="Ausführen", command=Rechnen)#buttons
             butoon2 = Button(fenster, text="Beispiele", )
 
 
             ytexte.pack(), xtexte.pack(), btexte.pack(), mtexte.pack(), xbeschriftung.pack(), ybeschriftung.pack(),
-            butoon2.pack(), butoon1.pack(),
+            butoon2.pack(), butoon1.pack() #zeigt die scheiße an
 
-            #butoon1.pack(),butoon2.pack(),## butoon3.place(x=100, y=555), butoon4.place(x=180, y=555)
+            ## butoon3.place(x=100, y=555), butoon4.place(x=180, y=555)
 
             ytexte.place(x=7, y=460), xtexte.place(x=7, y=400), btexte.place(x=7, y=340), mtexte.place(x=7, y=280),
             xbeschriftung.place(x=7, y=230), ybeschriftung.place(x=7, y=170), butoon1.place(x=7, y=40),
-            butoon2.place(x=7, y=555)
+            butoon2.place(x=7, y=555) #wo stehen die einzelen buttons usw
 
 
         elif Auswahl == "Quadratische-Funktion":
@@ -138,7 +138,7 @@ def inpAnmeldung():
             Integral.resizable(width=0, height=0)
 
     drop = OptionMenu(Mainwindow, Funktionen, "Lineare-Funktion", "Quadratische-Funktion",
-                      "Ganzrationale-Funktionen", "Trigonometrische-Funktionen", "Exponential-Funktionen",
+                      "Ganzrationale-Funktionen", "Trigonometrische-Funktionen", "Exponential-Funktionen",#dropdown menü
                       "Einstieg-Differenzialrechnung", "Kurvendiskussion", "Integralrechnung", command=show)
 
     drop.pack()
