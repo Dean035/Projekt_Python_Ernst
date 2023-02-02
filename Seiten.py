@@ -142,8 +142,74 @@ def inpAnmeldung():
         elif Auswahl == "Quadratische-Funktion":
             Quadratisch = Tk()
             Quadratisch.title("Quadratische-Funktion")
-            Quadratisch.geometry("400x400")
+            Quadratisch.geometry("800x600")
             Quadratisch.resizable(width=0, height=0)
+
+
+            Labello1 = Label(Quadratisch, text="a")
+            Labello1.pack()
+            Labello1.place(x=7, y=25)
+
+            Eingabe1 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe1.pack()
+            Eingabe1.place(x=7, y=50)
+
+            Labello2 = Label(Quadratisch, text="b")
+            Labello2.pack()
+            Labello2.place(x=7, y=75)
+
+            Eingabe2 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe2.pack()
+            Eingabe2.place(x=7, y=100)
+
+            Labello3 = Label(Quadratisch, text="c")
+            Labello3.pack()
+            Labello3.place(x=7, y=125)
+
+            Eingabe3 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe3.pack()
+            Eingabe3.place(x=7, y=150)
+
+            Labello4 = Label(Quadratisch, text="von")
+            Labello4.pack()
+            Labello4.place(x=7, y=175)
+
+            Eingabe4 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe4.pack()
+            Eingabe4.place(x=7, y=200)
+
+            Labello4 = Label(Quadratisch, text="bis")
+            Labello4.pack()
+            Labello4.place(x=7, y=225)
+
+            Eingabe5 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe5.pack()
+            Eingabe5.place(x=7, y=250)
+
+            Labello5 = Label(Quadratisch, text="Y-Name")
+            Labello5.pack()
+            Labello5.place(x=7, y=275)
+
+            Eingabe6 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe6.pack()
+            Eingabe6.place(x=7, y=300)
+
+            Labello6 = Label(Quadratisch, text="X-Name")
+            Labello6.pack()
+            Labello6.place(x=7, y=325)
+
+            Eingabe7 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe7.pack()
+            Eingabe7.place(x=7, y=350)
+
+            Button2 = Button(Quadratisch, text="Beispiel")
+            Button2.pack()
+            Button2.place(x=7, y=450)
+
+            Button1 = Button(Quadratisch, text="Ausführen")
+            Button1.pack()
+            Button1.place(x=7, y=500)
+
         elif Auswahl == "Ganzrationale-Funktionen":
             Ganzrational = Tk()
             Ganzrational.title("Ganzrationale-Funktionen")
