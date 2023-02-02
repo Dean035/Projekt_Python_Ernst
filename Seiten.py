@@ -134,6 +134,8 @@ def inpAnmeldung():
             Quadratisch.geometry("400x400")
             Quadratisch.resizable(width=0, height=0)
 
+
+
         elif Auswahl == "Ganzrationale-Funktionen":
             Ganzrational = Tk()
             Ganzrational.title("Ganzrationale-Funktionen")
@@ -144,37 +146,31 @@ def inpAnmeldung():
             lab1 = Label(Ganzrational, text="bis")
             lab1.pack()
             lab1.place(x=7, y=435)
-            bisge.place(x=7, y=460)
-
+            
             vonge = Entry(Ganzrational, bd=5, width=12)  # wie weit x geht (textboxen)
             lab2 = Label(Ganzrational, text="von")
             lab2.pack()
             lab2.place(x=7, y=375)
-            vonge.place(x=7, y=400)
 
             ng = Entry(Ganzrational, bd=5, width=12)  # n (textboxen)
             lab3 = Label(Ganzrational, text="n")
             lab3.pack()
             lab3.place(x=7, y=315)
-            ng.place(x=7, y=280)
 
             ag = Entry(Ganzrational, bd=5, width=12)  # a (textboxen)
             lab4 = Label(Ganzrational, text="a")
             lab4.pack()
             lab4.place(x=7, y=255)
-            ag.place(x=7, y=340)
 
             xbeschriftungg = Entry(Ganzrational, bd=5, width=12)  # name für xseite (textboxen)
             lab5 = Label(Ganzrational, text="Name-X")
             lab5.pack()
             lab5.place(x=7, y=205)
-            xbeschriftungg.place(x=7, y=230)
 
             ybeschriftungg = Entry(Ganzrational, bd=5, width=12)  # name für yseite (textboxen)
             lab6 = Label(Ganzrational, text="Name-Y")
             lab6.pack()
             lab6.place(x=7, y=145)
-            ybeschriftungg.place(x=7, y=170)
 
 
             def Joe_mama():
@@ -195,14 +191,19 @@ def inpAnmeldung():
 
                 ax.set_xlim([vong, bisg])
                 ax.set_ylim([vong, bisg])
+                
+                
 
-            buton1 = Button(Ganzrational, text="Ausführen",)#command=Joe_mama)#buttons
-            buton1.place(x=7, y=40)
+            buton1 = Button(Ganzrational, text="Ausführen",command=Joe_mama)#buttons
             buton2 = Button(Ganzrational, text="Beispiele",) #command=)
-            buton2.place(x=7, y=555)
 
             vonge.pack(), bisge.pack(), ng.pack(), ag.pack(), xbeschriftungg.pack(), ybeschriftungg.pack(),
             buton2.pack(), buton1.pack()  # zeigt die scheiße an
+
+            ybeschriftungg.place(x=7, y=170),xbeschriftungg.place(x=7, y=230),ag.place(x=7, y=340),ng.place(x=7, y=280)
+            vonge.place(x=7, y=400),bisge.place(x=7, y=460),buton1.place(x=7, y=40),buton2.place(x=7, y=555)
+
+
 
 
         elif Auswahl == "Trigonometrische-Funktionen":
