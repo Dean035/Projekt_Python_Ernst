@@ -172,25 +172,37 @@ def inpAnmeldung():
             lab6.pack()
             lab6.place(x=7, y=145)
 
-
             def Joe_mama():
                 ppt.title("Ganzrationale-Funktionen")
-                ppt.ylabel(ybeschriftung.get())
-                ppt.xlabel(xbeschriftung.get())
+                ppt.ylabel(ybeschriftungg.get())
+                ppt.xlabel(xbeschriftungg.get())
                 bisg = bisge.get()
                 vong = vonge.get()
                 age = ag.get()
                 nge = ng.get()
-                nge = float(nge)
-                age = float(age)
-                bisg = float(bisg)
-                vong = float(vong)
+                # nge = float(nge)
+                # age = float(age)
+                # bisg = float(bisg)
+                # vong = float(vong)
 
                 ax = ppt.gca()
                 ppt.gca().set_aspect('equal')
-
+                ax.set_xticks(range(-10, 10, 1))
+                ax.set_yticks(range(-10, 10, 1))
                 ax.set_xlim([vong, bisg])
                 ax.set_ylim([vong, bisg])
+
+                X = (-5, 5, 100)
+                for i in range(int(nge)):
+                    +age ** nge * X ** nge
+                    nge - 1
+
+                ##y = math.pow(age,nge)*math.pow(X,nge)+math.pow(age,nge-1)*math.pow(X,nge-1)+math.pow(age,nge-2)*\
+                ##math.pow(X,nge-2)
+
+                ppt.grid()
+                ppt.plot(X, i)
+                ppt.show()
                 
                 
 
