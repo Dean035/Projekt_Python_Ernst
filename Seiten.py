@@ -145,6 +145,21 @@ def inpAnmeldung():
             Quadratisch.geometry("800x600")
             Quadratisch.resizable(width=0, height=0)
 
+			def RechnungQuadr():
+                ppt.title("Quadratischen-Funktion")
+                ppt.ylabel(Eingabe6.get())
+                ppt.xlabel(Eingabe7.get())
+                a = Eingabe1.get()
+                b = Eingabe2.get()
+                c = Eingabe3.get()
+                von = Eingabe4.get()
+                bis = Eingabe5.get()
+ 				x = np.linspace(von, bis, 100)
+                y = a * x ** 2 + b * x + c
+                ppt.plot(x, y, '-r', label='y=')
+                ppt.grid()
+                ppt.show()
+
 			def matplotbeispiel():
                 x = np.linspace(-10, 10, 100)
                 a = 5
@@ -218,7 +233,7 @@ def inpAnmeldung():
             Button2.pack()
             Button2.place(x=7, y=450)
 
-            Button1 = Button(Quadratisch, text="Ausführen")
+            Button1 = Button(Quadratisch, text="Ausführen" command="RechnungQuadr")
             Button1.pack()
             Button1.place(x=7, y=500)
 
