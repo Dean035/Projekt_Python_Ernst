@@ -145,6 +145,18 @@ def inpAnmeldung():
             Quadratisch.geometry("800x600")
             Quadratisch.resizable(width=0, height=0)
 
+			def matplotbeispiel():
+                x = np.linspace(-10, 10, 100)
+                a = 5
+                b = 3
+                c = 4
+                y = a * x ** 2 + b * x + c
+                ppt.plot(x, y, '-r', label='y=')
+                ppt.title('Der Graph von y=4x+2')
+                ppt.xlabel('x')
+                ppt.ylabel('y')
+                ppt.grid()
+                ppt.show()
 
             Labello1 = Label(Quadratisch, text="a")
             Labello1.pack()
@@ -202,7 +214,7 @@ def inpAnmeldung():
             Eingabe7.pack()
             Eingabe7.place(x=7, y=350)
 
-            Button2 = Button(Quadratisch, text="Beispiel")
+            Button2 = Button(Quadratisch, text="Beispiel", command="matplotbeispiel")
             Button2.pack()
             Button2.place(x=7, y=450)
 
