@@ -1,6 +1,11 @@
 from tkinter import *
 from Datenbank import *
 import matplotlib.pyplot as ppt
+import numpy as np
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_tkagg import (
+    FigureCanvasTkAgg, NavigationToolbar2Tk)
+
 
 Anmeldung = Tk()
 Anmeldung.title("Anmeldung")
@@ -142,10 +147,11 @@ def inpAnmeldung():
         elif Auswahl == "Quadratische-Funktion":
             Quadratisch = Tk()
             Quadratisch.title("Quadratische-Funktion")
+            Quadratisch.geometry("400x400")
             Quadratisch.geometry("800x600")
             Quadratisch.resizable(width=0, height=0)
 
-			def RechnungQuadr():
+            def RechnungQuadr():
                 ppt.title("Quadratischen-Funktion")
                 ppt.ylabel(Eingabe6.get())
                 ppt.xlabel(Eingabe7.get())
@@ -154,18 +160,27 @@ def inpAnmeldung():
                 c = Eingabe3.get()
                 von = Eingabe4.get()
                 bis = Eingabe5.get()
- 				x = np.linspace(von, bis, 100)
-                y = a * x ** 2 + b * x + c
+                aa = float(a)
+                bb = float(b)
+                cc = float(c)
+                vv = float(von)
+                bb = float(bis)
+
+
+                x = np.linspace(vv, bb, 100)
+
+                y = aa * x ** 2 + bb * x + cc
                 ppt.plot(x, y, '-r', label='y=')
+
                 ppt.grid()
                 ppt.show()
 
-			def matplotbeispiel():
+            def matplotbeispiel():
                 x = np.linspace(-10, 10, 100)
                 a = 5
                 b = 3
                 c = 4
-                y = a * x ** 2 + b * x + c
+                y = (a * x ** 2) + (b * x) + c
                 ppt.plot(x, y, '-r', label='y=')
                 ppt.title('Der Graph von y=4x+2')
                 ppt.xlabel('x')
@@ -229,11 +244,11 @@ def inpAnmeldung():
             Eingabe7.pack()
             Eingabe7.place(x=7, y=350)
 
-            Button2 = Button(Quadratisch, text="Beispiel", command="matplotbeispiel")
+            Button2 = Button(Quadratisch, text="Beispiel", command=matplotbeispiel)
             Button2.pack()
             Button2.place(x=7, y=450)
 
-            Button1 = Button(Quadratisch, text="Ausführen" command="RechnungQuadr")
+            Button1 = Button(Quadratisch, text="Ausführen", command=RechnungQuadr)
             Button1.pack()
             Button1.place(x=7, y=500)
 
