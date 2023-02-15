@@ -188,6 +188,10 @@ def inpAnmeldung():
                 ppt.grid()
                 ppt.show()
 
+            Normalform = Label(Quadratisch, text="Normalform:")
+            Normalform.pack()
+            Normalform.place(x=7, y=10)
+
             Labello1 = Label(Quadratisch, text="a")
             Labello1.pack()
             Labello1.place(x=7, y=25)
