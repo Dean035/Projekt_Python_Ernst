@@ -27,3 +27,9 @@ Dokumentation
 31.01.23 Anmeldung Funktioniert, Registration Funktioniert, Abmeldebutton fertig (Dean 3h)
 <br>
 02.02.23 Quadratische Funktion Design gemacht, Gamzrationale Funktionen Design fertig gemacht (Dean 1:30h, Burak 1,30h)
+<br>
+09.02.23 Geschaut wie matplotlib funktioniert und Beispiel für Quadratische Funktionen gemacht (Dean 1:30h) Ganzrationale Funktionen angefangen (Burak 1:30h)
+<br>
+13.02.23 Quadratische Funktionen weiter gemacht (Dean 1h)
+<br>
+14.02.23 Quadratische Funktionen funktionieren jetzt (Dean 1,5h)
