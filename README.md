@@ -33,3 +33,5 @@ Dokumentation
 13.02.23 Quadratische Funktionen weiter gemacht (Dean 1h)
 <br>
 14.02.23 Quadratische Funktionen funktionieren jetzt (Dean 1,5h)
+<br>
+16.02.23 Scheitelpunktform Design gemacht und Beispiel versucht (Dean 2h)
