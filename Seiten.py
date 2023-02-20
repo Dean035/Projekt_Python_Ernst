@@ -2,9 +2,6 @@ from tkinter import *
 from Datenbank import *
 import matplotlib.pyplot as ppt
 import numpy as np
-from matplotlib.figure import Figure
-from matplotlib.backends.backend_tkagg import (
-    FigureCanvasTkAgg, NavigationToolbar2Tk)
 
 
 Anmeldung = Tk()
