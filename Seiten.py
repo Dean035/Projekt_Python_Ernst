@@ -1,8 +1,7 @@
 from tkinter import *
 from Datenbank import *
-import matplotlib.pyplot as ppt
+import matplotlib.pyplot as plt
 import numpy as np
-import math as mt
 
 Anmeldung = Tk()
 Anmeldung.title("Anmeldung")
@@ -80,9 +79,9 @@ def inpAnmeldung():
             lab6.place(x=7, y=145)
 
             def Rechnen():          #Formel für Lineare-Funktion
-                ppt.title("Lineare-Funktion")
-                ppt.ylabel(ybeschriftung.get())
-                ppt.xlabel(xbeschriftung.get())
+                plt.title("Lineare-Funktion")
+                plt.ylabel(ybeschriftung.get())
+                plt.xlabel(xbeschriftung.get())
                 vonl = vonle.get()
                 bisl = bisle.get()
                 btext = btexte.get()
@@ -92,8 +91,8 @@ def inpAnmeldung():
                 mtext = float(mtext)
                 bisl = float(bisl)
 
-                aaa = ppt.gca()
-                ppt.gca().set_aspect('equal')
+                aaa = plt.gca()
+                plt.gca().set_aspect('equal')
                 aaa.set_xticks(range(-10, 10, 1))
                 aaa.set_yticks(range(-10, 10, 1))
                 aaa.set_xlim([vonl, bisl])
@@ -102,19 +101,19 @@ def inpAnmeldung():
                 X =np.linspace(-10,10,100)
                 Y = mtext * X + btext
 
-                ppt.grid()
-                ppt.plot(X, Y)
-                ppt.show()
+                plt.grid()
+                plt.plot(X, Y)
+                plt.show()
 
             def Beispill():
                 x = np.linspace(-5, 5, 100)
                 y = 4 * x + 2
-                ppt.plot(x, y, '-r', label='y=4x+2')
-                ppt.title('Der Graph von y=4x+2')
-                ppt.xlabel('x')
-                ppt.ylabel('y')
-                ppt.grid()
-                ppt.show()
+                plt.plot(x, y, '-r', label='y=4x+2')
+                plt.title('Der Graph von y=4x+2')
+                plt.xlabel('x')
+                plt.ylabel('y')
+                plt.grid()
+                plt.show()
 
             butoon1 = Button(fenster, text="Ausführen", command=Rechnen)#buttons
             butoon2 = Button(fenster, text="Beispiele", command=Beispill)
@@ -152,12 +151,12 @@ def inpAnmeldung():
             lab2.pack()
             lab2.place(x=7, y=375)
 
-            ng = Entry(Ganzrational, bd=5, width=12)  # n (textboxen)
+            n_ausgabe = Entry(Ganzrational, bd=5, width=12)  # n (textboxen)
             lab3 = Label(Ganzrational, text="n")
             lab3.pack()
             lab3.place(x=7, y=315)
 
-            ag = Entry(Ganzrational, bd=5, width=12)  # a (textboxen)
+            a_ausgabe = Entry(Ganzrational, bd=5, width=12)  # a (textboxen)
             lab4 = Label(Ganzrational, text="a")
             lab4.pack()
             lab4.place(x=7, y=255)
@@ -172,48 +171,54 @@ def inpAnmeldung():
             lab6.pack()
             lab6.place(x=7, y=145)
 
+            x_ausgabe = Entry(Ganzrational, bd=5, width=12)  # gibt x an  (textboxen)
+            lab6 = Label(Ganzrational, text="x")
+            lab6.pack()
+            lab6.place(x=7, y=87)
+
             def Joe_mama():
-                ppt.title("Ganzrationale-Funktionen")
-                ppt.ylabel(ybeschriftungg.get())
-                ppt.xlabel(xbeschriftungg.get())
+                plt.title("Ganzrationale-Funktionen")
+                plt.ylabel(ybeschriftungg.get())
+                plt.xlabel(xbeschriftungg.get())
                 bisg = bisge.get()
                 vong = vonge.get()
-                age = ag.get()
-                nge = ng.get()
-                # nge = float(nge)
-                # age = float(age)
-                # bisg = float(bisg)
-                # vong = float(vong)
+                ag_ausgabe = a_ausgabe.get()
+                ng_ausgabe = n_ausgabe.get()
+                #xg_ausgabe = x_ausgabe.get()
+                #xg_ausgabe = float(xg_ausgabe)
+                ng_ausgabe = str(ng_ausgabe)
+                ag_ausgabe = float(ag_ausgabe)
 
-                ax = ppt.gca()
-                ppt.gca().set_aspect('equal')
-                ax.set_xticks(range(-10, 10, 1))
-                ax.set_yticks(range(-10, 10, 1))
-                ax.set_xlim([vong, bisg])
-                ax.set_ylim([vong, bisg])
+                #bisg = float(bisdg)
+                #vong = float(vong)
 
-                X = (-5, 5, 100)
-                for i in range(int(nge)):
-                    +age ** nge * X ** nge
-                    nge - 1
+                ax = plt.gca()  # krodinaten systeme
+                ax.spines['top'].set_color('none')
+                ax.spines['bottom'].set_position('zero')
+                ax.spines['left'].set_position('zero')
+                ax.spines['right'].set_color('none')
 
-                ##y = math.pow(age,nge)*math.pow(X,nge)+math.pow(age,nge-1)*math.pow(X,nge-1)+math.pow(age,nge-2)*\
-                ##math.pow(X,nge-2)
+                x = np.linspace(-100, 100, 500)# erstellt ein array mit 100 glechmäsig verteielten x werten zwischen -10 und 10
+                for y in range(len(ng_ausgabe)):
+                    y = ag_ausgabe * x ** int(ng_ausgabe)
+                    ng_ausgabe = int(ng_ausgabe) - 1
 
-                ppt.grid()
-                ppt.plot(X, i)
-                ppt.show()
-                
-                
+
+
+                plt.plot(x,y)  # stelt alles in matplotr lib dar
+                plt.grid()
+                plt.show()
+
+
 
             buton1 = Button(Ganzrational, text="Ausführen",command=Joe_mama)#buttons
             buton2 = Button(Ganzrational, text="Beispiele",) #command=)
 
-            vonge.pack(), bisge.pack(), ng.pack(), ag.pack(), xbeschriftungg.pack(), ybeschriftungg.pack(),
-            buton2.pack(), buton1.pack()  # zeigt die scheiße an
+            vonge.pack(), bisge.pack(), n_ausgabe.pack(), a_ausgabe.pack(), xbeschriftungg.pack(), ybeschriftungg.pack(),
+            buton2.pack(), buton1.pack(),x_ausgabe.pack()  # zeigt die scheiße an
 
-            ybeschriftungg.place(x=7, y=170),xbeschriftungg.place(x=7, y=230),ag.place(x=7, y=340),ng.place(x=7, y=280)
-            vonge.place(x=7, y=400),bisge.place(x=7, y=460),buton1.place(x=7, y=40),buton2.place(x=7, y=555)
+            ybeschriftungg.place(x=7, y=170),xbeschriftungg.place(x=7, y=230),a_ausgabe.place(x=7, y=340),n_ausgabe.place(x=7, y=280)
+            vonge.place(x=7, y=400),bisge.place(x=7, y=460),buton1.place(x=7, y=40),buton2.place(x=7, y=555),x_ausgabe.place(x=7,y=110)
 
 
 
