@@ -1,10 +1,8 @@
 import sqlite3
 import os
-#from Seiten import register
 
 
-
-def createdb(): #Erstellung der Datenbank
+def create_db(): #Erstellung der Datenbank
     connection = sqlite3.connect("Datenbank.db") #connection zu sqlite3 und Datenbank.db Datei wird erstellt
     cursor = connection.cursor() #connection wird mit cursor verbunden
 
@@ -45,7 +43,7 @@ def Prüfanm(name, passwort):
         return False
     else:
         return True
-def PrüfungRgst(Benutzer):
+def eingaben_ueberpruefen(Benutzer):
     connection = sqlite3.connect("Datenbank.db")
     cursor = connection.cursor()
     #sql abfrage in spalte benutzername, tabelle anmeldung, wo benutzername der inhalt von Benutzer ist
@@ -72,4 +70,4 @@ def Ausgabe():
 if os.path.exists("Datenbank.db"):
     print("Datenbank existiert bereits")
 else:
-    createdb()
+    create_db()
