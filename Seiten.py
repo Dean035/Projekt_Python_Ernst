@@ -1,13 +1,14 @@
 from tkinter import *
 from Datenbank import *
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as ppt
 import numpy as np
 
-Anmeldung_fenster = Tk()
-Anmeldung_fenster.title("Anmeldung")
 
-Anmeldung_fenster.geometry("400x400")
-Anmeldung_fenster.resizable(width=0, height=0)
+Anmeldung = Tk()
+Anmeldung.title("Anmeldung")
+
+Anmeldung.geometry("400x400")
+Anmeldung.resizable(width=0, height=0)
 
 
 def inpAnmeldung():
@@ -21,7 +22,7 @@ def inpAnmeldung():
     if Prüfanm(current_input, current_input2):
         Mainwindow = Tk()
         Mainwindow.title("Mainwindow")
-        Anmeldung_fenster.withdraw()
+        Anmeldung.withdraw()
         Mainwindow.geometry("650x450")
         Mainwindow.resizable(width=0, height=0)
         Funktionen = StringVar(Mainwindow)
@@ -38,6 +39,17 @@ def inpAnmeldung():
         LabelFail.pack()
         OkButton.pack()
 
+
+    def lingraf():
+        ppt.ylabel('numbers')
+        ppt.plot([1, 2, 3, 4])
+        #dd_x = [1, 6, 9, 7, 90]
+
+        #dd_y = [3, 5, 7, 89, 90]
+
+        #ppt.plot([dd_x], [dd_y])
+        ppt.show()
+
     def show(selection):
 
         Auswahl = selection
@@ -45,10 +57,12 @@ def inpAnmeldung():
             fenster = Tk()
             fenster.title("Lineare-Funktion")
             fenster.geometry("800x600")
-            fenster.resizable(width=0, height=0)  # macht das die seite nicht vergrößert werden kann
+            fenster.resizable(width=0, height=0) #macht das die seite nicht vergrößert werden kann
 
+           # butoon3 = Button(fenster, text="Zoom-in", )
+           # butoon4 = Button(fenster, text="Zoom-out", )
             bisle = Entry(fenster, bd=5, width=12)  # wie weit y geht (bis) start = 0 (textboxen)
-            lab1 = Label(fenster, text="bis")
+            lab1=Label(fenster,text="bis" )
             lab1.pack()
             lab1.place(x=7, y=435)
 
@@ -77,10 +91,10 @@ def inpAnmeldung():
             lab6.pack()
             lab6.place(x=7, y=145)
 
-            def Rechnen():  # Formel für Lineare-Funktion
-                plt.title("Lineare-Funktion")
-                plt.ylabel(ybeschriftung.get())
-                plt.xlabel(xbeschriftung.get())
+            def Rechnen():          #Formel für Lineare-Funktion
+                ppt.title("Lineare-Funktion")
+                ppt.ylabel(ybeschriftung.get())
+                ppt.xlabel(xbeschriftung.get())
                 vonl = vonle.get()
                 bisl = bisle.get()
                 btext = btexte.get()
@@ -90,153 +104,264 @@ def inpAnmeldung():
                 mtext = float(mtext)
                 bisl = float(bisl)
 
-                aaa = plt.gca()
-                plt.gca().set_aspect('equal')
+                aaa = ppt.gca()
+                ppt.gca().set_aspect('equal')
                 aaa.set_xticks(range(-10, 10, 1))
                 aaa.set_yticks(range(-10, 10, 1))
                 aaa.set_xlim([vonl, bisl])
                 aaa.set_ylim([vonl, bisl])
 
-                X = np.linspace(-10, 10, 100)
+                X =np.linspace(-10,10,100)
                 Y = mtext * X + btext
 
-                plt.grid()
-                plt.plot(X, Y)
-                plt.show()
+                ppt.grid()
+                ppt.plot(X, Y)
+                ppt.show()
 
             def Beispill():
                 x = np.linspace(-5, 5, 100)
                 y = 4 * x + 2
-                plt.plot(x, y, '-r', label='y=4x+2')
-                plt.title('Der Graph von y=4x+2')
-                plt.xlabel('x')
-                plt.ylabel('y')
-                plt.grid()
-                plt.show()
+                ppt.plot(x, y, '-r', label='y=4x+2')
+                ppt.title('Der Graph von y=4x+2')
+                ppt.xlabel('x')
+                ppt.ylabel('y')
+                ppt.grid()
+                ppt.show()
 
-            butoon1 = Button(fenster, text="Ausführen", command=Rechnen)  # buttons
+            butoon1 = Button(fenster, text="Ausführen", command=Rechnen)#buttons
             butoon2 = Button(fenster, text="Beispiele", command=Beispill)
 
+
             vonle.pack(), bisle.pack(), btexte.pack(), mtexte.pack(), xbeschriftung.pack(), ybeschriftung.pack(),
-            butoon2.pack(), butoon1.pack()  # zeigt die scheiße an
+            butoon2.pack(), butoon1.pack() #zeigt die scheiße an
+
+            ## butoon3.place(x=100, y=555), butoon4.place(x=180, y=555)
 
             bisle.place(x=7, y=460), vonle.place(x=7, y=400), btexte.place(x=7, y=340), mtexte.place(x=7, y=280),
             xbeschriftung.place(x=7, y=230), ybeschriftung.place(x=7, y=170), butoon1.place(x=7, y=40),
-            butoon2.place(x=7, y=555)  # wo stehen die einzelen buttons usw
+            butoon2.place(x=7, y=555) #wo stehen die einzelen buttons usw
 
         elif Auswahl == "Quadratische-Funktion":
             Quadratisch = Tk()
             Quadratisch.title("Quadratische-Funktion")
             Quadratisch.geometry("400x400")
+            Quadratisch.geometry("800x600")
             Quadratisch.resizable(width=0, height=0)
 
+            def RechnungQuadr():
+                ppt.title("Quadratischen-Funktion")
+                ppt.ylabel(Eingabe6.get())
+                ppt.xlabel(Eingabe7.get())
+                a = Eingabe1.get()
+                b = Eingabe2.get()
+                c = Eingabe3.get()
+                von = Eingabe4.get()
+                bis = Eingabe5.get()
+                aa = float(a)
+                bb = float(b)
+                cc = float(c)
+                vv = float(von)
+                bb = float(bis)
 
+
+                x = np.linspace(vv, bb, 100)
+
+                y = aa * x ** 2 + bb * x + cc
+                ppt.plot(x, y, '-r', label='y=')
+
+                ppt.grid()
+                ppt.show()
+
+            def matplotbeispiel():
+                x = np.linspace(-10, 10, 100)
+                a = 5
+                b = 3
+                c = 4
+                y = (a * x ** 2) + (b * x) + c
+                ppt.plot(x, y, '-r', label='y=')
+                ppt.title('Der Graph von y=4x+2')
+                ppt.xlabel('x')
+                ppt.ylabel('y')
+                ppt.grid()
+                ppt.show()
+
+            def matplotbeispiel2():
+                x = np.linspace(-10, 10, 100)
+                a = 5
+                PX = 3
+                PY = 4
+                SX = 1
+                SY = 1
+                y = a * (PX - SX) ** 2 + SY
+                ppt.plot(x, y, '-r', label='y=')
+                ppt.title('Der Graph von y=4x+2')
+                ppt.xlabel('x')
+                ppt.ylabel('y')
+                ppt.grid()
+                ppt.show()
+
+            Normalform = Label(Quadratisch, text="Normalform:")
+            Normalform.pack()
+            Normalform.place(x=7, y=10)
+
+            Labello1 = Label(Quadratisch, text="a")
+            Labello1.pack()
+            Labello1.place(x=7, y=25)
+
+            Eingabe1 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe1.pack()
+            Eingabe1.place(x=7, y=50)
+
+            Labello2 = Label(Quadratisch, text="b")
+            Labello2.pack()
+            Labello2.place(x=7, y=75)
+
+            Eingabe2 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe2.pack()
+            Eingabe2.place(x=7, y=100)
+
+            Labello3 = Label(Quadratisch, text="c")
+            Labello3.pack()
+            Labello3.place(x=7, y=125)
+
+            Eingabe3 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe3.pack()
+            Eingabe3.place(x=7, y=150)
+
+            Labello4 = Label(Quadratisch, text="von")
+            Labello4.pack()
+            Labello4.place(x=7, y=175)
+
+            Eingabe4 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe4.pack()
+            Eingabe4.place(x=7, y=200)
+
+            Labello4 = Label(Quadratisch, text="bis")
+            Labello4.pack()
+            Labello4.place(x=7, y=225)
+
+            Eingabe5 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe5.pack()
+            Eingabe5.place(x=7, y=250)
+
+            Labello5 = Label(Quadratisch, text="Y-Name")
+            Labello5.pack()
+            Labello5.place(x=7, y=275)
+
+            Eingabe6 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe6.pack()
+            Eingabe6.place(x=7, y=300)
+
+            Labello6 = Label(Quadratisch, text="X-Name")
+            Labello6.pack()
+            Labello6.place(x=7, y=325)
+
+            Eingabe7 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe7.pack()
+            Eingabe7.place(x=7, y=350)
+
+            Button2 = Button(Quadratisch, text="Beispiel", command=matplotbeispiel)
+            Button2.pack()
+            Button2.place(x=7, y=450)
+
+            Button1 = Button(Quadratisch, text="Ausführen", command=RechnungQuadr)
+            Button1.pack()
+            Button1.place(x=7, y=500)
+
+
+            Scheitelpunktform = Label(Quadratisch, text="Scheitelpunktform:")
+            Scheitelpunktform.pack()
+            Scheitelpunktform.place(x=650, y=10)
+
+            Labello_1 = Label(Quadratisch, text="a")
+            Labello_1.pack()
+            Labello_1.place(x=650, y=50)
+
+            Eingabe_1 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe_1.pack()
+            Eingabe_1.place(x=650, y=75)
+
+            Labello_2 = Label(Quadratisch, text="Y-Punkt")
+            Labello_2.pack()
+            Labello_2.place(x=650, y=100)
+
+            Eingabe_2 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe_2.pack()
+            Eingabe_2.place(x=650, y=125)
+
+            Labello_3 = Label(Quadratisch, text="X-Punkt")
+            Labello_3.pack()
+            Labello_3.place(x=650, y=150)
+
+            Eingabe___2 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe___2.pack()
+            Eingabe___2.place(x=650, y=175)
+
+            Labello__2 = Label(Quadratisch, text="Y-SPunkt")
+            Labello__2.pack()
+            Labello__2.place(x=650, y=200)
+
+            Eingabe__2 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe__2.pack()
+            Eingabe__2.place(x=650, y=225)
+
+            Labello__3 = Label(Quadratisch, text="X-SPunkt")
+            Labello__3.pack()
+            Labello__3.place(x=650, y=250)
+
+            Eingabe_3 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe_3.pack()
+            Eingabe_3.place(x=650, y=275)
+
+            Labello_4 = Label(Quadratisch, text="von")
+            Labello_4.pack()
+            Labello_4.place(x=650, y=300)
+
+            Eingabe_4 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe_4.pack()
+            Eingabe_4.place(x=650, y=325)
+
+            Labello__4 = Label(Quadratisch, text="bis")
+            Labello__4.pack()
+            Labello__4.place(x=650, y=350)
+
+            Eingabe_5 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe_5.pack()
+            Eingabe_5.place(x=650, y=375)
+
+            Labello_5 = Label(Quadratisch, text="Y-Name")
+            Labello_5.pack()
+            Labello_5.place(x=650, y=400)
+
+            Eingabe_6 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe_6.pack()
+            Eingabe_6.place(x=650, y=425)
+
+            Labello_6 = Label(Quadratisch, text="X-Name")
+            Labello_6.pack()
+            Labello_6.place(x=650, y=450)
+
+            Eingabe_7 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe_7.pack()
+            Eingabe_7.place(x=650, y=475)
+
+            Button_2 = Button(Quadratisch, text="Beispiel", command=matplotbeispiel2)
+            Button_2.pack()
+            Button_2.place(x=650, y=500)
+
+            Button_1 = Button(Quadratisch, text="Ausführen")
+            Button_1.pack()
+            Button_1.place(x=650, y=525)
 
         elif Auswahl == "Ganzrationale-Funktionen":
             Ganzrational = Tk()
             Ganzrational.title("Ganzrationale-Funktionen")
-            Ganzrational.geometry("800x600")
+            Ganzrational.geometry("400x400")
             Ganzrational.resizable(width=0, height=0)
-
-            bisge = Entry(Ganzrational, bd=5, width=12)  # wie weit y geht (bis) start = 0 (textboxen)
-            lab1 = Label(Ganzrational, text="bis")
-            lab1.pack()
-            lab1.place(x=7, y=435)
-
-            vonge = Entry(Ganzrational, bd=5, width=12)  # wie weit x geht (textboxen)
-            lab2 = Label(Ganzrational, text="von")
-            lab2.pack()
-            lab2.place(x=7, y=375)
-
-            n_ausgabe = Entry(Ganzrational, bd=5, width=12)  # n (textboxen)
-            lab3 = Label(Ganzrational, text="n")
-            lab3.pack()
-            lab3.place(x=7, y=315)
-
-            a_ausgabe = Entry(Ganzrational, bd=5, width=12)  #var1 a (textboxen)
-            lab4 = Label(Ganzrational, text="a")
-            lab4.pack()
-            lab4.place(x=7, y=255)
-
-            xbeschriftungg = Entry(Ganzrational, bd=5, width=12)  # name für xseite (textboxen)
-            lab5 = Label(Ganzrational, text="Name-X")
-            lab5.pack()
-            lab5.place(x=7, y=205)
-
-            ybeschriftungg = Entry(Ganzrational, bd=5, width=12)  # name für yseite (textboxen)
-            lab6 = Label(Ganzrational, text="Name-Y")
-            lab6.pack()
-            lab6.place(x=7, y=145)
-
-            n2_ausgabe = Entry(Ganzrational, bd=5, width=12)  # gibt var2 an  (textboxen)
-            lab6 = Label(Ganzrational, text="variable2")
-            lab6.pack()
-            lab6.place(x=200, y=87)
-
-            n3_ausgabe = Entry(Ganzrational, bd=5, width=12)  # gibt var3 an  (textboxen)
-            lab6 = Label(Ganzrational, text="variable3")
-            lab6.pack()
-            lab6.place(x=300, y=87)
-
-            n4_ausgabe = Entry(Ganzrational, bd=5, width=12)  # gibt var4 an  (textboxen)
-            lab6 = Label(Ganzrational, text="variable4")
-            lab6.pack()
-            lab6.place(x=200, y=87)
-
-            def formel_berechnen():
-                plt.title("Ganzrationale-Funktionen")
-                plt.ylabel(ybeschriftungg.get())
-                plt.xlabel(xbeschriftungg.get())
-                bisg = bisge.get()
-                vong = vonge.get()
-                ag_ausgabe = a_ausgabe.get()
-                ng_ausgabe = n_ausgabe.get()
-                var2_ausgabe = n2_ausgabe.get()
-                var2_ausgabe = float(var2_ausgabe)
-                ng_ausgabe = str(ng_ausgabe)
-                ag_ausgabe = float(ag_ausgabe)
-                var3_ausgabe = n3_ausgabe.get()
-                var3_ausgabe = float(var3_ausgabe)
-
-
-                # bisg = float(bisdg)
-                # vong = float(vong)
-
-                ax = plt.gca()  # krodinaten systeme
-                ax.spines['top'].set_color('none')
-                ax.spines['bottom'].set_position('zero')
-                ax.spines['left'].set_position('zero')
-                ax.spines['right'].set_color('none')
-
-                x = np.linspace(-100, 100,
-                                500)  # erstellt ein array mit 100 glechmäsig verteielten x werten zwischen -10 und 10
-                for y in range(len(ng_ausgabe)):
-                    y = ag_ausgabe * x ** int(ng_ausgabe)+var2_ausgabe * x ** int(ng_ausgabe-1)+var3_ausgabe * x ** int(ng_ausgabe-2)
-
-
-
-                plt.plot(x, y)  # stelt alles in matplotr lib dar
-                plt.grid()
-                plt.show()
-
-            buton1 = Button(Ganzrational, text="Ausführen", command=formel_berechnen)  # buttons
-            buton2 = Button(Ganzrational, text="Beispiele", )  # command=)
-
-            vonge.pack(), bisge.pack(), n_ausgabe.pack(), a_ausgabe.pack(), xbeschriftungg.pack(), ybeschriftungg.pack(),
-            buton2.pack(), buton1.pack(), n2_ausgabe.pack(),n3_ausgabe.pack(),n4_ausgabe.pack() # zeigt die scheiße an
-
-            ybeschriftungg.place(x=7, y=170), xbeschriftungg.place(x=7, y=230),\
-            a_ausgabe.place(x=7, y=340), n_ausgabe.place(x=7, y=280)
-            vonge.place(x=7, y=400), bisge.place(x=7, y=460), buton1.place(x=7, y=40), buton2.place(x=7, y=555),\
-            n2_ausgabe.place( x=200, y=110),n3_ausgabe.place( x=300, y=110),n4_ausgabe.place( x=400, y=110),
-
-
-
-
         elif Auswahl == "Trigonometrische-Funktionen":
             Trigonomisch = Tk()
             Trigonomisch.title("Trigonometrische-Funktionen")
-            Trigonomisch.geometry("800x600")
+            Trigonomisch.geometry("400x400")
             Trigonomisch.resizable(width=0, height=0)
         elif Auswahl == "Exponential-Funktionen":
             Exponential = Tk()
@@ -265,7 +390,8 @@ def inpAnmeldung():
 
     def logout():
         Mainwindow.destroy()
-        Anmeldung_fenster.deiconify()
+        Anmeldung.deiconify()
+
 
     logout = Button(Mainwindow, text="Abmelden", command=logout)
     logout.pack()
@@ -278,13 +404,15 @@ def register():
     Register = Tk()
     Register.title("Registration")
 
-    def registrierungs_input():
+    # Anmeldung.destroy()
+
+    def Rgstinp():
         RgstinpBenutzername = RgstBenutzereingabe.get()
         RgstinpPasswort = RgstPassworteingabe.get()
         RgstinpPasswortConfirm = RgstConfirmeingabe.get()
 
         if RgstinpPasswort == RgstinpPasswortConfirm and RgstinpBenutzername != "":
-            if eingaben_ueberpruefen(RgstinpBenutzername):
+            if PrüfungRgst(RgstinpBenutzername):
                 print(RgstinpBenutzername, RgstinpPasswort, RgstinpPasswortConfirm)
                 NewAcc(RgstBenutzereingabe.get(), RgstPassworteingabe.get())
                 Ausgabe()
@@ -292,7 +420,6 @@ def register():
             else:
                 def OkButtonClick():
                     ErrorRgst.destroy()
-
                 ErrorRgst = Tk()
                 ErrorRgst.title("Error")
                 ErrorRgst.geometry("500x50")
@@ -327,7 +454,7 @@ def register():
     RgstConfirm = Label(Register, text="Bestätigung des Passworts")
     RgstConfirmeingabe = Entry(Register, bd=5, width=40)
 
-    RgstButton = Button(Register, text="Registrieren", command=registrierungs_input)
+    RgstButton = Button(Register, text="Registrieren", command=Rgstinp)
 
     RgstBenutzername.pack()
     RgstBenutzereingabe.pack()
@@ -338,13 +465,14 @@ def register():
     RgstButton.pack()
 
 
-Rgstlabel = Label(Anmeldung_fenster, text="Wenn Sie noch keinen Account besitzen Drücken sie bitte hier:")
-Rgstbutton = Button(Anmeldung_fenster, text="Registration", command=register)
-Benutzernamelabel = Label(Anmeldung_fenster, text="Benutzername")
-Anmeldungsbutton = Button(Anmeldung_fenster, text="Anmelden", command=inpAnmeldung)
-Benutzernameeingabe = Entry(Anmeldung_fenster, bd=5, width=40)
-Passwortlabel = Label(Anmeldung_fenster, text="Passwort")
-Passworteingabe = Entry(Anmeldung_fenster, bd=5, width=40)
+
+Rgstlabel = Label(Anmeldung, text="Wenn Sie noch keinen Account besitzen Drücken sie bitte hier:")
+Rgstbutton = Button(Anmeldung, text="Registration", command=register)
+Benutzernamelabel = Label(Anmeldung, text="Benutzername")
+Anmeldungsbutton = Button(Anmeldung, text="Anmelden", command=inpAnmeldung)
+Benutzernameeingabe = Entry(Anmeldung, bd=5, width=40)
+Passwortlabel = Label(Anmeldung, text="Passwort")
+Passworteingabe = Entry(Anmeldung, bd=5, width=40)
 
 Benutzernamelabel.pack()
 Benutzernameeingabe.pack()
@@ -354,5 +482,4 @@ Anmeldungsbutton.pack()
 Rgstlabel.pack()
 Rgstlabel.place(relx=0.1, rely=0.8)
 Rgstbutton.place(relx=0.4, rely=0.9)
-Anmeldung_fenster.mainloop()
-
+Anmeldung.mainloop()
