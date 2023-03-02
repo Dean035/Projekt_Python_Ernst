@@ -3,11 +3,11 @@ from Datenbank import *
 import matplotlib.pyplot as plt
 import numpy as np
 
-Anmeldung = Tk()
-Anmeldung.title("Anmeldung")
+Anmeldung_fenster = Tk()
+Anmeldung_fenster.title("Anmeldung")
 
-Anmeldung.geometry("400x400")
-Anmeldung.resizable(width=0, height=0)
+Anmeldung_fenster.geometry("400x400")
+Anmeldung_fenster.resizable(width=0, height=0)
 
 
 def inpAnmeldung():
@@ -21,7 +21,7 @@ def inpAnmeldung():
     if Prüfanm(current_input, current_input2):
         Mainwindow = Tk()
         Mainwindow.title("Mainwindow")
-        Anmeldung.withdraw()
+        Anmeldung_fenster.withdraw()
         Mainwindow.geometry("650x450")
         Mainwindow.resizable(width=0, height=0)
         Funktionen = StringVar(Mainwindow)
@@ -38,7 +38,6 @@ def inpAnmeldung():
         LabelFail.pack()
         OkButton.pack()
 
-
     def show(selection):
 
         Auswahl = selection
@@ -46,10 +45,10 @@ def inpAnmeldung():
             fenster = Tk()
             fenster.title("Lineare-Funktion")
             fenster.geometry("800x600")
-            fenster.resizable(width=0, height=0) #macht das die seite nicht vergrößert werden kann
+            fenster.resizable(width=0, height=0)  # macht das die seite nicht vergrößert werden kann
 
             bisle = Entry(fenster, bd=5, width=12)  # wie weit y geht (bis) start = 0 (textboxen)
-            lab1=Label(fenster,text="bis" )
+            lab1 = Label(fenster, text="bis")
             lab1.pack()
             lab1.place(x=7, y=435)
 
@@ -78,7 +77,7 @@ def inpAnmeldung():
             lab6.pack()
             lab6.place(x=7, y=145)
 
-            def Rechnen():          #Formel für Lineare-Funktion
+            def Rechnen():  # Formel für Lineare-Funktion
                 plt.title("Lineare-Funktion")
                 plt.ylabel(ybeschriftung.get())
                 plt.xlabel(xbeschriftung.get())
@@ -98,7 +97,7 @@ def inpAnmeldung():
                 aaa.set_xlim([vonl, bisl])
                 aaa.set_ylim([vonl, bisl])
 
-                X =np.linspace(-10,10,100)
+                X = np.linspace(-10, 10, 100)
                 Y = mtext * X + btext
 
                 plt.grid()
@@ -115,17 +114,15 @@ def inpAnmeldung():
                 plt.grid()
                 plt.show()
 
-            butoon1 = Button(fenster, text="Ausführen", command=Rechnen)#buttons
+            butoon1 = Button(fenster, text="Ausführen", command=Rechnen)  # buttons
             butoon2 = Button(fenster, text="Beispiele", command=Beispill)
 
-
             vonle.pack(), bisle.pack(), btexte.pack(), mtexte.pack(), xbeschriftung.pack(), ybeschriftung.pack(),
-            butoon2.pack(), butoon1.pack() #zeigt die scheiße an
-
+            butoon2.pack(), butoon1.pack()  # zeigt die scheiße an
 
             bisle.place(x=7, y=460), vonle.place(x=7, y=400), btexte.place(x=7, y=340), mtexte.place(x=7, y=280),
             xbeschriftung.place(x=7, y=230), ybeschriftung.place(x=7, y=170), butoon1.place(x=7, y=40),
-            butoon2.place(x=7, y=555) #wo stehen die einzelen buttons usw
+            butoon2.place(x=7, y=555)  # wo stehen die einzelen buttons usw
 
         elif Auswahl == "Quadratische-Funktion":
             Quadratisch = Tk()
@@ -145,7 +142,7 @@ def inpAnmeldung():
             lab1 = Label(Ganzrational, text="bis")
             lab1.pack()
             lab1.place(x=7, y=435)
-            
+
             vonge = Entry(Ganzrational, bd=5, width=12)  # wie weit x geht (textboxen)
             lab2 = Label(Ganzrational, text="von")
             lab2.pack()
@@ -156,7 +153,7 @@ def inpAnmeldung():
             lab3.pack()
             lab3.place(x=7, y=315)
 
-            a_ausgabe = Entry(Ganzrational, bd=5, width=12)  # a (textboxen)
+            a_ausgabe = Entry(Ganzrational, bd=5, width=12)  #var1 a (textboxen)
             lab4 = Label(Ganzrational, text="a")
             lab4.pack()
             lab4.place(x=7, y=255)
@@ -171,12 +168,22 @@ def inpAnmeldung():
             lab6.pack()
             lab6.place(x=7, y=145)
 
-            x_ausgabe = Entry(Ganzrational, bd=5, width=12)  # gibt x an  (textboxen)
-            lab6 = Label(Ganzrational, text="x")
+            n2_ausgabe = Entry(Ganzrational, bd=5, width=12)  # gibt var2 an  (textboxen)
+            lab6 = Label(Ganzrational, text="variable2")
             lab6.pack()
-            lab6.place(x=7, y=87)
+            lab6.place(x=200, y=87)
 
-            def Joe_mama():
+            n3_ausgabe = Entry(Ganzrational, bd=5, width=12)  # gibt var3 an  (textboxen)
+            lab6 = Label(Ganzrational, text="variable3")
+            lab6.pack()
+            lab6.place(x=300, y=87)
+
+            n4_ausgabe = Entry(Ganzrational, bd=5, width=12)  # gibt var4 an  (textboxen)
+            lab6 = Label(Ganzrational, text="variable4")
+            lab6.pack()
+            lab6.place(x=200, y=87)
+
+            def formel_berechnen():
                 plt.title("Ganzrationale-Funktionen")
                 plt.ylabel(ybeschriftungg.get())
                 plt.xlabel(xbeschriftungg.get())
@@ -184,13 +191,16 @@ def inpAnmeldung():
                 vong = vonge.get()
                 ag_ausgabe = a_ausgabe.get()
                 ng_ausgabe = n_ausgabe.get()
-                #xg_ausgabe = x_ausgabe.get()
-                #xg_ausgabe = float(xg_ausgabe)
+                var2_ausgabe = n2_ausgabe.get()
+                var2_ausgabe = float(var2_ausgabe)
                 ng_ausgabe = str(ng_ausgabe)
                 ag_ausgabe = float(ag_ausgabe)
+                var3_ausgabe = n3_ausgabe.get()
+                var3_ausgabe = float(var3_ausgabe)
 
-                #bisg = float(bisdg)
-                #vong = float(vong)
+
+                # bisg = float(bisdg)
+                # vong = float(vong)
 
                 ax = plt.gca()  # krodinaten systeme
                 ax.spines['top'].set_color('none')
@@ -198,27 +208,27 @@ def inpAnmeldung():
                 ax.spines['left'].set_position('zero')
                 ax.spines['right'].set_color('none')
 
-                x = np.linspace(-100, 100, 500)# erstellt ein array mit 100 glechmäsig verteielten x werten zwischen -10 und 10
+                x = np.linspace(-100, 100,
+                                500)  # erstellt ein array mit 100 glechmäsig verteielten x werten zwischen -10 und 10
                 for y in range(len(ng_ausgabe)):
-                    y = ag_ausgabe * x ** int(ng_ausgabe)
-                    ng_ausgabe = int(ng_ausgabe) - 1
+                    y = ag_ausgabe * x ** int(ng_ausgabe)+var2_ausgabe * x ** int(ng_ausgabe-1)+var3_ausgabe * x ** int(ng_ausgabe-2)
 
 
 
-                plt.plot(x,y)  # stelt alles in matplotr lib dar
+                plt.plot(x, y)  # stelt alles in matplotr lib dar
                 plt.grid()
                 plt.show()
 
-
-
-            buton1 = Button(Ganzrational, text="Ausführen",command=Joe_mama)#buttons
-            buton2 = Button(Ganzrational, text="Beispiele",) #command=)
+            buton1 = Button(Ganzrational, text="Ausführen", command=formel_berechnen)  # buttons
+            buton2 = Button(Ganzrational, text="Beispiele", )  # command=)
 
             vonge.pack(), bisge.pack(), n_ausgabe.pack(), a_ausgabe.pack(), xbeschriftungg.pack(), ybeschriftungg.pack(),
-            buton2.pack(), buton1.pack(),x_ausgabe.pack()  # zeigt die scheiße an
+            buton2.pack(), buton1.pack(), n2_ausgabe.pack(),n3_ausgabe.pack(),n4_ausgabe.pack() # zeigt die scheiße an
 
-            ybeschriftungg.place(x=7, y=170),xbeschriftungg.place(x=7, y=230),a_ausgabe.place(x=7, y=340),n_ausgabe.place(x=7, y=280)
-            vonge.place(x=7, y=400),bisge.place(x=7, y=460),buton1.place(x=7, y=40),buton2.place(x=7, y=555),x_ausgabe.place(x=7,y=110)
+            ybeschriftungg.place(x=7, y=170), xbeschriftungg.place(x=7, y=230),\
+            a_ausgabe.place(x=7, y=340), n_ausgabe.place(x=7, y=280)
+            vonge.place(x=7, y=400), bisge.place(x=7, y=460), buton1.place(x=7, y=40), buton2.place(x=7, y=555),\
+            n2_ausgabe.place( x=200, y=110),n3_ausgabe.place( x=300, y=110),n4_ausgabe.place( x=400, y=110),
 
 
 
@@ -255,8 +265,7 @@ def inpAnmeldung():
 
     def logout():
         Mainwindow.destroy()
-        Anmeldung.deiconify()
-
+        Anmeldung_fenster.deiconify()
 
     logout = Button(Mainwindow, text="Abmelden", command=logout)
     logout.pack()
@@ -269,15 +278,13 @@ def register():
     Register = Tk()
     Register.title("Registration")
 
-    # Anmeldung.destroy()
-
-    def Rgstinp():
+    def registrierungs_input():
         RgstinpBenutzername = RgstBenutzereingabe.get()
         RgstinpPasswort = RgstPassworteingabe.get()
         RgstinpPasswortConfirm = RgstConfirmeingabe.get()
 
         if RgstinpPasswort == RgstinpPasswortConfirm and RgstinpBenutzername != "":
-            if PrüfungRgst(RgstinpBenutzername):
+            if eingaben_ueberpruefen(RgstinpBenutzername):
                 print(RgstinpBenutzername, RgstinpPasswort, RgstinpPasswortConfirm)
                 NewAcc(RgstBenutzereingabe.get(), RgstPassworteingabe.get())
                 Ausgabe()
@@ -285,6 +292,7 @@ def register():
             else:
                 def OkButtonClick():
                     ErrorRgst.destroy()
+
                 ErrorRgst = Tk()
                 ErrorRgst.title("Error")
                 ErrorRgst.geometry("500x50")
@@ -319,7 +327,7 @@ def register():
     RgstConfirm = Label(Register, text="Bestätigung des Passworts")
     RgstConfirmeingabe = Entry(Register, bd=5, width=40)
 
-    RgstButton = Button(Register, text="Registrieren", command=Rgstinp)
+    RgstButton = Button(Register, text="Registrieren", command=registrierungs_input)
 
     RgstBenutzername.pack()
     RgstBenutzereingabe.pack()
@@ -330,14 +338,13 @@ def register():
     RgstButton.pack()
 
 
-
-Rgstlabel = Label(Anmeldung, text="Wenn Sie noch keinen Account besitzen Drücken sie bitte hier:")
-Rgstbutton = Button(Anmeldung, text="Registration", command=register)
-Benutzernamelabel = Label(Anmeldung, text="Benutzername")
-Anmeldungsbutton = Button(Anmeldung, text="Anmelden", command=inpAnmeldung)
-Benutzernameeingabe = Entry(Anmeldung, bd=5, width=40)
-Passwortlabel = Label(Anmeldung, text="Passwort")
-Passworteingabe = Entry(Anmeldung, bd=5, width=40)
+Rgstlabel = Label(Anmeldung_fenster, text="Wenn Sie noch keinen Account besitzen Drücken sie bitte hier:")
+Rgstbutton = Button(Anmeldung_fenster, text="Registration", command=register)
+Benutzernamelabel = Label(Anmeldung_fenster, text="Benutzername")
+Anmeldungsbutton = Button(Anmeldung_fenster, text="Anmelden", command=inpAnmeldung)
+Benutzernameeingabe = Entry(Anmeldung_fenster, bd=5, width=40)
+Passwortlabel = Label(Anmeldung_fenster, text="Passwort")
+Passworteingabe = Entry(Anmeldung_fenster, bd=5, width=40)
 
 Benutzernamelabel.pack()
 Benutzernameeingabe.pack()
@@ -347,4 +354,5 @@ Anmeldungsbutton.pack()
 Rgstlabel.pack()
 Rgstlabel.place(relx=0.1, rely=0.8)
 Rgstbutton.place(relx=0.4, rely=0.9)
-Anmeldung.mainloop()
+Anmeldung_fenster.mainloop()
+
