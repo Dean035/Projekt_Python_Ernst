@@ -169,9 +169,9 @@ def inpAnmeldung():
             lab6.place(x=7, y=145)
 
             n2_ausgabe = Entry(Ganzrational, bd=5, width=12)  # gibt var2 an  (textboxen)
-            lab6 = Label(Ganzrational, text="variable2")
+            lab6 = Label(Ganzrational, text="variable4")
             lab6.pack()
-            lab6.place(x=200, y=87)
+            lab6.place(x=400, y=87)
 
             n3_ausgabe = Entry(Ganzrational, bd=5, width=12)  # gibt var3 an  (textboxen)
             lab6 = Label(Ganzrational, text="variable3")
@@ -179,9 +179,14 @@ def inpAnmeldung():
             lab6.place(x=300, y=87)
 
             n4_ausgabe = Entry(Ganzrational, bd=5, width=12)  # gibt var4 an  (textboxen)
-            lab6 = Label(Ganzrational, text="variable4")
+            lab6 = Label(Ganzrational, text="variable2")
             lab6.pack()
             lab6.place(x=200, y=87)
+
+            n5_ausgabe = Entry(Ganzrational, bd=5, width=12)  # gibt var4 an  (textboxen)
+            lab6 = Label(Ganzrational, text="variable2")
+            lab6.pack()
+            lab6.place(x=500, y=87)
 
             def formel_berechnen():
                 plt.title("Ganzrationale-Funktionen")
@@ -197,6 +202,11 @@ def inpAnmeldung():
                 ag_ausgabe = float(ag_ausgabe)
                 var3_ausgabe = n3_ausgabe.get()
                 var3_ausgabe = float(var3_ausgabe)
+                var4_Ausgabe = n4_ausgabe.get()
+                var4_Ausgabe = float(var4_Ausgabe)
+                var5_Ausgabe = n5_ausgabe.get()
+                var5_Ausgabe = float(var5_Ausgabe)
+
 
 
                 # bisg = float(bisdg)
@@ -208,14 +218,15 @@ def inpAnmeldung():
                 ax.spines['left'].set_position('zero')
                 ax.spines['right'].set_color('none')
 
-                x = np.linspace(-100, 100,
-                                500)  # erstellt ein array mit 100 glechmäsig verteielten x werten zwischen -10 und 10
+                x = np.linspace(-100, 100,500)  # erstellt ein array mit 100 glechmäsig verteielten x werten zwischen -10 und 10
+
                 for y in range(len(ng_ausgabe)):
-                    y = ag_ausgabe * x ** int(ng_ausgabe)+var2_ausgabe * x ** int(ng_ausgabe-1)+var3_ausgabe * x ** int(ng_ausgabe-2)
+                    y = ag_ausgabe * x ** int(ng_ausgabe)+var2_ausgabe * x ** int(ng_ausgabe-1)+var3_ausgabe * x ** int(ng_ausgabe-2)+ var4_Ausgabe
+                    
+                for y in range(len(ng_ausgabe)):
+                    y = var5_Ausgabe * x **int(ng_ausgabe)+ ag_ausgabe * x ** int(ng_ausgabe-1)+var2_ausgabe * x ** int(ng_ausgabe-2)+var3_ausgabe * x ** int(ng_ausgabe-3)+ var4_Ausgabe
 
-
-
-                plt.plot(x, y)  # stelt alles in matplotr lib dar
+                plt.plot(x, y)  # stelt alles in matplot_lib dar
                 plt.grid()
                 plt.show()
 
@@ -228,7 +239,8 @@ def inpAnmeldung():
             ybeschriftungg.place(x=7, y=170), xbeschriftungg.place(x=7, y=230),\
             a_ausgabe.place(x=7, y=340), n_ausgabe.place(x=7, y=280)
             vonge.place(x=7, y=400), bisge.place(x=7, y=460), buton1.place(x=7, y=40), buton2.place(x=7, y=555),\
-            n2_ausgabe.place( x=200, y=110),n3_ausgabe.place( x=300, y=110),n4_ausgabe.place( x=400, y=110),
+            n2_ausgabe.place( x=200, y=110),n3_ausgabe.place( x=300, y=110),n4_ausgabe.place( x=400, y=110),\
+            n5_ausgabe.place( x=500, y=110),
 
 
 
