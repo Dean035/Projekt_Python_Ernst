@@ -186,8 +186,9 @@ def inpAnmeldung():
             n5_ausgabe = Entry(Ganzrational, bd=5, width=12)  # gibt var4 an  (textboxen)
             lab6 = Label(Ganzrational, text="variable2")
             lab6.pack()
-            lab6.place(x=500, y=87)
-
+            lab6.place(x=500, y=87)  
+                
+            
             def formel_berechnen():
                 plt.title("Ganzrationale-Funktionen")
                 plt.ylabel(ybeschriftungg.get())
@@ -220,11 +221,16 @@ def inpAnmeldung():
 
                 x = np.linspace(-100, 100,500)  # erstellt ein array mit 100 glechmäsig verteielten x werten zwischen -10 und 10
 
+                
+                   
                 for y in range(len(ng_ausgabe)):
-                    y = ag_ausgabe * x ** int(ng_ausgabe)+var2_ausgabe * x ** int(ng_ausgabe-1)+var3_ausgabe * x ** int(ng_ausgabe-2)+ var4_Ausgabe
-                    
+                    y = ag_ausgabe * x ** int(ng_ausgabe)+var2_ausgabe * x ** int(ng_ausgabe-1)+var3_ausgabe * x ** int(ng_ausgabe-2)\
+                        + var4_Ausgabe * x ** int(ng_ausgabe-3)
+
+                
                 for y in range(len(ng_ausgabe)):
-                    y = var5_Ausgabe * x **int(ng_ausgabe)+ ag_ausgabe * x ** int(ng_ausgabe-1)+var2_ausgabe * x ** int(ng_ausgabe-2)+var3_ausgabe * x ** int(ng_ausgabe-3)+ var4_Ausgabe
+                    y = ag_ausgabe * x ** int(ng_ausgabe)+var2_ausgabe * x ** int(ng_ausgabe-1)+var3_ausgabe * x ** int(ng_ausgabe-2)\
+                        + var4_Ausgabe * x ** int(ng_ausgabe-3) + var5_Ausgabe * x **int(ng_ausgabe -4)
 
                 plt.plot(x, y)  # stelt alles in matplot_lib dar
                 plt.grid()
