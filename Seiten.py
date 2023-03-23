@@ -149,12 +149,12 @@ def inpAnmeldung():
             lab2.place(x=7, y=375)
 
             n_ausgabe = Entry(Ganzrational, bd=5, width=12)  # n (textboxen)
-            lab3 = Label(Ganzrational, text="n")
+            lab3 = Label(Ganzrational, text="Grad")
             lab3.pack()
             lab3.place(x=7, y=315)
 
             a_ausgabe = Entry(Ganzrational, bd=5, width=12)  #var1 a (textboxen)
-            lab4 = Label(Ganzrational, text="a")
+            lab4 = Label(Ganzrational, text="Variable1")
             lab4.pack()
             lab4.place(x=7, y=255)
 
@@ -184,11 +184,11 @@ def inpAnmeldung():
             lab6.place(x=200, y=87)
 
             n5_ausgabe = Entry(Ganzrational, bd=5, width=12)  # gibt var4 an  (textboxen)
-            lab6 = Label(Ganzrational, text="variable2")
+            lab6 = Label(Ganzrational, text="variable5")
             lab6.pack()
-            lab6.place(x=500, y=87)  
-                
-            
+            lab6.place(x=500, y=87)
+
+
             def formel_berechnen():
                 plt.title("Ganzrationale-Funktionen")
                 plt.ylabel(ybeschriftungg.get())
@@ -221,18 +221,17 @@ def inpAnmeldung():
 
                 x = np.linspace(-100, 100,500)  # erstellt ein array mit 100 glechmäsig verteielten x werten zwischen -10 und 10
 
-                
-                   
-                for y in range(len(ng_ausgabe)):
-                    y = ag_ausgabe * x ** int(ng_ausgabe)+var2_ausgabe * x ** int(ng_ausgabe-1)+var3_ausgabe * x ** int(ng_ausgabe-2)\
-                        + var4_Ausgabe * x ** int(ng_ausgabe-3)
 
-                
-                for y in range(len(ng_ausgabe)):
-                    y = ag_ausgabe * x ** int(ng_ausgabe)+var2_ausgabe * x ** int(ng_ausgabe-1)+var3_ausgabe * x ** int(ng_ausgabe-2)\
-                        + var4_Ausgabe * x ** int(ng_ausgabe-3) + var5_Ausgabe * x **int(ng_ausgabe -4)
+                if ng_ausgabe == 3:
+                        y = ag_ausgabe * x ** 3 + var2_ausgabe * x ** 2 + var3_ausgabe * x ** 1 \
+                            + var4_Ausgabe
+                elif ng_ausgabe == 4:
+                        y = ag_ausgabe * x ** 4 + var2_ausgabe * x ** 3 + var3_ausgabe * x ** 2 \
+                            + var4_Ausgabe * x ** 1 + var5_Ausgabe
+                else: print("Gebe bitte eine grad von 3 bis 4 ein")
 
-                plt.plot(x, y)  # stelt alles in matplot_lib dar
+
+                plt.plot(x,y)  # stelt alles in matplot_lib dar
                 plt.grid()
                 plt.show()
 
