@@ -151,12 +151,12 @@ def inpAnmeldung():
             n_ausgabe = Entry(Ganzrational, bd=5, width=12)  # n (textboxen)
             lab3 = Label(Ganzrational, text="Grad")
             lab3.pack()
-            lab3.place(x=7, y=315)
+            lab3.place(x=7, y=255)
 
             a_ausgabe = Entry(Ganzrational, bd=5, width=12)  #var1 a (textboxen)
             lab4 = Label(Ganzrational, text="Variable1")
             lab4.pack()
-            lab4.place(x=7, y=255)
+            lab4.place(x=600, y=87)
 
             xbeschriftungg = Entry(Ganzrational, bd=5, width=12)  # name für xseite (textboxen)
             lab5 = Label(Ganzrational, text="Name-X")
@@ -199,7 +199,7 @@ def inpAnmeldung():
                 ng_ausgabe = n_ausgabe.get()
                 var2_ausgabe = n2_ausgabe.get()
                 var2_ausgabe = float(var2_ausgabe)
-                ng_ausgabe = str(ng_ausgabe)
+                ng_ausgabe = float(ng_ausgabe)
                 ag_ausgabe = float(ag_ausgabe)
                 var3_ausgabe = n3_ausgabe.get()
                 var3_ausgabe = float(var3_ausgabe)
@@ -207,11 +207,8 @@ def inpAnmeldung():
                 var4_Ausgabe = float(var4_Ausgabe)
                 var5_Ausgabe = n5_ausgabe.get()
                 var5_Ausgabe = float(var5_Ausgabe)
-
-
-
-                # bisg = float(bisdg)
-                # vong = float(vong)
+                bisg = float(bisg)
+                vong = float(vong)
 
                 ax = plt.gca()  # krodinaten systeme
                 ax.spines['top'].set_color('none')
@@ -219,17 +216,28 @@ def inpAnmeldung():
                 ax.spines['left'].set_position('zero')
                 ax.spines['right'].set_color('none')
 
-                x = np.linspace(-100, 100,500)  # erstellt ein array mit 100 glechmäsig verteielten x werten zwischen -10 und 10
-
+                x = np.linspace(vong,bisg,500)  # erstellt ein array mit 100 glechmäsig verteielten x werten zwischen -10 und 10
 
                 if ng_ausgabe == 3:
                         y = ag_ausgabe * x ** 3 + var2_ausgabe * x ** 2 + var3_ausgabe * x ** 1 \
                             + var4_Ausgabe
                 elif ng_ausgabe == 4:
                         y = ag_ausgabe * x ** 4 + var2_ausgabe * x ** 3 + var3_ausgabe * x ** 2 \
-                            + var4_Ausgabe * x ** 1 + var5_Ausgabe
-                else: print("Gebe bitte eine grad von 3 bis 4 ein")
+                            + var4_Ausgabe * x ** 1 + var5_Ausgabe * x ** 0
+                else:
 
+                    def OkButtonClickG():
+                        ErrorGrad.destroy()
+
+                    ErrorGrad = Tk()
+                    ErrorGrad.title("Error")
+                    ErrorGrad.geometry("500x50")
+                    ErrorGrad.resizable(width=0, height=0)
+                    OkButton = Button(ErrorGrad, text="Ok", command=OkButtonClickG)
+                    LabelFail = Label(ErrorGrad,text="Gebe bitte eine grad von 3 bis 4 ein")
+
+                    LabelFail.pack()
+                    OkButton.pack()
 
                 plt.plot(x,y)  # stelt alles in matplot_lib dar
                 plt.grid()
@@ -242,7 +250,7 @@ def inpAnmeldung():
             buton2.pack(), buton1.pack(), n2_ausgabe.pack(),n3_ausgabe.pack(),n4_ausgabe.pack() # zeigt die scheiße an
 
             ybeschriftungg.place(x=7, y=170), xbeschriftungg.place(x=7, y=230),\
-            a_ausgabe.place(x=7, y=340), n_ausgabe.place(x=7, y=280)
+            a_ausgabe.place(x=600, y=110), n_ausgabe.place(x=7, y=280)
             vonge.place(x=7, y=400), bisge.place(x=7, y=460), buton1.place(x=7, y=40), buton2.place(x=7, y=555),\
             n2_ausgabe.place( x=200, y=110),n3_ausgabe.place( x=300, y=110),n4_ausgabe.place( x=400, y=110),\
             n5_ausgabe.place( x=500, y=110),
