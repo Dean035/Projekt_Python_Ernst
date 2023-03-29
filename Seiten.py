@@ -169,30 +169,30 @@ def inpAnmeldung():
 
                 y = aa * x ** 2 + bb * x + cc
 
-                bbb = bb / aa
+                bbb = bb / aa #Normalisierung
                 aaa = aa / aa
                 ccc = cc / aa
 
-                pq = -bbb/2 + math.sqrt((bbb/2)**2 - (ccc))
-                pq2 = -bbb/2 - math.sqrt((bbb/2)**2 - (ccc))
+                pq = -bbb/2 + math.sqrt((bbb/2)**2 - (ccc)) #pq-Formel
+                pq2 = -bbb/2 - math.sqrt((bbb/2)**2 - (ccc)) #pq-Formel
 
-                Ableitung1 = aa * 2 + bb
+                Ableitung1 = aa * x + bb
 
  
-                yA = 0
-                Zeile1 = yA - bb
+                xA = 0
+                Zeile1 = xA - bb #Thermumformung (x-Wert bestimmen)
                 Zeile2 = aa / aa
-                Zeile3 = yA / aa
-                
-                xA
+                Zeile3 = xA / aa
 
+                yA = aa * xA ** 2 + bb * xA + cc #y-Wert bestimmen (In Grundform einsetzen)
 
-                #if aa < 0:
-                #    Ableitung1kl =
+                xxx2=[xA] #Extrempunkt
+                yyy2=[yA]
 
-                xxx=[pq, pq2,]
+                xxx=[pq, pq2,] #Nullstellen
                 yyy=[0, 0]
                 ppt.scatter(xxx, yyy, color="red")
+                ppt.scatter(xxx2, yyy2, color="blue")
                 ppt.plot(x, y, '-r', label='y=')
 
                 ppt.grid()
@@ -211,20 +211,6 @@ def inpAnmeldung():
                 ppt.grid()
                 ppt.show()
 
-            '''def matplotbeispiel2():
-                x = np.linspace(-10, 10, 100)
-                a = 5
-                PX = 3
-                PY = 4
-                SX = 1
-                SY = 1
-                y = a * (PX - SX) ** 2 + SY
-                ppt.plot(x, y, '-r', label='y=')
-                ppt.title('Der Graph von y=4x+2')
-                ppt.xlabel('x')
-                ppt.ylabel('y')
-                ppt.grid()
-                ppt.show()'''
 
             Normalform = Label(Quadratisch, text="Normalform:")
             Normalform.pack()
@@ -293,91 +279,6 @@ def inpAnmeldung():
             Button1 = Button(Quadratisch, text="Ausführen", command=RechnungQuadr)
             Button1.pack()
             Button1.place(x=7, y=500)
-
-
-            '''Scheitelpunktform = Label(Quadratisch, text="Scheitelpunktform:")
-            Scheitelpunktform.pack()
-            Scheitelpunktform.place(x=650, y=10)
-
-            Labello_1 = Label(Quadratisch, text="a")
-            Labello_1.pack()
-            Labello_1.place(x=650, y=50)
-
-            Eingabe_1 = Entry(Quadratisch, bd=5, width=12)
-            Eingabe_1.pack()
-            Eingabe_1.place(x=650, y=75)
-
-            Labello_2 = Label(Quadratisch, text="Y-Punkt")
-            Labello_2.pack()
-            Labello_2.place(x=650, y=100)
-
-            Eingabe_2 = Entry(Quadratisch, bd=5, width=12)
-            Eingabe_2.pack()
-            Eingabe_2.place(x=650, y=125)
-
-            Labello_3 = Label(Quadratisch, text="X-Punkt")
-            Labello_3.pack()
-            Labello_3.place(x=650, y=150)
-
-            Eingabe___2 = Entry(Quadratisch, bd=5, width=12)
-            Eingabe___2.pack()
-            Eingabe___2.place(x=650, y=175)
-
-            Labello__2 = Label(Quadratisch, text="Y-SPunkt")
-            Labello__2.pack()
-            Labello__2.place(x=650, y=200)
-
-            Eingabe__2 = Entry(Quadratisch, bd=5, width=12)
-            Eingabe__2.pack()
-            Eingabe__2.place(x=650, y=225)
-
-            Labello__3 = Label(Quadratisch, text="X-SPunkt")
-            Labello__3.pack()
-            Labello__3.place(x=650, y=250)
-
-            Eingabe_3 = Entry(Quadratisch, bd=5, width=12)
-            Eingabe_3.pack()
-            Eingabe_3.place(x=650, y=275)
-
-            Labello_4 = Label(Quadratisch, text="von")
-            Labello_4.pack()
-            Labello_4.place(x=650, y=300)
-
-            Eingabe_4 = Entry(Quadratisch, bd=5, width=12)
-            Eingabe_4.pack()
-            Eingabe_4.place(x=650, y=325)
-
-            Labello__4 = Label(Quadratisch, text="bis")
-            Labello__4.pack()
-            Labello__4.place(x=650, y=350)
-
-            Eingabe_5 = Entry(Quadratisch, bd=5, width=12)
-            Eingabe_5.pack()
-            Eingabe_5.place(x=650, y=375)
-
-            Labello_5 = Label(Quadratisch, text="Y-Name")
-            Labello_5.pack()
-            Labello_5.place(x=650, y=400)
-
-            Eingabe_6 = Entry(Quadratisch, bd=5, width=12)
-            Eingabe_6.pack()
-            Eingabe_6.place(x=650, y=425)
-
-            Labello_6 = Label(Quadratisch, text="X-Name")
-            Labello_6.pack()
-            Labello_6.place(x=650, y=450)
-
-            Eingabe_7 = Entry(Quadratisch, bd=5, width=12)
-            Eingabe_7.pack()
-            Eingabe_7.place(x=650, y=475)
-
-            Button_2 = Button(Quadratisch, text="Beispiel", command=matplotbeispiel2)
-            Button_2.pack()
-            Button_2.place(x=650, y=500)
-
-            Button_1 = Button(Quadratisch, text="Ausführen")
-            Button_1.pack()
-            Button_1.place(x=650, y=525)'''
 
         elif Auswahl == "Ganzrationale-Funktionen":
             Ganzrational = Tk()
