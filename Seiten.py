@@ -164,6 +164,11 @@ def inpAnmeldung():
                 vv = float(von)
                 bb = float(bis)
 
+                ax = ppt.gca()  # koordinatensystem
+                ax.spines['top'].set_color('none')
+                ax.spines['bottom'].set_position('zero')
+                ax.spines['left'].set_position('zero')
+                ax.spines['right'].set_color('none')
 
                 x = np.linspace(vv, bb, 100)
 
@@ -181,12 +186,11 @@ def inpAnmeldung():
  
                 xA = 0
                 Zeile1 = xA - bb #Thermumformung (x-Wert bestimmen)
-                Zeile2 = aa / aa
-                Zeile3 = xA / aa
+                Zeile1 = Zeile1 / aa
 
-                yA = aa * xA ** 2 + bb * xA + cc #y-Wert bestimmen (In Grundform einsetzen)
+                yA = aa * Zeile1 ** 2 + bb * Zeile1 + cc #y-Wert bestimmen (In Grundform einsetzen)
 
-                xxx2=[xA] #Extrempunkt
+                xxx2=[Zeile1] #Extrempunkt
                 yyy2=[yA]
 
                 xxx=[pq, pq2,] #Nullstellen
