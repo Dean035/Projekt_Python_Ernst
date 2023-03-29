@@ -1,3 +1,4 @@
+import math
 from tkinter import *
 from Datenbank import *
 import matplotlib.pyplot as ppt
@@ -167,6 +168,31 @@ def inpAnmeldung():
                 x = np.linspace(vv, bb, 100)
 
                 y = aa * x ** 2 + bb * x + cc
+
+                bbb = bb / aa
+                aaa = aa / aa
+                ccc = cc / aa
+
+                pq = -bbb/2 + math.sqrt((bbb/2)**2 - (ccc))
+                pq2 = -bbb/2 - math.sqrt((bbb/2)**2 - (ccc))
+
+                Ableitung1 = aa * 2 + bb
+
+ 
+                yA = 0
+                Zeile1 = yA - bb
+                Zeile2 = aa / aa
+                Zeile3 = yA / aa
+                
+                xA
+
+
+                #if aa < 0:
+                #    Ableitung1kl =
+
+                xxx=[pq, pq2,]
+                yyy=[0, 0]
+                ppt.scatter(xxx, yyy, color="red")
                 ppt.plot(x, y, '-r', label='y=')
 
                 ppt.grid()
@@ -185,7 +211,7 @@ def inpAnmeldung():
                 ppt.grid()
                 ppt.show()
 
-            def matplotbeispiel2():
+            '''def matplotbeispiel2():
                 x = np.linspace(-10, 10, 100)
                 a = 5
                 PX = 3
@@ -198,7 +224,7 @@ def inpAnmeldung():
                 ppt.xlabel('x')
                 ppt.ylabel('y')
                 ppt.grid()
-                ppt.show()
+                ppt.show()'''
 
             Normalform = Label(Quadratisch, text="Normalform:")
             Normalform.pack()
@@ -269,7 +295,7 @@ def inpAnmeldung():
             Button1.place(x=7, y=500)
 
 
-            Scheitelpunktform = Label(Quadratisch, text="Scheitelpunktform:")
+            '''Scheitelpunktform = Label(Quadratisch, text="Scheitelpunktform:")
             Scheitelpunktform.pack()
             Scheitelpunktform.place(x=650, y=10)
 
@@ -351,7 +377,7 @@ def inpAnmeldung():
 
             Button_1 = Button(Quadratisch, text="Ausführen")
             Button_1.pack()
-            Button_1.place(x=650, y=525)
+            Button_1.place(x=650, y=525)'''
 
         elif Auswahl == "Ganzrationale-Funktionen":
             Ganzrational = Tk()
