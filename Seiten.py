@@ -292,8 +292,100 @@ def inpAnmeldung():
         elif Auswahl == "Trigonometrische-Funktionen":
             Trigonomisch = Tk()
             Trigonomisch.title("Trigonometrische-Funktionen")
-            Trigonomisch.geometry("400x400")
+            Trigonomisch.geometry("800x600")
             Trigonomisch.resizable(width=0, height=0)
+
+            def Rechnungtri():
+                ppt.title("Trigonometrische-Funktionen")
+                ppt.ylabel(TriEntry6.get())
+                ppt.xlabel(TriEntry7.get())
+                at = TriEntry1.get()
+                bt = TriEntry2.get()
+                ct = TriEntry3.get()
+                vont = TriEntry4.get()
+                bist = TriEntry5.get()
+                aat = float(at)
+                bbt = float(bt)
+                cct = float(ct)
+                vvt = float(vont)
+                bbt = float(bist)
+
+                ax = ppt.gca()  # koordinatensystem
+                ax.spines['top'].set_color('none')
+                ax.spines['bottom'].set_position('zero')
+                ax.spines['left'].set_position('zero')
+                ax.spines['right'].set_color('none')
+
+                x = np.linspace(vvt, bbt, 100)
+                ysin = aat * np.sin(bbt * x + cct)
+                ppt.plot(x, ysin, '-r', label='y=')
+                ppt.grid()
+                ppt.show()
+
+            TriLabel1 = Label(Trigonomisch, text="a")
+            TriLabel1.pack()
+            TriLabel1.place(x=7, y=25)
+
+            TriEntry1 = Entry(Trigonomisch, bd=5, width=12)
+            TriEntry1.pack()
+            TriEntry1.place(x=7, y=50)
+
+            TriLabel2 = Label(Trigonomisch, text="b")
+            TriLabel2.pack()
+            TriLabel2.place(x=7, y=75)
+
+            TriEntry2 = Entry(Trigonomisch, bd=5, width=12)
+            TriEntry2.pack()
+            TriEntry2.place(x=7, y=100)
+
+            TriLabel3 = Label(Trigonomisch, text="c")
+            TriLabel3.pack()
+            TriLabel3.place(x=7, y=125)
+
+            TriEntry3 = Entry(Trigonomisch, bd=5, width=12)
+            TriEntry3.pack()
+            TriEntry3.place(x=7, y=150)
+
+            TriLabel4 = Label(Trigonomisch, text="von")
+            TriLabel4.pack()
+            TriLabel4.place(x=7, y=175)
+
+            TriEntry4 = Entry(Trigonomisch, bd=5, width=12)
+            TriEntry4.pack()
+            TriEntry4.place(x=7, y=200)
+
+            TriLabel5 = Label(Trigonomisch, text="bis")
+            TriLabel5.pack()
+            TriLabel5.place(x=7, y=225)
+
+            TriEntry5 = Entry(Trigonomisch, bd=5, width=12)
+            TriEntry5.pack()
+            TriEntry5.place(x=7, y=250)
+
+            TriLabel6 = Label(Trigonomisch, text="Y-Name")
+            TriLabel6.pack()
+            TriLabel6.place(x=7, y=275)
+
+            TriEntry6 = Entry(Trigonomisch, bd=5, width=12)
+            TriEntry6.pack()
+            TriEntry6.place(x=7, y=300)
+
+            TriLabel7 = Label(Trigonomisch, text="X-Name")
+            TriLabel7.pack()
+            TriLabel7.place(x=7, y=325)
+
+            TriEntry7 = Entry(Trigonomisch, bd=5, width=12)
+            TriEntry7.pack()
+            TriEntry7.place(x=7, y=350)
+
+            Buttontri2 = Button(Trigonomisch, text="Beispiel")
+            Buttontri2.pack()
+            Buttontri2.place(x=7, y=450)
+
+            Buttontri1 = Button(Trigonomisch, text="Ausführen", command=Rechnungtri)
+            Buttontri1.pack()
+            Buttontri1.place(x=7, y=500)
+
         elif Auswahl == "Exponential-Funktionen":
             Exponential = Tk()
             Exponential.title("Exponential-Funktionen")
