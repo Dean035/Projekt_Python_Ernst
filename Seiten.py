@@ -1,7 +1,7 @@
 import math
 from tkinter import *
 from Datenbank import *
-import matplotlib.pyplot as ppt
+import matplotlib.pyplot as plt
 import numpy as np
 
 
@@ -42,14 +42,14 @@ def inpAnmeldung():
 
 
     def lingraf():
-        ppt.ylabel('numbers')
-        ppt.plot([1, 2, 3, 4])
+        plt.ylabel('numbers')
+        plt.plot([1, 2, 3, 4])
         #dd_x = [1, 6, 9, 7, 90]
 
         #dd_y = [3, 5, 7, 89, 90]
 
-        #ppt.plot([dd_x], [dd_y])
-        ppt.show()
+        #plt.plot([dd_x], [dd_y])
+        plt.show()
 
     def show(selection):
 
@@ -93,9 +93,9 @@ def inpAnmeldung():
             lab6.place(x=7, y=145)
 
             def Rechnen():          #Formel für Lineare-Funktion
-                ppt.title("Lineare-Funktion")
-                ppt.ylabel(ybeschriftung.get())
-                ppt.xlabel(xbeschriftung.get())
+                plt.title("Lineare-Funktion")
+                plt.ylabel(ybeschriftung.get())
+                plt.xlabel(xbeschriftung.get())
                 vonl = vonle.get()
                 bisl = bisle.get()
                 btext = btexte.get()
@@ -105,8 +105,8 @@ def inpAnmeldung():
                 mtext = float(mtext)
                 bisl = float(bisl)
 
-                aaa = ppt.gca()
-                ppt.gca().set_aspect('equal')
+                aaa = plt.gca()
+                plt.gca().set_aspect('equal')
                 aaa.set_xticks(range(-10, 10, 1))
                 aaa.set_yticks(range(-10, 10, 1))
                 aaa.set_xlim([vonl, bisl])
@@ -115,19 +115,19 @@ def inpAnmeldung():
                 X =np.linspace(-10,10,100)
                 Y = mtext * X + btext
 
-                ppt.grid()
-                ppt.plot(X, Y)
-                ppt.show()
+                plt.grid()
+                plt.plot(X, Y)
+                plt.show()
 
             def Beispill():
                 x = np.linspace(-5, 5, 100)
                 y = 4 * x + 2
-                ppt.plot(x, y, '-r', label='y=4x+2')
-                ppt.title('Der Graph von y=4x+2')
-                ppt.xlabel('x')
-                ppt.ylabel('y')
-                ppt.grid()
-                ppt.show()
+                plt.plot(x, y, '-r', label='y=4x+2')
+                plt.title('Der Graph von y=4x+2')
+                plt.xlabel('x')
+                plt.ylabel('y')
+                plt.grid()
+                plt.show()
 
             butoon1 = Button(fenster, text="Ausführen", command=Rechnen)#buttons
             butoon2 = Button(fenster, text="Beispiele", command=Beispill)
@@ -150,9 +150,9 @@ def inpAnmeldung():
             Quadratisch.resizable(width=0, height=0)
 
             def RechnungQuadr():
-                ppt.title("Quadratischen-Funktion")
-                ppt.ylabel(Eingabe6.get())
-                ppt.xlabel(Eingabe7.get())
+                plt.title("Quadratischen-Funktion")
+                plt.ylabel(Eingabe6.get())
+                plt.xlabel(Eingabe7.get())
                 a = Eingabe1.get()
                 b = Eingabe2.get()
                 c = Eingabe3.get()
@@ -164,7 +164,7 @@ def inpAnmeldung():
                 vv = float(von)
                 bb = float(bis)
 
-                ax = ppt.gca()  # koordinatensystem
+                ax = plt.gca()  # koordinatensystem
                 ax.spines['top'].set_color('none')
                 ax.spines['bottom'].set_position('zero')
                 ax.spines['left'].set_position('zero')
@@ -195,12 +195,12 @@ def inpAnmeldung():
 
                 xxx=[pq, pq2,] #Nullstellen
                 yyy=[0, 0]
-                ppt.scatter(xxx, yyy, color="red")
-                ppt.scatter(xxx2, yyy2, color="blue")
-                ppt.plot(x, y, '-r', label='y=')
+                plt.scatter(xxx, yyy, color="red")
+                plt.scatter(xxx2, yyy2, color="blue")
+                plt.plot(x, y, '-r', label='y=')
 
-                ppt.grid()
-                ppt.show()
+                plt.grid()
+                plt.show()
 
             def matplotbeispiel():
                 x = np.linspace(-10, 10, 100)
@@ -208,12 +208,12 @@ def inpAnmeldung():
                 b = 3
                 c = 4
                 y = (a * x ** 2) + (b * x) + c
-                ppt.plot(x, y, '-r', label='y=')
-                ppt.title('Der Graph von y=4x+2')
-                ppt.xlabel('x')
-                ppt.ylabel('y')
-                ppt.grid()
-                ppt.show()
+                plt.plot(x, y, '-r', label='y=')
+                plt.title('Der Graph von y=4x+2')
+                plt.xlabel('x')
+                plt.ylabel('y')
+                plt.grid()
+                plt.show()
 
 
             Normalform = Label(Quadratisch, text="Normalform:")
@@ -296,9 +296,9 @@ def inpAnmeldung():
             Trigonomisch.resizable(width=0, height=0)
 
             def Rechnungtri():
-                ppt.title("Trigonometrische-Funktionen")
-                ppt.ylabel(TriEntry6.get())
-                ppt.xlabel(TriEntry7.get())
+                plt.title("Trigonometrische-Funktionen")
+                plt.ylabel(TriEntry6.get())
+                plt.xlabel(TriEntry7.get())
                 at = TriEntry1.get()
                 bt = TriEntry2.get()
                 ct = TriEntry3.get()
@@ -310,17 +310,23 @@ def inpAnmeldung():
                 vvt = float(vont)
                 bbt = float(bist)
 
-                ax = ppt.gca()  # koordinatensystem
+                ax = plt.gca()  # koordinatensystem
                 ax.spines['top'].set_color('none')
                 ax.spines['bottom'].set_position('zero')
                 ax.spines['left'].set_position('zero')
                 ax.spines['right'].set_color('none')
 
                 x = np.linspace(vvt, bbt, 100)
-                ysin = aat * np.sin(bbt * x + cct)
-                ppt.plot(x, ysin, '-r', label='y=')
-                ppt.grid()
-                ppt.show()
+                ysin = aat * np.sin(bbt * (x + cct))
+                ycos = aat * np.cos(x) + bbt* np.cos(x) + cct * np.cos(x)
+                ytan = aat * np.tan(bbt * x + cct)
+                Test = np.sin(bbt * x + cct)
+                print(Test)
+                plt.plot(x, ycos, color="blue")
+                plt.plot(x, ysin, color="green")
+                plt.plot(x, ytan, color="purple")
+                plt.grid()
+                plt.show()
 
             TriLabel1 = Label(Trigonomisch, text="a")
             TriLabel1.pack()
@@ -434,8 +440,8 @@ def register():
         RgstinpPasswort = RgstPassworteingabe.get()
         RgstinpPasswortConfirm = RgstConfirmeingabe.get()
 
-        if RgstinpPasswort == RgstinpPasswortConfirm and RgstinpBenutzername != "":
-            if PrüfungRgst(RgstinpBenutzername):
+        if RgstinpPasswort == RgstinpPasswortConfirm and RgstinpBenutzername != "": #Benutzername darf nicht nichts sein und Passwort und Confirm muss gleich sein
+            if PrüfungRgst(RgstinpBenutzername): #Check ob benutzername existiert
                 print(RgstinpBenutzername, RgstinpPasswort, RgstinpPasswortConfirm)
                 NewAcc(RgstBenutzereingabe.get(), RgstPassworteingabe.get())
                 Ausgabe()
@@ -470,12 +476,14 @@ def register():
             LabelFail.pack()
             OkButton.pack()
 
+
+
     RgstBenutzername = Label(Register, text="Benutzername")
     RgstBenutzereingabe = Entry(Register, bd=5, width=40)
     RgstPasswort = Label(Register, text="Passwort")
-    RgstPassworteingabe = Entry(Register, bd=5, width=40)
+    RgstPassworteingabe = Entry(Register, bd=5, width=40, show="*")
     RgstConfirm = Label(Register, text="Bestätigung des Passworts")
-    RgstConfirmeingabe = Entry(Register, bd=5, width=40)
+    RgstConfirmeingabe = Entry(Register, bd=5, width=40, show="*")
 
     RgstButton = Button(Register, text="Registrieren", command=Rgstinp)
 
@@ -489,13 +497,15 @@ def register():
 
 
 
+
 Rgstlabel = Label(Anmeldung, text="Wenn Sie noch keinen Account besitzen Drücken sie bitte hier:")
 Rgstbutton = Button(Anmeldung, text="Registration", command=register)
 Benutzernamelabel = Label(Anmeldung, text="Benutzername")
 Anmeldungsbutton = Button(Anmeldung, text="Anmelden", command=inpAnmeldung)
 Benutzernameeingabe = Entry(Anmeldung, bd=5, width=40)
 Passwortlabel = Label(Anmeldung, text="Passwort")
-Passworteingabe = Entry(Anmeldung, bd=5, width=40)
+Passworteingabe = Entry(Anmeldung, bd=5, width=40, show="*")
+
 
 Benutzernamelabel.pack()
 Benutzernameeingabe.pack()
