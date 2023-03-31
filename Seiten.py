@@ -90,14 +90,13 @@ def inpAnmeldung():
                 mtext = float(mtext)
                 bisl = float(bisl)
 
-                aaa = plt.gca()
-                plt.gca().set_aspect('equal')
-                aaa.set_xticks(range(-10, 10, 1))
-                aaa.set_yticks(range(-10, 10, 1))
-                aaa.set_xlim([vonl, bisl])
-                aaa.set_ylim([vonl, bisl])
+                ax = plt.gca()  # krodinaten systeme
+                ax.spines['top'].set_color('none')
+                ax.spines['bottom'].set_position('zero')
+                ax.spines['left'].set_position('zero')
+                ax.spines['right'].set_color('none')
 
-                X = np.linspace(-10, 10, 100)
+                X = np.linspace(vonl,bisl, 100)
                 Y = mtext * X + btext
 
                 plt.grid()
@@ -216,7 +215,7 @@ def inpAnmeldung():
                 ax.spines['left'].set_position('zero')
                 ax.spines['right'].set_color('none')
 
-                x = np.linspace(vong,bisg,500)  # erstellt ein array mit 100 glechmäsig verteielten x werten zwischen -10 und 10
+                x = np.linspace(vong,bisg,500) # erstellt ein array mit 100 glechmäsig verteielten x werten zwischen -10 und 10
 
                 if ng_ausgabe == 3:
                         y = ag_ausgabe * x ** 3 + var2_ausgabe * x ** 2 + var3_ausgabe * x ** 1 \
@@ -263,11 +262,99 @@ def inpAnmeldung():
             Trigonomisch.title("Trigonometrische-Funktionen")
             Trigonomisch.geometry("800x600")
             Trigonomisch.resizable(width=0, height=0)
+
+
         elif Auswahl == "Exponential-Funktionen":
             Exponential = Tk()
             Exponential.title("Exponential-Funktionen")
-            Exponential.geometry("400x400")
+            Exponential.geometry("800x600")
             Exponential.resizable(width=0, height=0)
+
+            bise = Entry(Exponential, bd=5, width=12)  # wie weit y geht (bis) start = 0 (textboxen)
+            lab1 = Label(Exponential, text="bis")
+            lab1.pack()
+            lab1.place(x=7, y=435)
+            bise.pack()
+            bise.place(x=7, y=460)
+
+            vone = Entry(Exponential, bd=5, width=12)  # wie weit x geht (textboxen)
+            lab2 = Label(Exponential, text="von")
+            lab2.pack()
+            lab2.place(x=7, y=375)
+            vone.pack()
+            vone.place(x=7, y=400)
+
+            Y_achse = Entry(Exponential, bd=5, width=12)  # yachsenabschnitt (textboxen)
+            lab3 = Label(Exponential, text="Y-Achsenabschnit")
+            lab3.pack()
+            lab3.place(x=7, y=315)
+            Y_achse.pack()
+            Y_achse.place(x=7, y=340)
+
+            m_steigung = Entry(Exponential, bd=5, width=12)  # steigung (textboxen)
+            lab4 = Label(Exponential, text="Steigung")
+            lab4.pack()
+            lab4.place(x=7, y=255)
+            m_steigung.pack()
+            m_steigung.place(x=7, y=280)
+
+            ctexte = Entry(Exponential, bd=5, width=12)  # steigung (textboxen)
+            lab4 = Label(Exponential, text="c")
+            lab4.pack()
+            lab4.place(x=100, y=255)
+            ctexte.pack()
+            ctexte.place(x=100, y=280)
+
+            x_name = Entry(Exponential, bd=5, width=12)  # name für xseite (textboxen)
+            lab5 = Label(Exponential, text="Name-X")
+            lab5.pack()
+            lab5.place(x=7, y=205)
+            x_name.pack()
+            x_name.place(x=7, y=230)
+
+            y_Name = Entry(Exponential, bd=5, width=12)  # name für yseite (textboxen)
+            lab6 = Label(Exponential, text="Name-Y")
+            lab6.pack()
+            lab6.place(x=7, y=145)
+            y_Name.pack()
+            y_Name.place(x=7, y=170)
+
+            def RechnenExpo():  # Formel für Exponential-Funktion
+                plt.title("Exponential-Funktion")
+                plt.ylabel(y_Name.get())
+                plt.xlabel(x_name.get())
+                vonx = vone.get()
+                bisx = bise.get()
+                ctext = ctexte.get()
+                Steigung_m = m_steigung.get()
+                Achse_Y = Y_achse.get()
+                vonx = float(vonx)
+                bisx = float(bisx)
+                ctext = float(ctext)
+                Steigung_m = float(Steigung_m)
+                Achse_Y = float(Achse_Y)
+
+                ax = plt.gca()  # krodinaten systeme
+                ax.spines['top'].set_color('none')
+                ax.spines['bottom'].set_position('zero')
+                ax.spines['left'].set_position('zero')
+                ax.spines['right'].set_color('none')
+
+                X = np.linspace(vonx, bisx, 100)
+                Y = Steigung_m * (Achse_Y ** X) + ctext
+
+                plt.grid()
+                plt.plot(X, Y)
+                plt.show()
+
+            buttonEx = Button(Exponential,text="Ausführen", command=RechnenExpo)
+            buttonEx.pack()
+            buttonEx.place(x=7,y=40)
+
+            # butoon4 = Button(Exponential, text="Beispiele", command=BeispillExpo)
+            # butoon4.pack()
+            # butoon4.place(x=7, y=555)
+
         elif Auswahl == "Einstieg-Differenzialrechnung":
             Differenzial = Tk()
             Differenzial.title("Einstieg-Differenzialrechnung")
