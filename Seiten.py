@@ -144,13 +144,14 @@ def inpAnmeldung():
 
         elif Auswahl == "Quadratische-Funktion":
             Quadratisch = Tk()
-            Quadratisch.title("Quadratische-Funktion")
+            Quadratisch.title("Quadratische-Funktion Ableitung1 =")
             Quadratisch.geometry("400x400")
             Quadratisch.geometry("800x600")
             Quadratisch.resizable(width=0, height=0)
 
             def RechnungQuadr():
                 plt.title("Quadratischen-Funktion")
+
                 plt.ylabel(Eingabe6.get())
                 plt.xlabel(Eingabe7.get())
                 a = Eingabe1.get()
@@ -163,6 +164,7 @@ def inpAnmeldung():
                 cc = float(c)
                 vv = float(von)
                 bb = float(bis)
+
 
                 ax = plt.gca()  # koordinatensystem
                 ax.spines['top'].set_color('none')
@@ -183,7 +185,7 @@ def inpAnmeldung():
 
                 Ableitung1 = aa * x + bb
 
- 
+
                 xA = 0
                 Zeile1 = xA - bb #Thermumformung (x-Wert bestimmen)
                 Zeile1 = Zeile1 / aa
@@ -208,6 +210,18 @@ def inpAnmeldung():
                 b = 3
                 c = 4
                 y = (a * x ** 2) + (b * x) + c
+
+                bbe = b / a #Normalisierung
+                aab = a / a
+                ccb = c / a
+
+                pb = -bbe/2 + math.sqrt((bbe/2)**2 - (ccb))
+                pb2 = -bbe/2 - math.sqrt((bbe/2)**2 - (ccb))
+                xxb=[pb,pb2]
+                yyb=[0,0]
+
+
+                plt.scatter(xxb, yyb, color="red")
                 plt.plot(x, y, '-r', label='y=')
                 plt.title('Der Graph von y=4x+2')
                 plt.xlabel('x')
@@ -308,7 +322,7 @@ def inpAnmeldung():
                 bbt = float(bt)
                 cct = float(ct)
                 vvt = float(vont)
-                bbt = float(bist)
+                bbit = float(bist)
 
                 ax = plt.gca()  # koordinatensystem
                 ax.spines['top'].set_color('none')
@@ -316,15 +330,32 @@ def inpAnmeldung():
                 ax.spines['left'].set_position('zero')
                 ax.spines['right'].set_color('none')
 
-                x = np.linspace(vvt, bbt, 100)
-                ysin = aat * np.sin(bbt * (x + cct))
-                ycos = aat * np.cos(x) + bbt* np.cos(x) + cct * np.cos(x)
-                ytan = aat * np.tan(bbt * x + cct)
+                x = np.linspace(vvt, bbit, 100)
+                ysin = aat * np.sin(bbt * x + cct)
+                ycos = aat * np.cos(bbt * x + cct)
+                #ytan = aat * np.tan(bbt * x + cct)
                 Test = np.sin(bbt * x + cct)
                 print(Test)
                 plt.plot(x, ycos, color="blue")
                 plt.plot(x, ysin, color="green")
-                plt.plot(x, ytan, color="purple")
+                #plt.plot(x, ytan, color="purple")
+                plt.grid()
+                plt.show()
+
+            def Beispieltri():
+                plt.title('Der Graph von f(x) = 2 * sin(2x + 2) und f(x) = 2 * cos(2x + 2) ')
+                ax = plt.gca()  # koordinatensystem
+                ax.spines['top'].set_color('none')
+                ax.spines['bottom'].set_position('zero')
+                ax.spines['left'].set_position('zero')
+                ax.spines['right'].set_color('none')
+
+
+                x = np.linspace(-10, 10, 100)
+                sinn = 2 * np.sin(2 * x + 2)
+                coss = 2 * np.cos(2 * x + 2)
+                plt.plot(x, sinn, color="blue")
+                plt.plot(x, coss, color="green")
                 plt.grid()
                 plt.show()
 
@@ -384,7 +415,7 @@ def inpAnmeldung():
             TriEntry7.pack()
             TriEntry7.place(x=7, y=350)
 
-            Buttontri2 = Button(Trigonomisch, text="Beispiel")
+            Buttontri2 = Button(Trigonomisch, text="Beispiel", command=Beispieltri)
             Buttontri2.pack()
             Buttontri2.place(x=7, y=450)
 
