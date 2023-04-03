@@ -159,12 +159,15 @@ def inpAnmeldung():
                 c = Eingabe3.get()
                 von = Eingabe4.get()
                 bis = Eingabe5.get()
+                Ivon = Eingabe8.get()
+                Ibis = Eingabe9.get()
                 aa = float(a)
                 bb = float(b)
                 cc = float(c)
                 vv = float(von)
                 bb = float(bis)
-
+                IIvon= float(Ivon)
+                IIbis= float(Ibis)
 
                 ax = plt.gca()  # koordinatensystem
                 ax.spines['top'].set_color('none')
@@ -200,6 +203,9 @@ def inpAnmeldung():
                 plt.scatter(xxx, yyy, color="red")
                 plt.scatter(xxx2, yyy2, color="blue")
                 plt.plot(x, y, '-r', label='y=')
+
+                Integraal = aa/3* IIbis**3-aa/3*IIvon**3
+                print(Integraal)
 
                 plt.grid()
                 plt.show()
@@ -290,6 +296,22 @@ def inpAnmeldung():
             Eingabe7.pack()
             Eingabe7.place(x=7, y=350)
 
+            Labello8 = Label(Quadratisch, text="Integral von")
+            Labello8.pack()
+            Labello8.place(x=100, y=25)
+
+            Eingabe8 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe8.pack()
+            Eingabe8.place(x=100, y=50)
+
+            Labello9 = Label(Quadratisch, text="Integral bis")
+            Labello9.pack()
+            Labello9.place(x=100, y=75)
+
+            Eingabe9 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe9.pack()
+            Eingabe9.place(x=100, y=100)
+
             Button2 = Button(Quadratisch, text="Beispiel", command=matplotbeispiel)
             Button2.pack()
             Button2.place(x=7, y=450)
@@ -334,8 +356,6 @@ def inpAnmeldung():
                 ysin = aat * np.sin(bbt * x + cct)
                 ycos = aat * np.cos(bbt * x + cct)
                 #ytan = aat * np.tan(bbt * x + cct)
-                Test = np.sin(bbt * x + cct)
-                print(Test)
                 plt.plot(x, ycos, color="blue")
                 plt.plot(x, ysin, color="green")
                 #plt.plot(x, ytan, color="purple")
@@ -441,8 +461,77 @@ def inpAnmeldung():
         elif Auswahl == "Integralrechnung":
             Integral = Tk()
             Integral.title("Integralrechnung")
-            Integral.geometry("400x400")
+            Integral.geometry("800x600")
             Integral.resizable(width=0, height=0)
+
+            def RechnungIntegral():
+                plt.title("Integralrechnung")
+                plt.ylabel(IntEntry4.get())
+                plt.xlabel(IntEntry5.get())
+                ci = IntEntry1.get()
+                voni = IntEntry2.get()
+                bisi = IntEntry3.get()
+                cci = float(ci)
+                vvoni = float(voni)
+                bbisi = float(bisi)
+
+
+                ax = plt.gca()  # koordinatensystem
+                ax.spines['top'].set_color('none')
+                ax.spines['bottom'].set_position('zero')
+                ax.spines['left'].set_position('zero')
+                ax.spines['right'].set_color('none')
+
+                xii = np.linspace(vvoni, bbisi, 100)
+                yii = xii**2
+
+                plt.plot(xii, yii, color="blue")
+                plt.grid()
+                plt.show()
+
+            IntLabel1 = Label(Integral, text="c")
+            IntLabel1.pack()
+            IntLabel1.place(x=7, y=25)
+
+            IntEntry1 = Entry(Integral, bd=5, width=12)
+            IntEntry1.pack()
+            IntEntry1.place(x=7, y=50)
+
+            IntLabel2 = Label(Integral, text="von")
+            IntLabel2.pack()
+            IntLabel2.place(x=7, y=75)
+
+            IntEntry2 = Entry(Integral, bd=5, width=12)
+            IntEntry2.pack()
+            IntEntry2.place(x=7, y=100)
+
+            IntLabel3 = Label(Integral, text="bis")
+            IntLabel3.pack()
+            IntLabel3.place(x=7, y=125)
+
+            IntEntry3 = Entry(Integral, bd=5, width=12)
+            IntEntry3.pack()
+            IntEntry3.place(x=7, y=150)
+
+            IntLabel4 = Label(Integral, text="Y-Name")
+            IntLabel4.pack()
+            IntLabel4.place(x=7, y=175)
+
+            IntEntry4 = Entry(Integral, bd=5, width=12)
+            IntEntry4.pack()
+            IntEntry4.place(x=7, y=200)
+
+            IntLabel5 = Label(Integral, text="X-Name")
+            IntLabel5.pack()
+            IntLabel5.place(x=7, y=225)
+
+            IntEntry5 = Entry(Integral, bd=5, width=12)
+            IntEntry5.pack()
+            IntEntry5.place(x=7, y=250)
+
+            ButtonInt1 = Button(Integral, text="Ausführen", command=RechnungIntegral)
+            ButtonInt1.pack()
+            ButtonInt1.place(x=7, y=500)
 
     drop = OptionMenu(Mainwindow, Funktionen, "Lineare-Funktion", "Quadratische-Funktion",
                       "Ganzrationale-Funktionen", "Trigonometrische-Funktionen", "Exponential-Funktionen",
