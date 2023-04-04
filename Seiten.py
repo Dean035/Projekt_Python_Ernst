@@ -92,7 +92,28 @@ def inpAnmeldung():
             lab6.pack()
             lab6.place(x=7, y=145)
 
+            IntLinVon = Label(fenster, text="Integral von")
+            IntLinVon.pack()
+            IntLinVon.place(x=100, y=205)
+
+            IntLinVon1 = Entry(fenster, bd=5, width=12)
+            IntLinVon1.pack()
+            IntLinVon1.place(x=100, y=225)
+
+            IntLinBis1 = Label(fenster, text="Integral bis")
+            IntLinBis1.pack()
+            IntLinBis1.place(x=100, y=255)
+
+            IntLinBis2 = Entry(fenster, bd=5, width=12)
+            IntLinBis2.pack()
+            IntLinBis2.place(x=100, y=275)
+
             def Rechnen():          #Formel für Lineare-Funktion
+                iIntegrall = Tk()
+                iIntegrall.title("Ergebnis Integral")
+                iIntegrall.geometry("500x50")
+                iIntegrall.resizable(width=0, height=0)
+
                 plt.title("Lineare-Funktion")
                 plt.ylabel(ybeschriftung.get())
                 plt.xlabel(xbeschriftung.get())
@@ -100,6 +121,10 @@ def inpAnmeldung():
                 bisl = bisle.get()
                 btext = btexte.get()
                 mtext = mtexte.get()
+                LIvon = IntLinVon1.get()
+                LIbis = IntLinBis2.get()
+                LLIvon = float(LIvon)
+                LLIbis = float(LIbis)
                 vonl = float(vonl)
                 btext = float(btext)
                 mtext = float(mtext)
@@ -114,6 +139,15 @@ def inpAnmeldung():
 
                 X =np.linspace(-10,10,100)
                 Y = mtext * X + btext
+
+                iIntegraal = mtext / 2 * LLIbis ** 2 - mtext / 2 * LLIvon ** 2
+
+                LabelIntegrall = Label(iIntegrall, text=iIntegraal)
+                LabelIntegrall.pack()
+
+                xxx3 = [LLIvon, LLIbis]
+                yyy3 = [0, 0]
+                plt.scatter(xxx3, yyy3, color="green")
 
                 plt.grid()
                 plt.plot(X, Y)
@@ -150,6 +184,11 @@ def inpAnmeldung():
             Quadratisch.resizable(width=0, height=0)
 
             def RechnungQuadr():
+                Integrall = Tk()
+                Integrall.title("Ergebnis Integral")
+                Integrall.geometry("500x50")
+                Integrall.resizable(width=0, height=0)
+
                 plt.title("Quadratischen-Funktion")
 
                 plt.ylabel(Eingabe6.get())
@@ -200,6 +239,10 @@ def inpAnmeldung():
 
                 xxx=[pq, pq2,] #Nullstellen
                 yyy=[0, 0]
+
+                xxx3=[IIvon, IIbis]
+                yyy3=[0,0]
+                plt.scatter(xxx3, yyy3, color="green")
                 plt.scatter(xxx, yyy, color="red")
                 plt.scatter(xxx2, yyy2, color="blue")
                 plt.plot(x, y, '-r', label='y=')
@@ -207,14 +250,17 @@ def inpAnmeldung():
                 Integraal = aa/3* IIbis**3-aa/3*IIvon**3
                 print(Integraal)
 
+                LabelIntegrall = Label(Integrall, text=Integraal)
+                LabelIntegrall.pack()
+
                 plt.grid()
                 plt.show()
 
             def matplotbeispiel():
                 x = np.linspace(-10, 10, 100)
                 a = 5
-                b = 3
-                c = 4
+                b = 7
+                c = 2
                 y = (a * x ** 2) + (b * x) + c
 
                 bbe = b / a #Normalisierung
