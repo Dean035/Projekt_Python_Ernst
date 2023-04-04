@@ -1,3 +1,4 @@
+import math
 from tkinter import *
 from Datenbank import *
 import matplotlib.pyplot as plt
@@ -123,11 +124,161 @@ def inpAnmeldung():
             xbeschriftung.place(x=7, y=230), ybeschriftung.place(x=7, y=170), butoon1.place(x=7, y=40),
             butoon2.place(x=7, y=555)  # wo stehen die einzelen buttons usw
 
+
         elif Auswahl == "Quadratische-Funktion":
+
             Quadratisch = Tk()
-            Quadratisch.title("Quadratische-Funktion")
+            Quadratisch.title("Quadratische-Funktion Ableitung1 =")
             Quadratisch.geometry("400x400")
+            Quadratisch.geometry("800x600")
             Quadratisch.resizable(width=0, height=0)
+
+            def RechnungQuadr():
+
+                plt.title("Quadratischen-Funktion")
+                plt.ylabel(Eingabe6.get())
+                plt.xlabel(Eingabe7.get())
+                a = Eingabe1.get()
+                b = Eingabe2.get()
+                c = Eingabe3.get()
+                von = Eingabe4.get()
+                bis = Eingabe5.get()
+                aa = float(a)
+                bb = float(b)
+                cc = float(c)
+                vonv = float(von)
+                bisb = float(bis)
+
+                ax = plt.gca()  # koordinatensystem
+                ax.spines['top'].set_color('none')
+                ax.spines['bottom'].set_position('zero')
+                ax.spines['left'].set_position('zero')
+                ax.spines['right'].set_color('none')
+
+                x = np.linspace(vonv, bisb, 100)
+                y = aa * x ** 2 + bb * x + cc
+                bbb = bb / aa  # Normalisierung
+                aaa = aa / aa
+                ccc = cc / aa
+
+                pq1 = -bbb / 2 + math.sqrt((bbb / 2) ** 2 - (ccc))  # pq-Formel
+                pq2 = -bbb / 2 - math.sqrt((bbb / 2) ** 2 - (ccc))  # pq-Formel
+
+                PunktX = -bb / (2 * aa)   # Berechnung des Scheitelpunktes /Gleicung der Parabel
+                PuniktY = aa * PunktX ** 2 + bb * PunktX + cc  # Berechenet die Kordinaten des Scheitelpunktes
+
+                xxx = [pq1, pq2]  # Nullstellen
+                yyy = [0, 0]
+
+                plt.scatter(xxx, yyy, color="red")
+                plt.scatter( x=PunktX,y=PuniktY, color="blue")
+                plt.plot(x, y, '-r', label='y=')
+                plt.grid()
+                plt.show()
+
+            def matplotbeispiel():
+
+                ax = plt.gca()  # koordinatensystem
+                ax.spines['top'].set_color('none')
+                ax.spines['bottom'].set_position('zero')
+                ax.spines['left'].set_position('zero')
+                ax.spines['right'].set_color('none')
+
+                x = np.linspace(-5, 5, 100)
+                a = 7
+                b = 3
+                c = -3
+
+                y = (a * x ** 2) + (b * x) + c
+                bbe = b / a  # Normalisierung
+                aab = a / a
+                ccb = c / a
+
+                Punktx = -b / (2 * a)  # Berechnung des Scheitelpunktes /Gleicung der Parabel
+                Punikty = a * Punktx ** 2 + b * Punktx + c  # Berechenet die Kordinaten des Scheitelpunktes
+
+
+                pb1 = -bbe / 2 + math.sqrt((bbe / 2) ** 2 - (ccb))
+                pb2 = -bbe / 2 - math.sqrt((bbe / 2) ** 2 - (ccb))
+                xxb = [pb1, pb2]
+                yyb = [0, 0]
+
+                plt.scatter(xxb, yyb, color="red")
+                plt.scatter(Punktx,Punikty, color="blue")
+                plt.plot(x, y, '-r', label='y=')
+                plt.title('Der Graph von y=4x+2')
+                plt.xlabel('x')
+                plt.ylabel('y')
+                plt.grid()
+                plt.show()
+
+            Normalform = Label(Quadratisch, text="Normalform:")
+            Normalform.pack()
+            Normalform.place(x=7, y=10)
+
+            Labello1 = Label(Quadratisch, text="a")
+            Labello1.pack()
+            Labello1.place(x=7, y=25)
+
+            Eingabe1 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe1.pack()
+            Eingabe1.place(x=7, y=50)
+
+            Labello2 = Label(Quadratisch, text="b")
+            Labello2.pack()
+            Labello2.place(x=7, y=75)
+
+            Eingabe2 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe2.pack()
+            Eingabe2.place(x=7, y=100)
+
+            Labello3 = Label(Quadratisch, text="c")
+            Labello3.pack()
+            Labello3.place(x=7, y=125)
+
+            Eingabe3 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe3.pack()
+            Eingabe3.place(x=7, y=150)
+
+            Labello4 = Label(Quadratisch, text="von")
+            Labello4.pack()
+            Labello4.place(x=7, y=175)
+
+            Eingabe4 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe4.pack()
+            Eingabe4.place(x=7, y=200)
+
+            Labello4 = Label(Quadratisch, text="bis")
+            Labello4.pack()
+            Labello4.place(x=7, y=225)
+
+            Eingabe5 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe5.pack()
+            Eingabe5.place(x=7, y=250)
+
+            Labello5 = Label(Quadratisch, text="Y-Name")
+            Labello5.pack()
+            Labello5.place(x=7, y=275)
+
+            Eingabe6 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe6.pack()
+            Eingabe6.place(x=7, y=300)
+
+            Labello6 = Label(Quadratisch, text="X-Name")
+            Labello6.pack()
+            Labello6.place(x=7, y=325)
+
+            Eingabe7 = Entry(Quadratisch, bd=5, width=12)
+            Eingabe7.pack()
+            Eingabe7.place(x=7, y=350)
+
+            Button2 = Button(Quadratisch, text="Beispiel", command=matplotbeispiel)
+            Button2.pack()
+            Button2.place(x=7, y=450)
+
+            Button1 = Button(Quadratisch, text="Ausführen", command=RechnungQuadr)
+            Button1.pack()
+            Button1.place(x=7, y=500)
 
 
 
@@ -194,6 +345,8 @@ def inpAnmeldung():
                 plt.xlabel(xbeschriftungg.get())
                 bisg = bisge.get()
                 vong = vonge.get()
+                bisg = float(bisg)
+                vong = float(vong)
                 ag_ausgabe = a_ausgabe.get()
                 ng_ausgabe = n_ausgabe.get()
                 var2_ausgabe = n2_ausgabe.get()
@@ -206,8 +359,7 @@ def inpAnmeldung():
                 var4_Ausgabe = float(var4_Ausgabe)
                 var5_Ausgabe = n5_ausgabe.get()
                 var5_Ausgabe = float(var5_Ausgabe)
-                bisg = float(bisg)
-                vong = float(vong)
+
 
                 ax = plt.gca()  # krodinaten systeme
                 ax.spines['top'].set_color('none')
@@ -215,14 +367,14 @@ def inpAnmeldung():
                 ax.spines['left'].set_position('zero')
                 ax.spines['right'].set_color('none')
 
-                x = np.linspace(vong,bisg,500) # erstellt ein array mit 100 glechmäsig verteielten x werten zwischen -10 und 10
+                x_Poly = np.linspace(vong,bisg,500) # erstellt ein array mit 100 glechmäsig verteielten x werten zwischen von und  bis
 
                 if ng_ausgabe == 3:
-                        y = ag_ausgabe * x ** 3 + var2_ausgabe * x ** 2 + var3_ausgabe * x ** 1 \
-                            + var4_Ausgabe
+                        y_poly = (ag_ausgabe * x_Poly ** 3) + (var2_ausgabe * x_Poly ** 2) + (var3_ausgabe * x_Poly ** 1) \
+                            + (var4_Ausgabe * x_Poly ** 0)
                 elif ng_ausgabe == 4:
-                        y = ag_ausgabe * x ** 4 + var2_ausgabe * x ** 3 + var3_ausgabe * x ** 2 \
-                            + var4_Ausgabe * x ** 1 + var5_Ausgabe * x ** 0
+                        y_poly  = (ag_ausgabe * x_Poly ** 4) + (var2_ausgabe * x_Poly ** 3) + (var3_ausgabe * x_Poly ** 2) \
+                            (+ var4_Ausgabe * x_Poly ** 1) + (var5_Ausgabe * x_Poly ** 0)
                 else:
 
                     def OkButtonClickG():
@@ -238,7 +390,7 @@ def inpAnmeldung():
                     LabelFail.pack()
                     OkButton.pack()
 
-                plt.plot(x,y)  # stelt alles in matplot_lib dar
+                plt.plot(x_Poly,y_poly)  # stelt alles in matplot_lib dar
                 plt.grid()
                 plt.show()
 
@@ -287,9 +439,9 @@ def inpAnmeldung():
             Y_achse = Entry(Exponential, bd=5, width=12)  # yachsenabschnitt (textboxen)
             lab3 = Label(Exponential, text="Y-Achsenabschnit")
             lab3.pack()
-            lab3.place(x=7, y=315)
+            lab3.place(x=7, y=205)
             Y_achse.pack()
-            Y_achse.place(x=7, y=340)
+            Y_achse.place(x=7, y=230)
 
             m_steigung = Entry(Exponential, bd=5, width=12)  # steigung (textboxen)
             lab4 = Label(Exponential, text="Steigung")
@@ -301,16 +453,16 @@ def inpAnmeldung():
             ctexte = Entry(Exponential, bd=5, width=12)  # steigung (textboxen)
             lab4 = Label(Exponential, text="c")
             lab4.pack()
-            lab4.place(x=100, y=255)
+            lab4.place(x=7, y=315)
             ctexte.pack()
-            ctexte.place(x=100, y=280)
+            ctexte.place(x=7, y=340)
 
             x_name = Entry(Exponential, bd=5, width=12)  # name für xseite (textboxen)
             lab5 = Label(Exponential, text="Name-X")
             lab5.pack()
-            lab5.place(x=7, y=205)
+            lab5.place(x=7, y=85)
             x_name.pack()
-            x_name.place(x=7, y=230)
+            x_name.place(x=7, y=110)
 
             y_Name = Entry(Exponential, bd=5, width=12)  # name für yseite (textboxen)
             lab6 = Label(Exponential, text="Name-Y")
@@ -343,17 +495,35 @@ def inpAnmeldung():
                 X = np.linspace(vonx, bisx, 100)
                 Y = Steigung_m * (Achse_Y ** X) + ctext
 
+
+
                 plt.grid()
                 plt.plot(X, Y)
+                plt.show()
+
+            def Beispiel_Exponential():
+
+                ax = plt.gca()  # krodinaten systeme
+                ax.spines['top'].set_color('none')
+                ax.spines['bottom'].set_position('zero')
+                ax.spines['left'].set_position('zero')
+                ax.spines['right'].set_color('none')
+
+                def BeispielEX(x):
+                    return np.exp(x)
+                wert_x = np.linspace(-5,5,100)
+                plt.plot(wert_x, BeispielEX(wert_x))
+                plt.title("Exponential Funktion")
+                plt.grid()
                 plt.show()
 
             buttonEx = Button(Exponential,text="Ausführen", command=RechnenExpo)
             buttonEx.pack()
             buttonEx.place(x=7,y=40)
 
-            # butoon4 = Button(Exponential, text="Beispiele", command=BeispillExpo)
-            # butoon4.pack()
-            # butoon4.place(x=7, y=555)
+            buttonBPE = Button(Exponential,text="Beispiel", command=Beispiel_Exponential)
+            buttonBPE.pack()
+            buttonBPE.place(x=7, y=555)
 
         elif Auswahl == "Einstieg-Differenzialrechnung":
             Differenzial = Tk()
