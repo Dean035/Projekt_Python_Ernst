@@ -137,7 +137,7 @@ def inpAnmeldung():
                 aaa.set_xlim([vonl, bisl])
                 aaa.set_ylim([vonl, bisl])
 
-                X =np.linspace(-10,10,100)
+                X =np.linspace(vonl,bisl,100)
                 Y = mtext * X + btext
 
                 iIntegraal = mtext / 2 * LLIbis ** 2 - mtext / 2 * LLIvon ** 2
@@ -148,7 +148,7 @@ def inpAnmeldung():
                 xxx3 = [LLIvon, LLIbis]
                 yyy3 = [0, 0]
                 plt.scatter(xxx3, yyy3, color="green")
-
+                plt.ylim(vonl, bisl)
                 plt.grid()
                 plt.plot(X, Y)
                 plt.show()
@@ -204,7 +204,7 @@ def inpAnmeldung():
                 bb = float(b)
                 cc = float(c)
                 vv = float(von)
-                bb = float(bis)
+                bbiQ = float(bis)
                 IIvon= float(Ivon)
                 IIbis= float(Ibis)
 
@@ -214,7 +214,7 @@ def inpAnmeldung():
                 ax.spines['left'].set_position('zero')
                 ax.spines['right'].set_color('none')
 
-                x = np.linspace(vv, bb, 100)
+                x = np.linspace(vv, bbiQ, 100)
 
                 y = aa * x ** 2 + bb * x + cc
 
@@ -242,6 +242,7 @@ def inpAnmeldung():
 
                 xxx3=[IIvon, IIbis]
                 yyy3=[0,0]
+
                 plt.scatter(xxx3, yyy3, color="green")
                 plt.scatter(xxx, yyy, color="red")
                 plt.scatter(xxx2, yyy2, color="blue")
@@ -369,8 +370,138 @@ def inpAnmeldung():
         elif Auswahl == "Ganzrationale-Funktionen":
             Ganzrational = Tk()
             Ganzrational.title("Ganzrationale-Funktionen")
-            Ganzrational.geometry("400x400")
+            Ganzrational.geometry("800x600")
             Ganzrational.resizable(width=0, height=0)
+
+            bisge = Entry(Ganzrational, bd=5, width=12)  # wie weit y geht (bis) start = 0 (textboxen)
+            lab1 = Label(Ganzrational, text="bis")
+            lab1.pack()
+            lab1.place(x=7, y=435)
+
+            vonge = Entry(Ganzrational, bd=5, width=12)  # wie weit x geht (textboxen)
+            lab2 = Label(Ganzrational, text="von")
+            lab2.pack()
+            lab2.place(x=7, y=375)
+
+            n_ausgabe = Entry(Ganzrational, bd=5, width=12)  # n (textboxen)
+            lab3 = Label(Ganzrational, text="Grad")
+            lab3.pack()
+            lab3.place(x=7, y=255)
+
+            a_ausgabe = Entry(Ganzrational, bd=5, width=12)  # var1 a (textboxen)
+            lab4 = Label(Ganzrational, text="Variable1")
+            lab4.pack()
+            lab4.place(x=600, y=87)
+
+            xbeschriftungg = Entry(Ganzrational, bd=5, width=12)  # name für xseite (textboxen)
+            lab5 = Label(Ganzrational, text="Name-X")
+            lab5.pack()
+            lab5.place(x=7, y=205)
+
+            ybeschriftungg = Entry(Ganzrational, bd=5, width=12)  # name für yseite (textboxen)
+            lab6 = Label(Ganzrational, text="Name-Y")
+            lab6.pack()
+            lab6.place(x=7, y=145)
+
+            n2_ausgabe = Entry(Ganzrational, bd=5, width=12)  # gibt var2 an  (textboxen)
+            lab6 = Label(Ganzrational, text="variable4")
+            lab6.pack()
+            lab6.place(x=400, y=87)
+
+            n3_ausgabe = Entry(Ganzrational, bd=5, width=12)  # gibt var3 an  (textboxen)
+            lab6 = Label(Ganzrational, text="variable3")
+            lab6.pack()
+            lab6.place(x=300, y=87)
+
+            n4_ausgabe = Entry(Ganzrational, bd=5, width=12)  # gibt var4 an  (textboxen)
+            lab6 = Label(Ganzrational, text="variable2")
+            lab6.pack()
+            lab6.place(x=200, y=87)
+
+            n5_ausgabe = Entry(Ganzrational, bd=5, width=12)  # gibt var4 an  (textboxen)
+            lab6 = Label(Ganzrational, text="variable5")
+            lab6.pack()
+            lab6.place(x=500, y=87)
+
+            def formel_berechnen():
+                plt.title("Ganzrationale-Funktionen")
+                plt.ylabel(ybeschriftungg.get())
+                plt.xlabel(xbeschriftungg.get())
+                bisg = bisge.get()
+                vong = vonge.get()
+                bisg = float(bisg)
+                vong = float(vong)
+                ag_ausgabe = a_ausgabe.get()
+                ng_ausgabe = n_ausgabe.get()
+                var2_ausgabe = n2_ausgabe.get()
+                var2_ausgabe = float(var2_ausgabe)
+                ng_ausgabe = float(ng_ausgabe)
+                ag_ausgabe = float(ag_ausgabe)
+                var3_ausgabe = n3_ausgabe.get()
+                var3_ausgabe = float(var3_ausgabe)
+                var4_Ausgabe = n4_ausgabe.get()
+                var4_Ausgabe = float(var4_Ausgabe)
+                var5_Ausgabe = n5_ausgabe.get()
+                var5_Ausgabe = float(var5_Ausgabe)
+
+                ax = plt.gca()  # krodinaten systeme
+                ax.spines['top'].set_color('none')
+                ax.spines['bottom'].set_position('zero')
+                ax.spines['left'].set_position('zero')
+                ax.spines['right'].set_color('none')
+
+                x_Poly = np.linspace(vong, bisg,
+                                     500)  # erstellt ein array mit 100 glechmäsig verteielten x werten zwischen von und  bis
+
+                if ng_ausgabe == 3:
+                    y_poly = (ag_ausgabe * x_Poly ** 3) + (var2_ausgabe * x_Poly ** 2) + (var3_ausgabe * x_Poly) + (var4_Ausgabe)
+                elif ng_ausgabe == 4:
+                    y_poly = (ag_ausgabe * x_Poly ** 4) + (var2_ausgabe * x_Poly ** 3) + (var3_ausgabe * x_Poly ** 2) +(var4_Ausgabe * x_Poly) + (var5_Ausgabe)
+                else:
+
+                    def OkButtonClickG():
+                        ErrorGrad.destroy()
+
+                    ErrorGrad = Tk()
+                    ErrorGrad.title("Error")
+                    ErrorGrad.geometry("500x50")
+                    ErrorGrad.resizable(width=0, height=0)
+                    OkButton = Button(ErrorGrad, text="Ok", command=OkButtonClickG)
+                    LabelFail = Label(ErrorGrad, text="Gebe bitte eine grad von 3 bis 4 ein")
+
+                    LabelFail.pack()
+                    OkButton.pack()
+                plt.ylim(vong, bisg)
+                plt.plot(x_Poly, y_poly)  # stelt alles in matplot_lib dar
+                plt.grid()
+                plt.show()
+
+
+            def BeispielGanz():
+                plt.title("Ganzrationale-Funktionen")
+                ax = plt.gca()  # krodinaten systeme
+                ax.spines['top'].set_color('none')
+                ax.spines['bottom'].set_position('zero')
+                ax.spines['left'].set_position('zero')
+                ax.spines['right'].set_color('none')
+                x_PolyB = np.linspace(-10, 10, 100)  # erstellt ein array mit 100 glechmäsig verteielten x werten zwischen von und  bis
+                y_polyB = (2 * x_PolyB ** 3) + (2 * x_PolyB ** 2) + (2 * x_PolyB) + (2)
+                plt.ylim(-10,10)
+                plt.plot(x_PolyB, y_polyB)  # stelt alles in matplot_lib dar
+                plt.grid()
+                plt.show()
+
+            buton1 = Button(Ganzrational, text="Ausführen", command=formel_berechnen)  # buttons
+            buton2 = Button(Ganzrational, text="Beispiele",command=BeispielGanz )  # command=)
+
+            vonge.pack(), bisge.pack(), n_ausgabe.pack(), a_ausgabe.pack(), xbeschriftungg.pack(), ybeschriftungg.pack(),
+            buton2.pack(), buton1.pack(), n2_ausgabe.pack(), n3_ausgabe.pack(), n4_ausgabe.pack()  # zeigt die scheiße an
+
+            ybeschriftungg.place(x=7, y=170), xbeschriftungg.place(x=7, y=230), \
+                a_ausgabe.place(x=600, y=110), n_ausgabe.place(x=7, y=280)
+            vonge.place(x=7, y=400), bisge.place(x=7, y=460), buton1.place(x=7, y=40), buton2.place(x=7, y=555), \
+                n2_ausgabe.place(x=200, y=110), n3_ausgabe.place(x=300, y=110), n4_ausgabe.place(x=400, y=110), \
+                n5_ausgabe.place(x=500, y=110),
         elif Auswahl == "Trigonometrische-Funktionen":
             Trigonomisch = Tk()
             Trigonomisch.title("Trigonometrische-Funktionen")
