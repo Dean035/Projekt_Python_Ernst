@@ -161,17 +161,19 @@ def inpAnmeldung():
                 aaa = aa / aa
                 ccc = cc / aa
 
-                pq1 = -bbb / 2 + math.sqrt((bbb / 2) ** 2 - (ccc))  # pq-Formel
-                pq2 = -bbb / 2 - math.sqrt((bbb / 2) ** 2 - (ccc))  # pq-Formel
+                Ergebnis1PQ = -bbb / 2
+                Ergebnis2PQ = (bbb / 2) ** 2 - ccc
+                pq1 = Ergebnis1PQ + math.sqrt(Ergebnis2PQ)
+                pq2 = Ergebnis1PQ - math.sqrt(Ergebnis2PQ)
 
                 PunktX = -bb / (2 * aa)   # Berechnung des Scheitelpunktes /Gleicung der Parabel
-                PuniktY = aa * PunktX ** 2 + bb * PunktX + cc  # Berechenet die Kordinaten des Scheitelpunktes
+                PunktY = aa * PunktX ** 2 + bb * PunktX + cc  # Berechenet die Kordinaten des Scheitelpunktes
 
                 xxx = [pq1, pq2]  # Nullstellen
                 yyy = [0, 0]
 
                 plt.scatter(xxx, yyy, color="red")
-                plt.scatter( x=PunktX,y=PuniktY, color="blue")
+                plt.scatter( x=PunktX,y=PunktY, color="blue")
                 plt.plot(x, y, '-r', label='y=')
                 plt.grid()
                 plt.show()
