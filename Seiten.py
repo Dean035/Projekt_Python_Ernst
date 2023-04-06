@@ -455,6 +455,29 @@ def inpAnmeldung():
 
                 if ng_ausgabe == 3:
                     y_poly = (ag_ausgabe * x_Poly ** 3) + (var2_ausgabe * x_Poly ** 2) + (var3_ausgabe * x_Poly) + (var4_Ausgabe)
+                    i = 1
+                    Ergebnis = 1
+                    while Ergebnis != 0:
+                        Ergebnis = (ag_ausgabe * i ** 3) + (var2_ausgabe * i ** 2) + (var3_ausgabe * i) + (var4_Ausgabe)
+                        print(Ergebnis)
+                        i = i + 1
+                        if i > 100:
+                            break
+                    if i > 100:
+                        i = 1
+                        Ergebnis = 1
+                        while Ergebnis != 0:
+                            Ergebnis = (ag_ausgabe * (i) ** 3) + (var2_ausgabe * (i) ** 2) + (var3_ausgabe * (i)) + (
+                                var4_Ausgabe)
+                            print(Ergebnis)
+
+                            i = i - 1
+                            if i < -100:
+                                break
+                    print(i)
+
+
+
                 elif ng_ausgabe == 4:
                     y_poly = (ag_ausgabe * x_Poly ** 4) + (var2_ausgabe * x_Poly ** 3) + (var3_ausgabe * x_Poly ** 2) +(var4_Ausgabe * x_Poly) + (var5_Ausgabe)
                 else:
