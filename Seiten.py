@@ -142,7 +142,7 @@ def inpAnmeldung():
 
                 iIntegraal = mtext / 2 * LLIbis ** 2 - mtext / 2 * LLIvon ** 2
 
-                LabelIntegrall = Label(iIntegrall, text=iIntegraal)
+                LabelIntegrall = Label(iIntegrall, text=str(iIntegraal) + 'LE')
                 LabelIntegrall.pack()
 
                 xxx3 = [LLIvon, LLIbis]
@@ -251,7 +251,7 @@ def inpAnmeldung():
                 Integraal = aa/3* IIbis**3-aa/3*IIvon**3
                 print(Integraal)
 
-                LabelIntegrall = Label(Integrall, text=Integraal)
+                LabelIntegrall = Label(Integrall, text=str(Integraal) + 'LE')
                 LabelIntegrall.pack()
 
                 plt.grid()
@@ -423,12 +423,34 @@ def inpAnmeldung():
             lab6.pack()
             lab6.place(x=500, y=87)
 
+            Intvon = Label(Ganzrational, text="Integral von")
+            Intvon.pack()
+            Intvon.place(x=100, y=25)
+
+            IntvonE = Entry(Ganzrational, bd=5, width=12)
+            IntvonE.pack()
+            IntvonE.place(x=100, y=50)
+
+            Intbis = Label(Ganzrational, text="Integral bis")
+            Intbis.pack()
+            Intbis.place(x=100, y=75)
+
+            IntbisE = Entry(Ganzrational, bd=5, width=12)
+            IntbisE.pack()
+            IntbisE.place(x=100, y=100)
+
             def formel_berechnen():
+
+
                 plt.title("Ganzrationale-Funktionen")
                 plt.ylabel(ybeschriftungg.get())
                 plt.xlabel(xbeschriftungg.get())
                 bisg = bisge.get()
                 vong = vonge.get()
+                IntvonEE = IntvonE.get()
+                IntbisEE = IntbisE.get()
+                IIntvonEE = float(IntvonEE)
+                IIntbisEE = float(IntbisEE)
                 bisg = float(bisg)
                 vong = float(vong)
                 ag_ausgabe = a_ausgabe.get()
@@ -475,7 +497,31 @@ def inpAnmeldung():
                             if i < -100:
                                 break
                     print(i)
+                    newag = ag_ausgabe * 3
+                    newvar2 = var2_ausgabe * 2
+                    newag2 = newag * 2
+                    Integraal = ag_ausgabe / 4 * IIntbisEE ** 4 - ag_ausgabe / 4 * IIntvonEE ** 4
+                    print(Integraal)
+                    GIntegral = Tk()
+                    GIntegral.title("Ergebnis Integral")
+                    GIntegral.geometry("500x100")
+                    GIntegral.resizable(width=0, height=0)
+                    LabelIntegrall = Label(GIntegral, text=str(Integraal) + 'LE')
+                    LabelIntegrall.pack()
+                    LabelAbleitung = Label(GIntegral, text='Ableitung1: f`(x) =' + str(newag) + 'x^2+' + str(newvar2) + 'x+' + str(var3_ausgabe))
+                    LabelAbleitung.pack()
+                    LabelAbleitung2 = Label(GIntegral, text='Ableitung2: f``(x) =' + str(newag2) + 'x+' + str(newvar2))
+                    LabelAbleitung2.pack()
+                    LabelAbleitung3 = Label(GIntegral, text='Ableitung3: f```(x) =' + str(newag2))
+                    LabelAbleitung3.pack()
+                    GIx = [IIntvonEE, IIntbisEE]
+                    GIy = [0, 0]
 
+                    plt.scatter(GIx, GIy, color="green")
+                    plt.ylim(vong, bisg)
+                    plt.plot(x_Poly, y_poly)  # stelt alles in matplot_lib dar
+                    plt.grid()
+                    plt.show()
 
 
                 elif ng_ausgabe == 4:
@@ -494,10 +540,7 @@ def inpAnmeldung():
 
                     LabelFail.pack()
                     OkButton.pack()
-                plt.ylim(vong, bisg)
-                plt.plot(x_Poly, y_poly)  # stelt alles in matplot_lib dar
-                plt.grid()
-                plt.show()
+
 
 
             def BeispielGanz():
