@@ -1,8 +1,12 @@
 import math
 from tkinter import *
+
+import numpy
+
 from Datenbank import *
 import matplotlib.pyplot as plt
 import numpy as np
+
 
 Anmeldung_fenster = Tk()
 Anmeldung_fenster.title("Anmeldung")
@@ -198,7 +202,6 @@ def inpAnmeldung():
 
                 Punktx = -b / (2 * a)  # Berechnung des Scheitelpunktes /Gleicung der Parabel
                 Punikty = a * Punktx ** 2 + b * Punktx + c  # Berechenet die Kordinaten des Scheitelpunktes
-
 
                 pb1 = -bbe / 2 + math.sqrt((bbe / 2) ** 2 - (ccb))
                 pb2 = -bbe / 2 - math.sqrt((bbe / 2) ** 2 - (ccb))
@@ -411,11 +414,141 @@ def inpAnmeldung():
 
 
 
+
         elif Auswahl == "Trigonometrische-Funktionen":
+
             Trigonomisch = Tk()
             Trigonomisch.title("Trigonometrische-Funktionen")
             Trigonomisch.geometry("800x600")
             Trigonomisch.resizable(width=0, height=0)
+
+            def Rechnungtri():
+
+                plt.title("Trigonometrische-Funktionen")
+                plt.ylabel(TriEntry6.get())
+                plt.xlabel(TriEntry7.get())
+                at = TriEntry1.get()
+                bt = TriEntry2.get()
+                ct = TriEntry3.get()
+                vont = TriEntry4.get()
+                bist = TriEntry5.get()
+                aat = float(at)
+                bbt = float(bt)
+                cct = float(ct)
+                vvt = float(vont)
+                bbit = float(bist)
+                imtct = int(cct)
+                imtbbt = int(bbt)
+
+
+                k = 2
+
+                ax = plt.gca()  # koordinatensystem
+                ax.spines['top'].set_color('none')
+                ax.spines['bottom'].set_position('zero')
+                ax.spines['left'].set_position('zero')
+                ax.spines['right'].set_color('none')
+
+                x = np.linspace(vvt, bbit, 1000)
+                ysin = aat * np.sin(bbt * x + cct)
+                ycos = aat * np.cos(bbt * x + cct)
+                # ytan = aat * np.tan(bbt * x + cct)
+                nullstelle_Sin = k * math.pi + imtct
+                nullstelle_cos = imtbbt * ( k * math.pi + math.pi/2 + imtct)
+                nullstelleny = 0
+
+
+
+                plt.plot(x, ycos, color="blue")
+                plt.plot(x, ysin, color="green")
+                # plt.plot(x, ytan, color="purple")
+                plt.scatter(x = nullstelle_Sin, y= nullstelleny , color= "green")
+                plt.scatter(x = nullstelle_cos, y= nullstelleny , color= "blue")
+                plt.grid()
+                plt.show()
+
+            def Beispieltri():
+
+                plt.title('Der Graph von f(x) = 2 * sin(2x + 2) und f(x) = 2 * cos(2x + 2) ')
+                ax = plt.gca()  # koordinatensystem
+                ax.spines['top'].set_color('none')
+                ax.spines['bottom'].set_position('zero')
+                ax.spines['left'].set_position('zero')
+                ax.spines['right'].set_color('none')
+
+                x = np.linspace(-10, 10, 100)
+                sinn = 2 * np.sin(2 * x + 2)
+                coss = 2 * np.cos(2 * x + 2)
+
+
+                plt.plot(x, sinn, color="blue")
+                plt.plot(x, coss, color="green")
+                plt.grid()
+                plt.show()
+
+            TriLabel1 = Label(Trigonomisch, text="a")
+            TriLabel1.pack()
+            TriLabel1.place(x=7, y=25)
+
+            TriEntry1 = Entry(Trigonomisch, bd=5, width=12)
+            TriEntry1.pack()
+            TriEntry1.place(x=7, y=50)
+
+            TriLabel2 = Label(Trigonomisch, text="b")
+            TriLabel2.pack()
+            TriLabel2.place(x=7, y=75)
+
+            TriEntry2 = Entry(Trigonomisch, bd=5, width=12)
+            TriEntry2.pack()
+            TriEntry2.place(x=7, y=100)
+
+            TriLabel3 = Label(Trigonomisch, text="c")
+            TriLabel3.pack()
+            TriLabel3.place(x=7, y=125)
+
+            TriEntry3 = Entry(Trigonomisch, bd=5, width=12)
+            TriEntry3.pack()
+            TriEntry3.place(x=7, y=150)
+
+            TriLabel4 = Label(Trigonomisch, text="von")
+            TriLabel4.pack()
+            TriLabel4.place(x=7, y=175)
+
+            TriEntry4 = Entry(Trigonomisch, bd=5, width=12)
+            TriEntry4.pack()
+            TriEntry4.place(x=7, y=200)
+
+            TriLabel5 = Label(Trigonomisch, text="bis")
+            TriLabel5.pack()
+            TriLabel5.place(x=7, y=225)
+
+            TriEntry5 = Entry(Trigonomisch, bd=5, width=12)
+            TriEntry5.pack()
+            TriEntry5.place(x=7, y=250)
+
+            TriLabel6 = Label(Trigonomisch, text="Y-Name")
+            TriLabel6.pack()
+            TriLabel6.place(x=7, y=275)
+
+            TriEntry6 = Entry(Trigonomisch, bd=5, width=12)
+            TriEntry6.pack()
+            TriEntry6.place(x=7, y=300)
+
+            TriLabel7 = Label(Trigonomisch, text="X-Name")
+            TriLabel7.pack()
+            TriLabel7.place(x=7, y=325)
+
+            TriEntry7 = Entry(Trigonomisch, bd=5, width=12)
+            TriEntry7.pack()
+            TriEntry7.place(x=7, y=350)
+
+            Buttontri2 = Button(Trigonomisch, text="Beispiel", command=Beispieltri)
+            Buttontri2.pack()
+            Buttontri2.place(x=7, y=450)
+
+            Buttontri1 = Button(Trigonomisch, text="Ausführen", command=Rechnungtri)
+            Buttontri1.pack()
+            Buttontri1.place(x=7, y=500)
 
 
         elif Auswahl == "Exponential-Funktionen":
