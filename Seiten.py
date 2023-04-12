@@ -1,8 +1,10 @@
 import math
 from tkinter import *
+from tkinter import messagebox
 from Datenbank import *
 import matplotlib.pyplot as plt
 import numpy as np
+
 
 
 Anmeldung = Tk()
@@ -41,15 +43,6 @@ def inpAnmeldung():
         OkButton.pack()
 
 
-    def lingraf():
-        plt.ylabel('numbers')
-        plt.plot([1, 2, 3, 4])
-        #dd_x = [1, 6, 9, 7, 90]
-
-        #dd_y = [3, 5, 7, 89, 90]
-
-        #plt.plot([dd_x], [dd_y])
-        plt.show()
 
     def show(selection):
 
@@ -60,8 +53,6 @@ def inpAnmeldung():
             fenster.geometry("800x600")
             fenster.resizable(width=0, height=0) #macht das die seite nicht vergrößert werden kann
 
-           # butoon3 = Button(fenster, text="Zoom-in", )
-           # butoon4 = Button(fenster, text="Zoom-out", )
             bisle = Entry(fenster, bd=5, width=12)  # wie weit y geht (bis) start = 0 (textboxen)
             lab1=Label(fenster,text="bis" )
             lab1.pack()
@@ -219,23 +210,14 @@ def inpAnmeldung():
                 y = aa * x ** 2 + bb * x + cc
 
                 bbb = bb / aa #Normalisierung
-                aaa = aa / aa
                 ccc = cc / aa
 
                 pq = -bbb/2 + math.sqrt((bbb/2)**2 - (ccc)) #pq-Formel
                 pq2 = -bbb/2 - math.sqrt((bbb/2)**2 - (ccc)) #pq-Formel
 
-                Ableitung1 = aa * x + bb
+                PunktX = -bb / (2 * aa)  # Berechnung des Scheitelpunktes /Gleicung der Parabel
+                PunktY = aa * PunktX ** 2 + bb * PunktX + cc  # Berechenet die Kordinaten des Scheitelpunktes
 
-
-                xA = 0
-                Zeile1 = xA - bb #Thermumformung (x-Wert bestimmen)
-                Zeile1 = Zeile1 / aa
-
-                yA = aa * Zeile1 ** 2 + bb * Zeile1 + cc #y-Wert bestimmen (In Grundform einsetzen)
-
-                xxx2=[Zeile1] #Extrempunkt
-                yyy2=[yA]
 
                 xxx=[pq, pq2,] #Nullstellen
                 yyy=[0, 0]
@@ -243,9 +225,9 @@ def inpAnmeldung():
                 xxx3=[IIvon, IIbis]
                 yyy3=[0,0]
 
+                plt.scatter(x=PunktX, y=PunktY, color="blue")
                 plt.scatter(xxx3, yyy3, color="green")
                 plt.scatter(xxx, yyy, color="red")
-                plt.scatter(xxx2, yyy2, color="blue")
                 plt.plot(x, y, '-r', label='y=')
 
                 Integraal = aa/3* IIbis**3-aa/3*IIvon**3
@@ -258,6 +240,12 @@ def inpAnmeldung():
                 plt.show()
 
             def matplotbeispiel():
+                ax = plt.gca()  # koordinatensystem
+                ax.spines['top'].set_color('none')
+                ax.spines['bottom'].set_position('zero')
+                ax.spines['left'].set_position('zero')
+                ax.spines['right'].set_color('none')
+
                 x = np.linspace(-10, 10, 100)
                 a = 5
                 b = 7
@@ -265,8 +253,10 @@ def inpAnmeldung():
                 y = (a * x ** 2) + (b * x) + c
 
                 bbe = b / a #Normalisierung
-                aab = a / a
                 ccb = c / a
+
+                Punktx = -b / (2 * a)  # Berechnung des Scheitelpunktes /Gleicung der Parabel
+                Punikty = a * Punktx ** 2 + b * Punktx + c  # Berechenet die Kordinaten des Scheitelpunktes
 
                 pb = -bbe/2 + math.sqrt((bbe/2)**2 - (ccb))
                 pb2 = -bbe/2 - math.sqrt((bbe/2)**2 - (ccb))
@@ -275,6 +265,7 @@ def inpAnmeldung():
 
 
                 plt.scatter(xxb, yyb, color="red")
+                plt.scatter(Punktx, Punikty, color="blue")
                 plt.plot(x, y, '-r', label='y=')
                 plt.title('Der Graph von y=4x+2')
                 plt.xlabel('x')
@@ -443,28 +434,34 @@ def inpAnmeldung():
 
 
                 plt.title("Ganzrationale-Funktionen")
-                plt.ylabel(ybeschriftungg.get())
-                plt.xlabel(xbeschriftungg.get())
-                bisg = bisge.get()
-                vong = vonge.get()
-                IntvonEE = IntvonE.get()
-                IntbisEE = IntbisE.get()
-                IIntvonEE = float(IntvonEE)
-                IIntbisEE = float(IntbisEE)
-                bisg = float(bisg)
-                vong = float(vong)
-                ag_ausgabe = a_ausgabe.get()
-                ng_ausgabe = n_ausgabe.get()
-                var2_ausgabe = n2_ausgabe.get()
-                var2_ausgabe = float(var2_ausgabe)
-                ng_ausgabe = float(ng_ausgabe)
-                ag_ausgabe = float(ag_ausgabe)
-                var3_ausgabe = n3_ausgabe.get()
-                var3_ausgabe = float(var3_ausgabe)
-                var4_Ausgabe = n4_ausgabe.get()
-                var4_Ausgabe = float(var4_Ausgabe)
-                var5_Ausgabe = n5_ausgabe.get()
-                var5_Ausgabe = float(var5_Ausgabe)
+                try:
+                    plt.ylabel(ybeschriftungg.get())
+                    plt.xlabel(xbeschriftungg.get())
+                    bisg = bisge.get()
+                    vong = vonge.get()
+                    IntvonEE = IntvonE.get()
+                    IntbisEE = IntbisE.get()
+                    IIntvonEE = float(IntvonEE)
+                    IIntbisEE = float(IntbisEE)
+                    bisg = float(bisg)
+                    vong = float(vong)
+                    ag_ausgabe = a_ausgabe.get()
+                    ng_ausgabe = n_ausgabe.get()
+                    var2_ausgabe = n2_ausgabe.get()
+                    var2_ausgabe = float(var2_ausgabe)
+                    ng_ausgabe = float(ng_ausgabe)
+                    ag_ausgabe = float(ag_ausgabe)
+                    var3_ausgabe = n3_ausgabe.get()
+                    var3_ausgabe = float(var3_ausgabe)
+                    var4_Ausgabe = n4_ausgabe.get()
+                    var4_Ausgabe = float(var4_Ausgabe)
+                    var5_Ausgabe = n5_ausgabe.get()
+                    var5_Ausgabe = float(var5_Ausgabe)
+                except:
+                    error = messagebox.showwarning(title="Error", message="Bitte gebe die richtigen Werte ein!")
+
+
+
 
                 ax = plt.gca()  # krodinaten systeme
                 ax.spines['top'].set_color('none')
@@ -617,6 +614,7 @@ def inpAnmeldung():
                 x = np.linspace(-10, 10, 100)
                 sinn = 2 * np.sin(2 * x + 2)
                 coss = 2 * np.cos(2 * x + 2)
+
                 plt.plot(x, sinn, color="blue")
                 plt.plot(x, coss, color="green")
                 plt.grid()
@@ -689,96 +687,114 @@ def inpAnmeldung():
         elif Auswahl == "Exponential-Funktionen":
             Exponential = Tk()
             Exponential.title("Exponential-Funktionen")
-            Exponential.geometry("400x400")
+            Exponential.geometry("800x600")
             Exponential.resizable(width=0, height=0)
-        elif Auswahl == "Einstieg-Differenzialrechnung":
-            Differenzial = Tk()
-            Differenzial.title("Einstieg-Differenzialrechnung")
-            Differenzial.geometry("400x400")
-            Differenzial.resizable(width=0, height=0)
-        elif Auswahl == "Kurvendiskussion":
-            Kurven = Tk()
-            Kurven.title("Kurvendiskussion")
-            Kurven.geometry("400x400")
-            Kurven.resizable(width=0, height=0)
-        elif Auswahl == "Integralrechnung":
-            Integral = Tk()
-            Integral.title("Integralrechnung")
-            Integral.geometry("800x600")
-            Integral.resizable(width=0, height=0)
 
-            def RechnungIntegral():
-                plt.title("Integralrechnung")
-                plt.ylabel(IntEntry4.get())
-                plt.xlabel(IntEntry5.get())
-                ci = IntEntry1.get()
-                voni = IntEntry2.get()
-                bisi = IntEntry3.get()
-                cci = float(ci)
-                vvoni = float(voni)
-                bbisi = float(bisi)
+            bise = Entry(Exponential, bd=5, width=12)  # wie weit y geht (bis) start = 0 (textboxen)
+            lab1 = Label(Exponential, text="bis")
+            lab1.pack()
+            lab1.place(x=7, y=435)
+            bise.pack()
+            bise.place(x=7, y=460)
 
+            vone = Entry(Exponential, bd=5, width=12)  # wie weit x geht (textboxen)
+            lab2 = Label(Exponential, text="von")
+            lab2.pack()
+            lab2.place(x=7, y=375)
+            vone.pack()
+            vone.place(x=7, y=400)
 
-                ax = plt.gca()  # koordinatensystem
+            Y_achse = Entry(Exponential, bd=5, width=12)  # yachsenabschnitt (textboxen)
+            lab3 = Label(Exponential, text="Y-Achsenabschnit")
+            lab3.pack()
+            lab3.place(x=7, y=205)
+            Y_achse.pack()
+            Y_achse.place(x=7, y=230)
+
+            m_steigung = Entry(Exponential, bd=5, width=12)  # steigung (textboxen)
+            lab4 = Label(Exponential, text="Steigung")
+            lab4.pack()
+            lab4.place(x=7, y=255)
+            m_steigung.pack()
+            m_steigung.place(x=7, y=280)
+
+            ctexte = Entry(Exponential, bd=5, width=12)  # steigung (textboxen)
+            lab4 = Label(Exponential, text="c")
+            lab4.pack()
+            lab4.place(x=7, y=315)
+            ctexte.pack()
+            ctexte.place(x=7, y=340)
+
+            x_name = Entry(Exponential, bd=5, width=12)  # name für xseite (textboxen)
+            lab5 = Label(Exponential, text="Name-X")
+            lab5.pack()
+            lab5.place(x=7, y=85)
+            x_name.pack()
+            x_name.place(x=7, y=110)
+
+            y_Name = Entry(Exponential, bd=5, width=12)  # name für yseite (textboxen)
+            lab6 = Label(Exponential, text="Name-Y")
+            lab6.pack()
+            lab6.place(x=7, y=145)
+            y_Name.pack()
+            y_Name.place(x=7, y=170)
+
+            def RechnenExpo():  # Formel für Exponential-Funktion
+                plt.title("Exponential-Funktion")
+                plt.ylabel(y_Name.get())
+                plt.xlabel(x_name.get())
+                vonx = vone.get()
+                bisx = bise.get()
+                ctext = ctexte.get()
+                Steigung_m = m_steigung.get()
+                Achse_Y = Y_achse.get()
+                vonx = float(vonx)
+                bisx = float(bisx)
+                ctext = float(ctext)
+                Steigung_m = float(Steigung_m)
+                Achse_Y = float(Achse_Y)
+
+                ax = plt.gca()  # krodinaten systeme
                 ax.spines['top'].set_color('none')
                 ax.spines['bottom'].set_position('zero')
                 ax.spines['left'].set_position('zero')
                 ax.spines['right'].set_color('none')
 
-                xii = np.linspace(vvoni, bbisi, 100)
-                yii = xii**2
+                X = np.linspace(vonx, bisx, 100)
+                Y = Steigung_m * (Achse_Y ** X) + ctext
 
-                plt.plot(xii, yii, color="blue")
+                plt.grid()
+                plt.plot(X, Y)
+                plt.show()
+
+            def Beispiel_Exponential():
+
+                ax = plt.gca()  # krodinaten systeme
+                ax.spines['top'].set_color('none')
+                ax.spines['bottom'].set_position('zero')
+                ax.spines['left'].set_position('zero')
+                ax.spines['right'].set_color('none')
+
+                def BeispielEX(x):
+                    return np.exp(x)
+
+                wert_x = np.linspace(-5, 5, 100)
+                plt.plot(wert_x, BeispielEX(wert_x))
+                plt.title("Exponential Funktion")
                 plt.grid()
                 plt.show()
 
-            IntLabel1 = Label(Integral, text="c")
-            IntLabel1.pack()
-            IntLabel1.place(x=7, y=25)
+            buttonEx = Button(Exponential, text="Ausführen", command=RechnenExpo)
+            buttonEx.pack()
+            buttonEx.place(x=7, y=40)
 
-            IntEntry1 = Entry(Integral, bd=5, width=12)
-            IntEntry1.pack()
-            IntEntry1.place(x=7, y=50)
+            buttonBPE = Button(Exponential, text="Beispiel", command=Beispiel_Exponential)
+            buttonBPE.pack()
+            buttonBPE.place(x=7, y=555)
 
-            IntLabel2 = Label(Integral, text="von")
-            IntLabel2.pack()
-            IntLabel2.place(x=7, y=75)
-
-            IntEntry2 = Entry(Integral, bd=5, width=12)
-            IntEntry2.pack()
-            IntEntry2.place(x=7, y=100)
-
-            IntLabel3 = Label(Integral, text="bis")
-            IntLabel3.pack()
-            IntLabel3.place(x=7, y=125)
-
-            IntEntry3 = Entry(Integral, bd=5, width=12)
-            IntEntry3.pack()
-            IntEntry3.place(x=7, y=150)
-
-            IntLabel4 = Label(Integral, text="Y-Name")
-            IntLabel4.pack()
-            IntLabel4.place(x=7, y=175)
-
-            IntEntry4 = Entry(Integral, bd=5, width=12)
-            IntEntry4.pack()
-            IntEntry4.place(x=7, y=200)
-
-            IntLabel5 = Label(Integral, text="X-Name")
-            IntLabel5.pack()
-            IntLabel5.place(x=7, y=225)
-
-            IntEntry5 = Entry(Integral, bd=5, width=12)
-            IntEntry5.pack()
-            IntEntry5.place(x=7, y=250)
-
-            ButtonInt1 = Button(Integral, text="Ausführen", command=RechnungIntegral)
-            ButtonInt1.pack()
-            ButtonInt1.place(x=7, y=500)
 
     drop = OptionMenu(Mainwindow, Funktionen, "Lineare-Funktion", "Quadratische-Funktion",
-                      "Ganzrationale-Funktionen", "Trigonometrische-Funktionen", "Exponential-Funktionen",
-                      "Einstieg-Differenzialrechnung", "Kurvendiskussion", "Integralrechnung", command=show)
+                      "Ganzrationale-Funktionen", "Trigonometrische-Funktionen", "Exponential-Funktionen", command=show)
 
     def logout():
         Mainwindow.destroy()
