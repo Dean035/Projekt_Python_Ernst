@@ -266,7 +266,7 @@ def inpAnmeldung():
                 ax.spines['left'].set_position('zero')
                 ax.spines['right'].set_color('none')
 
-                x = np.linspace(-10, 10, 100)
+                x = np.linspace(-4, 2, 100)
                 a = 5
                 b = 7
                 c = 2
@@ -387,68 +387,68 @@ def inpAnmeldung():
             bisge = Entry(Ganzrational, bd=5, width=12)  # wie weit y geht (bis) start = 0 (textboxen)
             lab1 = Label(Ganzrational, text="bis")
             lab1.pack()
-            lab1.place(x=7, y=435)
+            lab1.place(x=7, y=455)
 
             vonge = Entry(Ganzrational, bd=5, width=12)  # wie weit x geht (textboxen)
             lab2 = Label(Ganzrational, text="von")
             lab2.pack()
-            lab2.place(x=7, y=375)
+            lab2.place(x=7, y=395)
 
             n_ausgabe = Entry(Ganzrational, bd=5, width=12)  # n (textboxen)
             lab3 = Label(Ganzrational, text="Grad")
             lab3.pack()
-            lab3.place(x=7, y=255)
+            lab3.place(x=7, y=215)
 
             a_ausgabe = Entry(Ganzrational, bd=5, width=12)  # var1 a (textboxen)
             lab4 = Label(Ganzrational, text="Variable1")
             lab4.pack()
-            lab4.place(x=600, y=87)
+            lab4.place(x=200, y=15)
 
             xbeschriftungg = Entry(Ganzrational, bd=5, width=12)  # name für xseite (textboxen)
             lab5 = Label(Ganzrational, text="Name-X")
             lab5.pack()
-            lab5.place(x=7, y=205)
+            lab5.place(x=7, y=95)
 
             ybeschriftungg = Entry(Ganzrational, bd=5, width=12)  # name für yseite (textboxen)
             lab6 = Label(Ganzrational, text="Name-Y")
             lab6.pack()
-            lab6.place(x=7, y=145)
+            lab6.place(x=7, y=155)
 
             n2_ausgabe = Entry(Ganzrational, bd=5, width=12)  # gibt var2 an  (textboxen)
-            lab6 = Label(Ganzrational, text="variable4")
+            lab6 = Label(Ganzrational, text="variable2")
             lab6.pack()
-            lab6.place(x=400, y=87)
+            lab6.place(x=300, y=15)
 
             n3_ausgabe = Entry(Ganzrational, bd=5, width=12)  # gibt var3 an  (textboxen)
             lab6 = Label(Ganzrational, text="variable3")
             lab6.pack()
-            lab6.place(x=300, y=87)
+            lab6.place(x=400, y=15)
 
             n4_ausgabe = Entry(Ganzrational, bd=5, width=12)  # gibt var4 an  (textboxen)
-            lab6 = Label(Ganzrational, text="variable2")
+            lab6 = Label(Ganzrational, text="variable4")
             lab6.pack()
-            lab6.place(x=200, y=87)
+            lab6.place(x=500, y=15)
 
             n5_ausgabe = Entry(Ganzrational, bd=5, width=12)  # gibt var4 an  (textboxen)
             lab6 = Label(Ganzrational, text="variable5")
             lab6.pack()
-            lab6.place(x=500, y=87)
+            lab6.place(x=600, y=15)
 
             Intvon = Label(Ganzrational, text="Integral von")
             Intvon.pack()
-            Intvon.place(x=100, y=25)
+            Intvon.place(x=7, y=275)
 
             IntvonE = Entry(Ganzrational, bd=5, width=12)
             IntvonE.pack()
-            IntvonE.place(x=100, y=50)
+            IntvonE.place(x=7, y=300)
 
             Intbis = Label(Ganzrational, text="Integral bis")
             Intbis.pack()
-            Intbis.place(x=100, y=75)
+            Intbis.place(x=7, y=335)
 
             IntbisE = Entry(Ganzrational, bd=5, width=12)
             IntbisE.pack()
-            IntbisE.place(x=100, y=100)
+            IntbisE.place(x=7, y=360)
 
             def formel_berechnen():
 
@@ -580,11 +580,13 @@ def inpAnmeldung():
             vonge.pack(), bisge.pack(), n_ausgabe.pack(), a_ausgabe.pack(), xbeschriftungg.pack(), ybeschriftungg.pack(),
             buton2.pack(), buton1.pack(), n2_ausgabe.pack(), n3_ausgabe.pack(), n4_ausgabe.pack()  # zeigt die scheiße an
 
-            ybeschriftungg.place(x=7, y=170), xbeschriftungg.place(x=7, y=230), \
-                a_ausgabe.place(x=600, y=110), n_ausgabe.place(x=7, y=280)
-            vonge.place(x=7, y=400), bisge.place(x=7, y=460), buton1.place(x=7, y=40), buton2.place(x=7, y=555), \
-                n2_ausgabe.place(x=200, y=110), n3_ausgabe.place(x=300, y=110), n4_ausgabe.place(x=400, y=110), \
-                n5_ausgabe.place(x=500, y=110),
+            ybeschriftungg.place(x=7, y=180), xbeschriftungg.place(x=7, y=120), \
+                a_ausgabe.place(x=200, y=40), n_ausgabe.place(x=7, y=240)
+            vonge.place(x=7, y=420), bisge.place(x=7, y=480), buton1.place(x=7, y=40), buton2.place(x=7, y=555), \
+                n2_ausgabe.place(x=300, y=40), n3_ausgabe.place(x=400, y=40), n4_ausgabe.place(x=500, y=40), \
+                n5_ausgabe.place(x=600, y=40),
+
+
         elif Auswahl == "Trigonometrische-Funktionen":
             Trigonomisch = Tk()
             Trigonomisch.title("Trigonometrische-Funktionen")
