@@ -69,7 +69,7 @@ def Ausgabe():
     connection.commit()
     connection.close()
 
-if os.path.exists("Datenbank.db"):
+if os.path.exists("Datenbank.db"): #Wenn die Daten Datenbank.db bereits existiert dann mache keine neue und printe Datenbank existiert bereits wenn sie noch nicht existiert dann erstelle datenbank datei
     print("Datenbank existiert bereits")
 else:
     createdb()
