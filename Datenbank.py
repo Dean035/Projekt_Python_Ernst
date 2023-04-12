@@ -1,6 +1,6 @@
 import sqlite3
 import os
-#from Seiten import register
+
 
 
 

@@ -22,14 +22,14 @@ def inpAnmeldung():
     def OkButtonClick():
         Erroranm.destroy()
 
-    if Prüfanm(current_input, current_input2):
+    if Prüfanm(current_input, current_input2): #Prüfanm kommt von Datenbank.py current inputs gehen zu Datenbank.py
         Mainwindow = Tk()
         Mainwindow.title("Mainwindow")
         Anmeldung.withdraw()
         Mainwindow.geometry("650x450")
         Mainwindow.resizable(width=0, height=0)
         Funktionen = StringVar(Mainwindow)
-        Funktionen.set("Funktionen")
+        Funktionen.set("Funktionen") #Dropdown menu anfangs wort
     else:
         Erroranm = Tk()
         Erroranm.title("Error")
@@ -44,10 +44,10 @@ def inpAnmeldung():
 
 
 
-    def show(selection):
+    def show(selection): #Funktion show wird erstellt mit der Auswahl des Dropdown menus als Variable
 
-        Auswahl = selection
-        if Auswahl == "Lineare-Funktion":
+        Auswahl = selection #In die Variable Auswahl wird die Auswahl des Dropdownsmenu rein geleget
+        if Auswahl == "Lineare-Funktion": # Wenn Lineare funktion ausgewählt wurde tu das
             fenster = Tk()
             fenster.title("Lineare-Funktion")
             fenster.geometry("800x600")
@@ -128,7 +128,7 @@ def inpAnmeldung():
                 aaa.set_xlim([vonl, bisl])
                 aaa.set_ylim([vonl, bisl])
 
-                X =np.linspace(vonl,bisl,100)
+                X =np.linspace(vonl,bisl,100) #linspace zeichnet die Linie / Die ersten zwei eingaben sind von und bis die x Achse des Koordinatensystems gehen soll und die 3. eingabe ist wie genau die Linie sein soll
                 Y = mtext * X + btext
 
                 iIntegraal = mtext / 2 * LLIbis ** 2 - mtext / 2 * LLIvon ** 2
@@ -138,8 +138,8 @@ def inpAnmeldung():
 
                 xxx3 = [LLIvon, LLIbis]
                 yyy3 = [0, 0]
-                plt.scatter(xxx3, yyy3, color="green")
-                plt.ylim(vonl, bisl)
+                plt.scatter(xxx3, yyy3, color="green") #Punkte werden gesetzt
+                plt.ylim(vonl, bisl) #Von und bis von Y-Achse
                 plt.grid()
                 plt.plot(X, Y)
                 plt.show()
@@ -161,7 +161,7 @@ def inpAnmeldung():
             vonle.pack(), bisle.pack(), btexte.pack(), mtexte.pack(), xbeschriftung.pack(), ybeschriftung.pack(),
             butoon2.pack(), butoon1.pack() #zeigt die scheiße an
 
-            ## butoon3.place(x=100, y=555), butoon4.place(x=180, y=555)
+
 
             bisle.place(x=7, y=460), vonle.place(x=7, y=400), btexte.place(x=7, y=340), mtexte.place(x=7, y=280),
             xbeschriftung.place(x=7, y=230), ybeschriftung.place(x=7, y=170), butoon1.place(x=7, y=40),
@@ -200,10 +200,10 @@ def inpAnmeldung():
                 IIbis= float(Ibis)
 
                 ax = plt.gca()  # koordinatensystem
-                ax.spines['top'].set_color('none')
-                ax.spines['bottom'].set_position('zero')
-                ax.spines['left'].set_position('zero')
-                ax.spines['right'].set_color('none')
+                ax.spines['top'].set_color('none') # Entfernt obere Achse durch das Setzen der Farbe auf none
+                ax.spines['bottom'].set_position('zero') #setzt die untere Achse auf die Position zero
+                ax.spines['left'].set_position('zero') #setzt die linke "Achse" ebenfalls auf die Position "zero"
+                ax.spines['right'].set_color('none')# macht die Farbe von der rechten Achse Entfernen
 
                 x = np.linspace(vv, bbiQ, 100)
 
@@ -463,7 +463,7 @@ def inpAnmeldung():
 
 
 
-                ax = plt.gca()  # krodinaten systeme
+                ax = plt.gca()  # koordinaten systeme
                 ax.spines['top'].set_color('none')
                 ax.spines['bottom'].set_position('zero')
                 ax.spines['left'].set_position('zero')
@@ -476,7 +476,7 @@ def inpAnmeldung():
                     y_poly = (ag_ausgabe * x_Poly ** 3) + (var2_ausgabe * x_Poly ** 2) + (var3_ausgabe * x_Poly) + (var4_Ausgabe)
                     i = 1
                     Ergebnis = 1
-                    while Ergebnis != 0:
+                    while Ergebnis != 0: #Teiler finden
                         Ergebnis = (ag_ausgabe * i ** 3) + (var2_ausgabe * i ** 2) + (var3_ausgabe * i) + (var4_Ausgabe)
                         print(Ergebnis)
                         i = i + 1
@@ -515,8 +515,8 @@ def inpAnmeldung():
                     GIy = [0, 0]
 
                     plt.scatter(GIx, GIy, color="green")
-                    plt.ylim(vong, bisg)
-                    plt.plot(x_Poly, y_poly)  # stelt alles in matplot_lib dar
+                    plt.ylim(vong, bisg) #Von bis auf y achse
+                    plt.plot(x_Poly, y_poly)  # stellt alles in matplot_lib dar
                     plt.grid()
                     plt.show()
 
@@ -542,7 +542,7 @@ def inpAnmeldung():
 
             def BeispielGanz():
                 plt.title("Ganzrationale-Funktionen")
-                ax = plt.gca()  # krodinaten systeme
+                ax = plt.gca()  # koordinaten systeme
                 ax.spines['top'].set_color('none')
                 ax.spines['bottom'].set_position('zero')
                 ax.spines['left'].set_position('zero')
@@ -550,7 +550,7 @@ def inpAnmeldung():
                 x_PolyB = np.linspace(-10, 10, 100)  # erstellt ein array mit 100 glechmäsig verteielten x werten zwischen von und  bis
                 y_polyB = (2 * x_PolyB ** 3) + (2 * x_PolyB ** 2) + (2 * x_PolyB) + (2)
                 plt.ylim(-10,10)
-                plt.plot(x_PolyB, y_polyB)  # stelt alles in matplot_lib dar
+                plt.plot(x_PolyB, y_polyB)  # stellt alles in matplot_lib dar
                 plt.grid()
                 plt.show()
 
@@ -595,10 +595,8 @@ def inpAnmeldung():
                 x = np.linspace(vvt, bbit, 100)
                 ysin = aat * np.sin(bbt * x + cct)
                 ycos = aat * np.cos(bbt * x + cct)
-                #ytan = aat * np.tan(bbt * x + cct)
                 plt.plot(x, ycos, color="blue")
                 plt.plot(x, ysin, color="green")
-                #plt.plot(x, ytan, color="purple")
                 plt.grid()
                 plt.show()
 
@@ -775,11 +773,14 @@ def inpAnmeldung():
                 ax.spines['left'].set_position('zero')
                 ax.spines['right'].set_color('none')
 
-                def BeispielEX(x):
-                    return np.exp(x)
+                #def BeispielEX(x): #Funktion wird erstellt
+                #    return np.exp(x)
+
+
 
                 wert_x = np.linspace(-5, 5, 100)
-                plt.plot(wert_x, BeispielEX(wert_x))
+                Y = 5 * (3 ** wert_x) + 7
+                plt.plot(wert_x, Y)
                 plt.title("Exponential Funktion")
                 plt.grid()
                 plt.show()
@@ -794,11 +795,11 @@ def inpAnmeldung():
 
 
     drop = OptionMenu(Mainwindow, Funktionen, "Lineare-Funktion", "Quadratische-Funktion",
-                      "Ganzrationale-Funktionen", "Trigonometrische-Funktionen", "Exponential-Funktionen", command=show)
+                      "Ganzrationale-Funktionen", "Trigonometrische-Funktionen", "Exponential-Funktionen", command=show) # dropdown menu Auswahl Möglichkeiten
 
     def logout():
-        Mainwindow.destroy()
-        Anmeldung.deiconify()
+        Mainwindow.destroy() #Mainfenster wird zerstört
+        Anmeldung.deiconify() #Anmeldungs Fenster erscheint wieder
 
 
     logout = Button(Mainwindow, text="Abmelden", command=logout)
@@ -820,10 +821,10 @@ def register():
         RgstinpPasswortConfirm = RgstConfirmeingabe.get()
 
         if RgstinpPasswort == RgstinpPasswortConfirm and RgstinpBenutzername != "": #Benutzername darf nicht nichts sein und Passwort und Confirm muss gleich sein
-            if PrüfungRgst(RgstinpBenutzername): #Check ob benutzername existiert
+            if PrüfungRgst(RgstinpBenutzername): #Check ob benutzername existiert (Funktion aus Datenbank.py)
                 print(RgstinpBenutzername, RgstinpPasswort, RgstinpPasswortConfirm)
-                NewAcc(RgstBenutzereingabe.get(), RgstPassworteingabe.get())
-                Ausgabe()
+                NewAcc(RgstBenutzereingabe.get(), RgstPassworteingabe.get()) #NewAcc von Datenbank.py
+                Ausgabe() #Listet alle Accounts (Funktion von Datenbank.py)
                 Register.destroy()
             else:
                 def OkButtonClick():
