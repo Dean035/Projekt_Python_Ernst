@@ -105,31 +105,37 @@ def inpAnmeldung():
                 iIntegrall.geometry("500x50")
                 iIntegrall.resizable(width=0, height=0)
 
-                plt.title("Lineare-Funktion")
-                plt.ylabel(ybeschriftung.get())
-                plt.xlabel(xbeschriftung.get())
-                vonl = vonle.get()
-                bisl = bisle.get()
-                btext = btexte.get()
-                mtext = mtexte.get()
-                LIvon = IntLinVon1.get()
-                LIbis = IntLinBis2.get()
-                LLIvon = float(LIvon)
-                LLIbis = float(LIbis)
-                vonl = float(vonl)
-                btext = float(btext)
-                mtext = float(mtext)
-                bisl = float(bisl)
+                try:
+                    plt.title("Lineare-Funktion")
+                    plt.ylabel(ybeschriftung.get())
+                    plt.xlabel(xbeschriftung.get())
+                    vonl = vonle.get()
+                    bisl = bisle.get()
+                    btext = btexte.get()
+                    mtext = mtexte.get()
+                    LIvon = IntLinVon1.get()
+                    LIbis = IntLinBis2.get()
+                    LLIvon = float(LIvon)
+                    LLIbis = float(LIbis)
+                    vonl = float(vonl)
+                    btext = float(btext)
+                    mtext = float(mtext)
+                    bisl = float(bisl)
+                except:
+                    error = messagebox.showwarning(title="Error", message="Bitte gebe die richtigen Werte ein!")
 
-                aaa = plt.gca()
-                plt.gca().set_aspect('equal')
-                aaa.set_xticks(range(-10, 10, 1))
-                aaa.set_yticks(range(-10, 10, 1))
-                aaa.set_xlim([vonl, bisl])
-                aaa.set_ylim([vonl, bisl])
+                ax = plt.gca()  # koordinatensystem
+                ax.spines['top'].set_color('none') # Entfernt obere Achse durch das Setzen der Farbe auf none
+                ax.spines['bottom'].set_position('zero') #setzt die untere Achse auf die Position zero
+                ax.spines['left'].set_position('zero') #setzt die linke "Achse" ebenfalls auf die Position "zero"
+                ax.spines['right'].set_color('none')# macht die Farbe von der rechten Achse Entfernen
+
 
                 X =np.linspace(vonl,bisl,100) #linspace zeichnet die Linie / Die ersten zwei eingaben sind von und bis die x Achse des Koordinatensystems gehen soll und die 3. eingabe ist wie genau die Linie sein soll
                 Y = mtext * X + btext
+
+                x1 = -btext / mtext #Nullstelle
+                y1 = 0
 
                 iIntegraal = mtext / 2 * LLIbis ** 2 - mtext / 2 * LLIvon ** 2
 
@@ -138,6 +144,7 @@ def inpAnmeldung():
 
                 xxx3 = [LLIvon, LLIbis]
                 yyy3 = [0, 0]
+                plt.scatter(x1, y1, color="red")
                 plt.scatter(xxx3, yyy3, color="green") #Punkte werden gesetzt
                 plt.ylim(vonl, bisl) #Von und bis von Y-Achse
                 plt.grid()
@@ -145,8 +152,16 @@ def inpAnmeldung():
                 plt.show()
 
             def Beispill():
+                ax = plt.gca()  # koordinatensystem
+                ax.spines['top'].set_color('none') # Entfernt obere Achse durch das Setzen der Farbe auf none
+                ax.spines['bottom'].set_position('zero') #setzt die untere Achse auf die Position zero
+                ax.spines['left'].set_position('zero') #setzt die linke "Achse" ebenfalls auf die Position "zero"
+                ax.spines['right'].set_color('none')# macht die Farbe von der rechten Achse Entfernen
                 x = np.linspace(-5, 5, 100)
                 y = 4 * x + 2
+                xb = -2 / 4
+                yb = 0
+                plt.scatter(xb, yb, color="red")
                 plt.plot(x, y, '-r', label='y=4x+2')
                 plt.title('Der Graph von y=4x+2')
                 plt.xlabel('x')
@@ -181,23 +196,25 @@ def inpAnmeldung():
                 Integrall.resizable(width=0, height=0)
 
                 plt.title("Quadratischen-Funktion")
-
-                plt.ylabel(Eingabe6.get())
-                plt.xlabel(Eingabe7.get())
-                a = Eingabe1.get()
-                b = Eingabe2.get()
-                c = Eingabe3.get()
-                von = Eingabe4.get()
-                bis = Eingabe5.get()
-                Ivon = Eingabe8.get()
-                Ibis = Eingabe9.get()
-                aa = float(a)
-                bb = float(b)
-                cc = float(c)
-                vv = float(von)
-                bbiQ = float(bis)
-                IIvon= float(Ivon)
-                IIbis= float(Ibis)
+                try:
+                    plt.ylabel(Eingabe6.get())
+                    plt.xlabel(Eingabe7.get())
+                    a = Eingabe1.get()
+                    b = Eingabe2.get()
+                    c = Eingabe3.get()
+                    von = Eingabe4.get()
+                    bis = Eingabe5.get()
+                    Ivon = Eingabe8.get()
+                    Ibis = Eingabe9.get()
+                    aa = float(a)
+                    bb = float(b)
+                    cc = float(c)
+                    vv = float(von)
+                    bbiQ = float(bis)
+                    IIvon= float(Ivon)
+                    IIbis= float(Ibis)
+                except:
+                    error = messagebox.showwarning(title="Error", message="Bitte gebe die richtigen Werte ein!")
 
                 ax = plt.gca()  # koordinatensystem
                 ax.spines['top'].set_color('none') # Entfernt obere Achse durch das Setzen der Farbe auf none
@@ -212,8 +229,11 @@ def inpAnmeldung():
                 bbb = bb / aa #Normalisierung
                 ccc = cc / aa
 
-                pq = -bbb/2 + math.sqrt((bbb/2)**2 - (ccc)) #pq-Formel
-                pq2 = -bbb/2 - math.sqrt((bbb/2)**2 - (ccc)) #pq-Formel
+                try:
+                    pq = -bbb/2 + math.sqrt((bbb/2)**2 - (ccc)) #pq-Formel
+                    pq2 = -bbb/2 - math.sqrt((bbb/2)**2 - (ccc)) #pq-Formel
+                except:
+                    error = messagebox.showwarning(title="Error", message="Bei dieser funktion gibt es keine Nullstellen! Bitte nehmen sie ein höheren b-Wert")
 
                 PunktX = -bb / (2 * aa)  # Berechnung des Scheitelpunktes /Gleicung der Parabel
                 PunktY = aa * PunktX ** 2 + bb * PunktX + cc  # Berechenet die Kordinaten des Scheitelpunktes
@@ -572,19 +592,22 @@ def inpAnmeldung():
             Trigonomisch.resizable(width=0, height=0)
 
             def Rechnungtri():
-                plt.title("Trigonometrische-Funktionen")
-                plt.ylabel(TriEntry6.get())
-                plt.xlabel(TriEntry7.get())
-                at = TriEntry1.get()
-                bt = TriEntry2.get()
-                ct = TriEntry3.get()
-                vont = TriEntry4.get()
-                bist = TriEntry5.get()
-                aat = float(at)
-                bbt = float(bt)
-                cct = float(ct)
-                vvt = float(vont)
-                bbit = float(bist)
+                try:
+                    plt.title("Trigonometrische-Funktionen")
+                    plt.ylabel(TriEntry6.get())
+                    plt.xlabel(TriEntry7.get())
+                    at = TriEntry1.get()
+                    bt = TriEntry2.get()
+                    ct = TriEntry3.get()
+                    vont = TriEntry4.get()
+                    bist = TriEntry5.get()
+                    aat = float(at)
+                    bbt = float(bt)
+                    cct = float(ct)
+                    vvt = float(vont)
+                    bbit = float(bist)
+                except:
+                    error = messagebox.showwarning(title="Error", message="Bitte gebe die richtigen Werte ein!")
 
                 ax = plt.gca()  # koordinatensystem
                 ax.spines['top'].set_color('none')
@@ -738,19 +761,22 @@ def inpAnmeldung():
             y_Name.place(x=7, y=170)
 
             def RechnenExpo():  # Formel für Exponential-Funktion
-                plt.title("Exponential-Funktion")
-                plt.ylabel(y_Name.get())
-                plt.xlabel(x_name.get())
-                vonx = vone.get()
-                bisx = bise.get()
-                ctext = ctexte.get()
-                Steigung_m = m_steigung.get()
-                Achse_Y = Y_achse.get()
-                vonx = float(vonx)
-                bisx = float(bisx)
-                ctext = float(ctext)
-                Steigung_m = float(Steigung_m)
-                Achse_Y = float(Achse_Y)
+                try:
+                    plt.title("Exponential-Funktion")
+                    plt.ylabel(y_Name.get())
+                    plt.xlabel(x_name.get())
+                    vonx = vone.get()
+                    bisx = bise.get()
+                    ctext = ctexte.get()
+                    Steigung_m = m_steigung.get()
+                    Achse_Y = Y_achse.get()
+                    vonx = float(vonx)
+                    bisx = float(bisx)
+                    ctext = float(ctext)
+                    Steigung_m = float(Steigung_m)
+                    Achse_Y = float(Achse_Y)
+                except:
+                    error = messagebox.showwarning(title="Error", message="Bitte gebe die richtigen Werte ein!")
 
                 ax = plt.gca()  # krodinaten systeme
                 ax.spines['top'].set_color('none')
